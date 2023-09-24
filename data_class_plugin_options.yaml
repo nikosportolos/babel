@@ -1,0 +1,21 @@
+json:
+  key_name_convention: kebab_case
+
+data_class:
+  options_config:
+    from_json:
+      default: true
+    to_json:
+      default: true
+    copyWith:
+      default: true
+    unmodifiable_collections:
+      default: false
+
+
+enum:
+  options_config:
+    from_json:
+      default: true
+    to_json:
+      default: true
