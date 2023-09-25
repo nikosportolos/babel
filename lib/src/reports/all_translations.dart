@@ -5,8 +5,16 @@ class AllTranslationsReport extends Report {
   AllTranslationsReport(super.project);
 
   @override
-  void generate() {
+  Future<void> generate() async {
     Trace.printListItem('Generating translations list...');
-    printTranslationGrid(project.distinctKeys);
+    keys
+      ..clear()
+      ..addAll(project.distinctKeys);
+  }
+
+  @override
+  Future<void> generateAndPrint({ReportDisplayMode mode = ReportDisplayMode.grid}) async {
+    await generate();
+    super.print(mode: mode);
   }
 }

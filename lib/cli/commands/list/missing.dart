@@ -3,8 +3,6 @@ import 'package:babel/src/reports/missing_translations.dart';
 import 'package:dart_cmder/dart_cmder.dart';
 
 class ListMissingCommand extends BaseCommand {
-  ListMissingCommand();
-
   @override
   String get name => 'missing';
 
@@ -16,9 +14,6 @@ class ListMissingCommand extends BaseCommand {
     final Babel babel = Babel.fromPath(path);
     babel.printInfo();
 
-    MissingTranslationsReport(babel.project).generate();
+    await MissingTranslationsReport(babel.project).generateAndPrint();
   }
-
-  @override
-  List<BaseArgument<void>> get arguments => <BaseArgument<void>>[];
 }

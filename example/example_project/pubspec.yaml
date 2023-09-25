@@ -1,5 +1,6 @@
 name: example_project
 version: 0.0.1
+publish_to: 'none'
 
 environment:
   sdk: ">=3.1.0 <4.0.0"
@@ -12,9 +13,14 @@ dependencies:
     sdk: flutter
   intl: ^0.18.0
 
+  trace:
+    path: D:/workspace/Flutter/Packages/trace
+
+dependency_overrides:
+  meta: 1.9.1
+  collection: 1.17.2
+
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
   flutter_lints: ^2.0.3
 
 flutter:

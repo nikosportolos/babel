@@ -6,22 +6,20 @@ export 'generated.dart';
 export 'unused.dart';
 
 class CleanCommand extends BaseCommand {
-  CleanCommand() {
-    <BaseCommand>[
-      CleanUnusedTranslationsCommand(),
-      CleanGeneratedFilesCommand(),
-    ].forEach(addSubcommand);
-  }
-
   @override
   String get name => 'clean';
 
   @override
   String get description => 'Clean translations-related files';
 
-  @override
-  Future<void> execute() async {}
+  CleanCommand()
+      : super(
+          subCommands: <BaseCommand>[
+            CleanUnusedTranslationsCommand(),
+            CleanGeneratedFilesCommand(),
+          ],
+        );
 
   @override
-  List<BaseArgument<void>> get arguments => <BaseArgument<void>>[];
+  Future<void> execute() async {}
 }

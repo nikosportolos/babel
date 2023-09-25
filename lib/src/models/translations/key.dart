@@ -20,6 +20,8 @@ abstract class TranslationKey {
 
   TranslationKeyAttributes get attributes;
 
+  bool get hasAttributes => attributes.description != null || attributes.placeholders.isNotEmpty;
+
   /// Creates an instance of [TranslationKey] from [json]
   factory TranslationKey.fromJson(Map<dynamic, dynamic> json) = _$TranslationKeyImpl.fromJson;
 

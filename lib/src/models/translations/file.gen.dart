@@ -18,15 +18,14 @@ class _$TranslationFileImpl extends TranslationFile {
   final String locale;
 
   @override
-  final List<TranslationKey> keys;
+  final Set<TranslationKey> keys;
 
   factory _$TranslationFileImpl.fromJson(Map<dynamic, dynamic> json) {
     return _$TranslationFileImpl(
       path: json['path'] as String,
       locale: json['locale'] as String,
-      keys: <TranslationKey>[
-        for (final dynamic i0 in (json['keys'] as List<dynamic>)) TranslationKey.fromJson(i0),
-      ],
+      keys: jsonConverterRegistrant.find(Set<TranslationKey>).fromJson(json['keys'], json, 'keys')
+          as Set<TranslationKey>,
     );
   }
 
@@ -35,9 +34,7 @@ class _$TranslationFileImpl extends TranslationFile {
     return <String, dynamic>{
       'path': path,
       'locale': locale,
-      'keys': <dynamic>[
-        for (final TranslationKey i0 in keys) i0.toJson(),
-      ],
+      'keys': jsonConverterRegistrant.find(Set).toJson(keys),
     };
   }
 
@@ -48,7 +45,7 @@ class _$TranslationFileImpl extends TranslationFile {
             runtimeType == other.runtimeType &&
             path == other.path &&
             locale == other.locale &&
-            deepEquality(keys, other.keys);
+            keys == other.keys;
   }
 
   @override
@@ -80,12 +77,12 @@ abstract interface class _TranslationFileCopyWithProxy {
 
   TranslationFile locale(String newValue);
 
-  TranslationFile keys(List<TranslationKey> newValue);
+  TranslationFile keys(Set<TranslationKey> newValue);
 
   TranslationFile call({
     final String? path,
     final String? locale,
-    final List<TranslationKey>? keys,
+    final Set<TranslationKey>? keys,
   });
 }
 
@@ -104,14 +101,14 @@ class _TranslationFileCopyWithProxyImpl implements _TranslationFileCopyWithProxy
 
   @pragma('vm:prefer-inline')
   @override
-  TranslationFile keys(List<TranslationKey> newValue) => this(keys: newValue);
+  TranslationFile keys(Set<TranslationKey> newValue) => this(keys: newValue);
 
   @pragma('vm:prefer-inline')
   @override
   TranslationFile call({
     final String? path,
     final String? locale,
-    final List<TranslationKey>? keys,
+    final Set<TranslationKey>? keys,
   }) {
     return _$TranslationFileImpl(
       path: path ?? _value.path,
@@ -130,12 +127,12 @@ sealed class $TranslationFileCopyWithProxyChain<$Result> {
 
   $Result locale(String newValue);
 
-  $Result keys(List<TranslationKey> newValue);
+  $Result keys(Set<TranslationKey> newValue);
 
   $Result call({
     final String? path,
     final String? locale,
-    final List<TranslationKey>? keys,
+    final Set<TranslationKey>? keys,
   });
 }
 
@@ -156,14 +153,14 @@ class _TranslationFileCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result keys(List<TranslationKey> newValue) => this(keys: newValue);
+  $Result keys(Set<TranslationKey> newValue) => this(keys: newValue);
 
   @pragma('vm:prefer-inline')
   @override
   $Result call({
     final String? path,
     final String? locale,
-    final List<TranslationKey>? keys,
+    final Set<TranslationKey>? keys,
   }) {
     return _chain(_$TranslationFileImpl(
       path: path ?? _value.path,

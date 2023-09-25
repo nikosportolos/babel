@@ -11,14 +11,15 @@ class CliRunner extends BaseRunner {
   static const String _description = 'Translations management for Flutter apps.';
 
   CliRunner({
-    IOSink? sink,
+    final IOSink? sink,
   }) : super(
           sink: sink,
           executableName: 'babel',
           description: _description,
           $commands: <BaseCommand>[
-            CleanCommand(),
             ListCommand(),
+            SortCommand(),
+            CleanCommand(),
           ],
           loggerTheme: LoggerTheme(
             sections: <LogSection>[LogSection.message],

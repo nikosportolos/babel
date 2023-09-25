@@ -11,14 +11,14 @@ abstract class TranslationFile {
   const factory TranslationFile({
     required String path,
     required String locale,
-    required List<TranslationKey> keys,
+    required Set<TranslationKey> keys,
   }) = _$TranslationFileImpl;
 
   String get path;
 
   String get locale;
 
-  List<TranslationKey> get keys;
+  Set<TranslationKey> get keys;
 
   /// Creates an instance of [TranslationFile] from [json]
   factory TranslationFile.fromJson(Map<dynamic, dynamic> json) = _$TranslationFileImpl.fromJson;

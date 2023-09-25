@@ -3,8 +3,6 @@ import 'package:babel/src/reports/unused_translations.dart';
 import 'package:dart_cmder/dart_cmder.dart';
 
 class ListUnusedCommand extends BaseCommand {
-  ListUnusedCommand();
-
   @override
   String get name => 'unused';
 
@@ -16,9 +14,6 @@ class ListUnusedCommand extends BaseCommand {
     final Babel babel = Babel.fromPath(path);
     babel.printInfo();
 
-    UnusedTranslationsReport(babel.project).generate();
+    await UnusedTranslationsReport(babel.project).generateAndPrint();
   }
-
-  @override
-  List<BaseArgument<void>> get arguments => <BaseArgument<void>>[];
 }

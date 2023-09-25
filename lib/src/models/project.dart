@@ -37,15 +37,6 @@ abstract class Project {
       .toSet()
       .toList(growable: false);
 
-  List<String> keysForLocale(final String locale) {
-    return translations
-        .where((TranslationFile element) => element.locale == locale)
-        .first
-        .keys
-        .map((TranslationKey element) => element.value)
-        .toList(growable: false);
-  }
-
   /// Creates an instance of [Project] from [json]
   factory Project.fromJson(Map<dynamic, dynamic> json) = _$ProjectImpl.fromJson;
 

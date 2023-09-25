@@ -1,3 +1,4 @@
+import 'package:example_project/button.dart';
 import 'package:example_project/extensions.dart';
 import 'package:example_project/generated/l10n.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,15 @@ class _HomeState extends State<Home> with TranslationsMixin {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text(translations.thisIsAnExampleApp),
+          Text(
+            translations.thisIsAnExampleApp,
+            textAlign: TextAlign.center,
+          ),
           // Text(S.of(context).btnSave),
+
+          const DemoButton(),
         ],
       ),
     );

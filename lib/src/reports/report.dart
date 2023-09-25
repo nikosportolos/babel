@@ -2,23 +2,42 @@ import 'dart:io';
 
 import 'package:ansix/ansix.dart';
 import 'package:babel/src/models/models.dart';
-import 'package:babel/src/utils/file_helper.dart';
 import 'package:collection/collection.dart';
+import 'package:dart_cmder/dart_cmder.dart';
 import 'package:path/path.dart';
 import 'package:trace/trace.dart';
 
 enum ReportDisplayMode { grid, tree }
 
 abstract class Report {
-  const Report(
+  Report(
     this.project, {
     this.mode = ReportDisplayMode.grid,
   });
 
   final Project project;
   final ReportDisplayMode mode;
+  final List<String> keys = <String>[];
 
-  void generate();
+  Future<void> generate();
+
+  Future<void> generateAndPrint({final ReportDisplayMode mode = ReportDisplayMode.grid});
+
+  void print({final ReportDisplayMode mode = ReportDisplayMode.grid}) {
+    if (keys.isEmpty) {
+      return;
+    }
+
+    switch (mode) {
+      case ReportDisplayMode.grid:
+        printTranslationGrid(keys);
+        break;
+
+      case ReportDisplayMode.tree:
+        printTranslationTree(keys);
+        break;
+    }
+  }
 
   List<FileSystemEntity> getProjectFiles() {
     final List<String> excludedPaths = <String>[
@@ -26,7 +45,7 @@ abstract class Report {
       join(project.root.absolute.path, 'lib', 'generated', 'intl'),
     ];
 
-    return FileHelper.findDartFiles(path: project.lib.path)
+    return Finder.findDartFiles(path: project.lib.path)
         .where((FileSystemEntity f) => !excludedPaths.contains(dirname(f.absolute.path)))
         .toList(growable: false);
   }
@@ -81,7 +100,6 @@ abstract class Report {
         ),
       ),
     );
-    return;
   }
 
   void printTranslationGrid(final List<String> keys) {

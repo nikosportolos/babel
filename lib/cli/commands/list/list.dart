@@ -8,23 +8,21 @@ export 'missing.dart';
 export 'unused.dart';
 
 class ListCommand extends BaseCommand {
-  ListCommand() {
-    <BaseCommand>[
-      ListAllCommand(),
-      ListMissingCommand(),
-      ListUnusedCommand(),
-    ].forEach(addSubcommand);
-  }
-
   @override
   final String name = 'list';
 
   @override
   final String description = 'List project translations';
 
-  @override
-  Future<void> execute() async {}
+  ListCommand()
+      : super(
+          subCommands: <BaseCommand>[
+            ListAllCommand(),
+            ListMissingCommand(),
+            ListUnusedCommand(),
+          ],
+        );
 
   @override
-  List<BaseArgument<void>> get arguments => <BaseArgument<void>>[];
+  Future<void> execute() async {}
 }

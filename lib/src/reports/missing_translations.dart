@@ -6,7 +6,7 @@ class MissingTranslationsReport extends Report {
   MissingTranslationsReport(super.project);
 
   @override
-  void generate() {
+  Future<void> generate() async {
     if (project.translations.length == 1) {
       Trace.warning('Single arb file found.');
       return;
@@ -28,6 +28,14 @@ class MissingTranslationsReport extends Report {
             key
     ];
 
-    printTranslationGrid(missingKeys);
+    keys
+      ..clear()
+      ..addAll(missingKeys);
+  }
+
+  @override
+  Future<void> generateAndPrint({ReportDisplayMode mode = ReportDisplayMode.grid}) async {
+    await generate();
+    super.print(mode: mode);
   }
 }

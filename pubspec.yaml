@@ -1,6 +1,7 @@
 name: babel
 description: Translations management for Flutter apps
 version: 0.0.1-prerelease
+publish_to: 'none'
 
 homepage: https://github.com/nikosportolos/babel
 repository: https://github.com/nikosportolos/babel
@@ -14,16 +15,15 @@ executables:
   babel:
 
 dependencies:
-#  analyzer: ^5.13.0
   analyzer: ^6.2.0
-  analyzer_plugin: ^0.11.3
-  ansix: ^0.2.0
+  ansix: ^0.2.2
   dart_cmder:
-    path: D:/workspace/Flutter/Packages/dart_cmder
-  trace: ^0.0.1-prerelease
+    git:
+      url: https://github.com/nikosportolos/dart_cmder
   args: ^2.4.2
+  trace: ^0.0.2-prerelease
   collection: ^1.18.0
-  data_class_plugin: ^1.0.4
+  data_class_plugin: ^1.0.5
   file: ">=6.0.0 <8.0.0"
   glob: ^2.1.2
   path: ^1.8.3
