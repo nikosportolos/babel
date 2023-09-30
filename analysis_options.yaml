@@ -6,7 +6,6 @@ analyzer:
   exclude:
     - lib/**/*.gen.dart
     - lib/generated/**.dart
-    - test/mocks/**
 
 linter:
   rules:
