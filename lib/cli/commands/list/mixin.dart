@@ -10,7 +10,10 @@ mixin ListCommandMixin on BaseCommand {
 
   ReportDisplayMode get mode => reportDisplayModeArg.parse(argResults)!;
 
-  static final List<BaseArgument<void>> listArguments = <BaseArgument<void>>[exportDirectoryArg, reportDisplayModeArg];
+  static final List<BaseArgument<void>> listArguments = <BaseArgument<void>>[
+    exportDirectoryArg,
+    reportDisplayModeArg
+  ];
 
   static final DirectoryArgument exportDirectoryArg = DirectoryArgument(
     name: 'export-directory',
@@ -21,7 +24,8 @@ mixin ListCommandMixin on BaseCommand {
     },
   );
 
-  static const EnumArgument<ReportDisplayMode> reportDisplayModeArg = EnumArgument<ReportDisplayMode>(
+  static const EnumArgument<ReportDisplayMode> reportDisplayModeArg =
+      EnumArgument<ReportDisplayMode>(
     name: 'mode',
     abbr: 'm',
     help: 'Defines how the report will be displayed.',

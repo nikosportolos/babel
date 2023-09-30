@@ -157,7 +157,8 @@ abstract class LocalizationOptions {
   }
 
   /// Creates an instance of [LocalizationOptions] from [json]
-  factory LocalizationOptions.fromJson(Map<dynamic, dynamic> json) = _$LocalizationOptionsImpl.fromJson;
+  factory LocalizationOptions.fromJson(Map<dynamic, dynamic> json) =
+      _$LocalizationOptionsImpl.fromJson;
 
   /// Converts [LocalizationOptions] to a [Map] json
   Map<String, dynamic> toJson();

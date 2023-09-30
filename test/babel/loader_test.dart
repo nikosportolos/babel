@@ -48,7 +48,7 @@ void main() {
     group('loadTranslationsFromPath', () {
       final List<TranslationFile> translations = Loader.loadTranslationsFromPath(
         exampleTranslationsPath,
-      );
+      )..sort((TranslationFile a, TranslationFile b) => a.locale.compareTo(b.locale));
 
       test('2 arb files', () {
         expect(translations.length, 2);

@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="list all tree" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" folderName="list">
-    <option name="arguments" value="list all --path ./example/example_project -e ./export -m tree" />
+    <option name="arguments" value="list all --path ./example -e ./export -m tree" />
     <option name="filePath" value="$PROJECT_DIR$/bin/babel.dart" />
     <option name="workingDirectory" value="$PROJECT_DIR$" />
     <method v="2" />

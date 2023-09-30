@@ -12,9 +12,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.0
-
-  trace:
-    path: D:/workspace/Flutter/Packages/trace
+  trace: ^0.0.2-prerelease
 
 dependency_overrides:
   meta: 1.9.1

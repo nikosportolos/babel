@@ -25,9 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "app_name": MessageLookupByLibrary.simpleMessage("Example App"),
         "btnOk": MessageLookupByLibrary.simpleMessage("Ok"),
         "btnSave": MessageLookupByLibrary.simpleMessage("Save"),
-        "demoMessage":
-            MessageLookupByLibrary.simpleMessage("This is a demo message"),
-        "thisIsAnExampleApp":
-            MessageLookupByLibrary.simpleMessage("This is an example app")
+        "demoMessage": MessageLookupByLibrary.simpleMessage("This is a demo message"),
+        "thisIsAnExampleApp": MessageLookupByLibrary.simpleMessage("This is an example app")
       };
 }

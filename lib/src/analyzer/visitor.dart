@@ -17,7 +17,8 @@ class L10NReferencesVisitor extends GeneralizingAstVisitor<void> {
 
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    if (node.prefix.staticType?.element case final ClassElement $class when $class.name == searchClass) {
+    if (node.prefix.staticType?.element case final ClassElement $class
+        when $class.name == searchClass) {
       _tryToMarkName($class, node.identifier.name);
     }
     return super.visitPrefixedIdentifier(node);
@@ -25,7 +26,8 @@ class L10NReferencesVisitor extends GeneralizingAstVisitor<void> {
 
   @override
   void visitPropertyAccess(PropertyAccess node) {
-    if (node.realTarget.staticType?.element case final ClassElement $class when $class.name == searchClass) {
+    if (node.realTarget.staticType?.element case final ClassElement $class
+        when $class.name == searchClass) {
       _tryToMarkName($class, node.propertyName.name);
     }
     return super.visitPropertyAccess(node);

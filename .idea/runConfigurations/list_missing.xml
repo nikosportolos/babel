@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="list missing" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" folderName="list">
-    <option name="arguments" value="list missing --path ./example/example_project -d ./export -m grid" />
+    <option name="arguments" value="list missing --path ./example -d ./export -m grid" />
     <option name="filePath" value="$PROJECT_DIR$/bin/babel.dart" />
     <option name="workingDirectory" value="$PROJECT_DIR$" />
     <method v="2" />

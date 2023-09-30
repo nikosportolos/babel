@@ -20,7 +20,8 @@ abstract class TranslationKeyAttributes {
   static const TranslationKeyAttributes empty = TranslationKeyAttributes();
 
   /// Creates an instance of [TranslationKeyAttributes] from [json]
-  factory TranslationKeyAttributes.fromJson(Map<dynamic, dynamic> json) = _$TranslationKeyAttributesImpl.fromJson;
+  factory TranslationKeyAttributes.fromJson(Map<dynamic, dynamic> json) =
+      _$TranslationKeyAttributesImpl.fromJson;
 
   /// Converts [TranslationKeyAttributes] to a [Map] json
   Map<String, dynamic> toJson();

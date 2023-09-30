@@ -5,7 +5,6 @@ analyzer:
     - data_class_plugin
   exclude:
     - lib/**/*.gen.dart
-    - lib/generated/**.dart
 
 linter:
   rules:

@@ -75,6 +75,10 @@ internationalization process is seamless and efficient.
 > To ensure seamless functionality and optimal performance, we recommend utilizing Babel exclusively with Flutter's official localization capabilities.
 
 
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="750" alt="list-all-grid">
+</a>
+
 ## How to use
 
 ### Add as dependency

@@ -28,7 +28,8 @@ abstract class Project {
 
   Directory get lib => Directory(join(root.path, 'lib'));
 
-  List<String> get locales => translations.map((TranslationFile f) => f.locale).toList(growable: false);
+  List<String> get locales =>
+      translations.map((TranslationFile f) => f.locale).toList(growable: false);
 
   List<String> get distinctKeys => translations
       .expand((TranslationFile f) => f.keys)

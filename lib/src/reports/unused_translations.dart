@@ -50,10 +50,11 @@ class UnusedTranslationsReport extends Report {
       }
     }
 
-    Trace.printListItem('Found references in ${filesPaths.toSet().toList(growable: false).length.toString().styled(
-          const AnsiTextStyle(bold: true),
-          BabelColors.dark,
-        )} dart files');
+    Trace.printListItem(
+        'Found references in ${filesPaths.toSet().toList(growable: false).length.toString().styled(
+              const AnsiTextStyle(bold: true),
+              BabelColors.dark,
+            )} dart files');
 
     if (inDepth && filesPaths.isNotEmpty) {
       Trace.printListItem('Analyzing dart files to find usage');

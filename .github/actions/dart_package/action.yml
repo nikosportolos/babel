@@ -1,0 +1,140 @@
+name: dart-package
+description: "This is an action to validate and publish a Dart/Flutter package to pub.dev."
+author: Nikos Portolos
+branding:
+  icon: "activity"
+  color: "blue"
+
+inputs:
+  working_directory:
+    description: "Specify the working directory."
+    required: false
+    default: "."
+  sdk:
+    description: "Specify which SDK to use (dart, flutter)."
+    required: false
+    default: "dart"
+  dart_sdk:
+    description: "Specify the Dart SDK version."
+    required: false
+    default: "3.1.0"
+  flutter_sdk:
+    description: "Specify the Flutter SDK version."
+    required: false
+    default: "3.13.0"
+  analyze_directories:
+    description: "Specify the directories to run dart analyze."
+    required: false
+    default: "lib test"
+  line_length:
+    description: "The line length to use with dart format."
+    required: false
+    default: "120"
+  concurrency:
+    description: "Controls the number of test suites that runs concurrently, meaning that multiple tests in independent suites or platforms can run at the same time."
+    required: false
+    default: "4"
+  skip_tests:
+    description: "Flag that defines whether to skip tests."
+    required: false
+    default: "false"
+  coverage:
+    description: "Flag that defines whether to run tests with coverage."
+    required: false
+    default: "false"
+  codecov:
+    description: "Flag that defines whether to upload coverage reports to Codecov. Requires the codecov_token."
+    required: false
+    default: "false"
+  codecov_token:
+    description: "The token that will be used to upload coverage reports to Codecov. Requires the codecov flag to be set to true."
+    required: false
+    default: ""
+  publish:
+    description: "Flag that defines whether to publish the package on pub.dev."
+    required: false
+    default: "false"
+  pubdev_token:
+    description: "The token that will be used to publish the package to pub.dev."
+    required: false
+    default: ""
+  pana_threshold:
+    description: "The exit code will indicate if (max - granted points) <= threshold."
+    required: false
+    default: "19"
+
+runs:
+  using: "composite"
+  steps:
+    - name: 📑 Git Checkout
+      uses: actions/checkout@v4.1.0
+
+    - shell: bash
+      run: echo "🎯 Setup ${{ inputs.sdk }} SDK"
+
+    - name: Setup Dart SDK
+      if: ${{ inputs.sdk == 'dart' }}
+      uses: dart-lang/setup-dart@v1.5.1
+      with:
+        sdk: ${{ inputs.dart_sdk }}
+
+    - name: Setup Flutter
+      if: ${{ inputs.sdk == 'flutter' }}
+      uses: subosito/flutter-action@v2
+      with:
+        sdk: ${{ inputs.flutter_sdk }}
+
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        echo "📦 Install Dependencies"
+        dart pub get
+
+    - name: Check Formatting
+      shell: bash
+      run: |
+        echo "🎨 Check Formatting"
+        dart format --output none --set-exit-if-changed -l ${{ inputs.line_length }} ${{ inputs.working_directory }}
+
+    - name: Analyze
+      shell: bash
+      run: |
+        echo "🕵️ Analyze"
+        ${{ inputs.sdk }} analyze --fatal-infos --fatal-warnings ${{ inputs.analyze_directories }}
+
+    - name: Run Tests
+      shell: bash
+      if: ${{ inputs.skip_tests == 'false' && inputs.coverage == 'false' && inputs.codecov == 'false'}}
+      run: |
+        echo "🧪 Run Tests"
+        ${{ inputs.sdk }} test --concurrency ${{ inputs.concurrency }} --color
+
+    - name: Generate code coverage
+      shell: bash
+      if: ${{ inputs.coverage == 'true' || inputs.codecov == 'true' }}
+      run: |
+        echo "🧾 Generate code coverage"
+        ${{ inputs.sdk }} pub global activate coverage
+        ${{ inputs.sdk }} pub global run coverage:test_with_coverage
+
+    - shell: bash
+      run: echo "☂ Upload coverage report to Codecov"
+    - name: Upload coverage report to Codecov
+      if: ${{ inputs.codecov == 'true' }}
+      uses: codecov/codecov-action@v3.1.4
+      with:
+        token: ${{ inputs.codecov_token }}
+        files: coverage/lcov.info
+        fail_ci_if_error: true
+
+    - name: Publish on pub.dev
+      shell: bash
+      if: ${{ inputs.publish == 'true' }}
+      run: |
+        echo "🚀 Publish on pub.dev"
+        ${{ inputs.sdk }} pub global activate pana
+        ${{ inputs.sdk }} pub publish --dry-run
+        pana --line-length ${{ inputs.line_length }} --exit-code-threshold ${{ inputs.pana_threshold }} ${{ inputs.working_directory }}
+        mkdir -p ~/.config/dart
+        echo "${{ inputs.pubdev_token }}" | base64 --decode >> ~/.config/dart/pub-credentials.json
+        ${{ inputs.sdk }} pub publish --force

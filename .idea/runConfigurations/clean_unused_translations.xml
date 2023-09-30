@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="clean unused-translations" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" folderName="clean">
-    <option name="arguments" value="clean unused-translations --path ./example/example_project" />
+    <option name="arguments" value="clean unused-translations --path ./example" />
     <option name="filePath" value="$PROJECT_DIR$/bin/babel.dart" />
     <option name="workingDirectory" value="$PROJECT_DIR$" />
     <method v="2" />

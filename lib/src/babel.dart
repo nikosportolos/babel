@@ -26,7 +26,8 @@ class Babel {
   }
 
   void printInfo() {
-    Trace.printListItem('Localization options file found in ${join(project.root.path, Finder.l10nYaml)}');
+    Trace.printListItem(
+        'Localization options file found in ${join(project.root.path, Finder.l10nYaml)}');
     Trace.printListItem(
         'Found ${project.translations.length.toString().bold()} arb files in ${project.options.arbDir!}:');
     for (final TranslationFile f in project.translations) {
@@ -42,9 +43,12 @@ class Babel {
     printInfo();
 
     final Report report = switch (reportMode) {
-      ReportMode.all => AllTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.missing => MissingTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.unused => UnusedTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.all =>
+        AllTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.missing =>
+        MissingTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.unused =>
+        UnusedTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
     };
 
     await report.generateAndPrint();

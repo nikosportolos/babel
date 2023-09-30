@@ -4,4 +4,4 @@ output-localization-file: app_localizations.dart
 output-class: S
 nullable-getter: false
 use-escape: true
-untranslated-messages-file: untranslated.txt
+untranslated-messages-file: lib/l10n/untranslated.txt
