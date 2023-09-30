@@ -1,41 +1,77 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:ansix/ansix.dart';
+import 'package:babel/src/core/theme.dart';
 import 'package:babel/src/models/models.dart';
+import 'package:babel/src/reports/reports.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_cmder/dart_cmder.dart';
 import 'package:path/path.dart';
 import 'package:trace/trace.dart';
 
-enum ReportDisplayMode { grid, tree }
+export 'mode.dart';
 
 abstract class Report {
   Report(
     this.project, {
+    required this.name,
     this.mode = ReportDisplayMode.grid,
-  });
+    this.exportDirectory,
+  }) : exportFilename = 'babel-${name.split(' ').first.toLowerCase()}-${mode.name}.txt';
 
+  final String name;
   final Project project;
   final ReportDisplayMode mode;
   final List<String> keys = <String>[];
+  final Directory? exportDirectory;
+  final String exportFilename;
+
+  AnsiText get missingTranslationText => AnsiText(
+        '(missing translation)',
+        foregroundColor: BabelColors.error,
+        style: const AnsiTextStyle(italic: true),
+        alignment: AnsiTextAlignment.center,
+      );
 
   Future<void> generate();
 
-  Future<void> generateAndPrint({final ReportDisplayMode mode = ReportDisplayMode.grid});
+  Future<void> generateAndPrint() async {
+    Trace.printListItem('Generating report:');
+    Trace.printListItem('Name: ${name.bold()}', level: 1);
+    Trace.printListItem('Mode: ${mode.title.bold()}', level: 1);
+    Trace.info('');
 
-  void print({final ReportDisplayMode mode = ReportDisplayMode.grid}) {
+    await generate();
+    print();
+  }
+
+  void print() {
     if (keys.isEmpty) {
       return;
     }
 
-    switch (mode) {
-      case ReportDisplayMode.grid:
-        printTranslationGrid(keys);
-        break;
+    final String report = switch (mode) {
+      ReportDisplayMode.grid => getTranslationGrid(keys: keys),
+      ReportDisplayMode.tree => getTranslationTree(keys: keys),
+      ReportDisplayMode.json => getTranslationJson(keys: keys),
+    };
 
-      case ReportDisplayMode.tree:
-        printTranslationTree(keys);
-        break;
+    Trace.info(report);
+
+    if (exportDirectory != null) {
+      final StringBuffer buffer = StringBuffer();
+      buffer
+        ..writeln(BabelTheme.logo.formatted.unformatted)
+        ..writeLines(1)
+        ..writeln('> Report: $name')
+        ..writeln('> Display mode: ${mode.title}')
+        ..writeln('> Generated on: ${DateTime.now()}')
+        ..writeLines(2)
+        ..write(report.unformatted)
+        ..writeLines(1);
+
+      printToFile(buffer.toString());
     }
   }
 
@@ -50,59 +86,14 @@ abstract class Report {
         .toList(growable: false);
   }
 
-  void printTranslationTree(final List<String> keys) {
-    final Map<Object, Object> data = <Object, Object>{
-      for (final String key in keys)
-        key: <String, String>{
-          for (final String locale in project.locales) //
-            locale: project.translations
-                    .where((TranslationFile f) => f.locale == locale)
-                    .firstOrNull
-                    ?.keys
-                    .where((TranslationKey tr) => tr.key == key)
-                    .firstOrNull
-                    ?.value ??
-                'missing translation'.bold().red(),
-        },
-    };
-
-    AnsiX.printTreeView(
-      data,
-      theme: AnsiTreeViewTheme(
-        anchorTheme: const AnsiTreeAnchorTheme(
-          color: AnsiColor.deepSkyBlue5,
-          style: AnsiBorderStyle.square,
-        ),
-        keyTheme: const AnsiTreeNodeKeyTheme(
-          color: AnsiColor.white,
-          textStyle: AnsiTextStyle(bold: true),
-        ),
-        valueTheme: const AnsiTreeNodeValueTheme(
-          textStyle: AnsiTextStyle(italic: true),
-          alignment: AnsiTextAlignment.left,
-          color: AnsiColor.grey69,
-          wrapText: true,
-          wrapOptions: WrapOptions(lineLength: 100),
-        ),
-        headerTheme: AnsiTreeHeaderTheme(
-          customHeader: 'Translations',
-          textTheme: AnsiTextTheme(
-            style: const AnsiTextStyle(bold: true),
-            padding: AnsiPadding.horizontal(2),
-            foregroundColor: AnsiColor.white,
-            alignment: AnsiTextAlignment.left,
-          ),
-          border: const AnsiBorder(
-            style: AnsiBorderStyle.square,
-            type: AnsiBorderType.all,
-            color: AnsiColor.deepSkyBlue5,
-          ),
-        ),
-      ),
-    );
+  String getTranslationTree({required final List<String> keys}) {
+    return AnsiTreeView(
+      getTranslationJsonData(keys: keys),
+      theme: BabelTheme.defaultTreeViewTheme.copyWith.headerTheme.customHeader(name),
+    ).toString();
   }
 
-  void printTranslationGrid(final List<String> keys) {
+  String getTranslationGrid({required final List<String> keys}) {
     final AnsiGrid grid = AnsiGrid.fromRows(
       <List<Object?>>[
         <Object?>['#', 'Translation key', ...project.locales],
@@ -118,39 +109,81 @@ abstract class Report {
                       .where((TranslationKey tr) => tr.key == keys[i])
                       .firstOrNull
                       ?.value ??
-                  AnsiText(
-                    'missing translation',
-                    foregroundColor: AnsiColor.red,
-                    style: const AnsiTextStyle(bold: true),
-                    padding: AnsiPadding.horizontal(2),
-                  ),
+                  missingTranslationText,
           ],
       ],
-      theme: AnsiGridTheme(
-        headerTextTheme: AnsiTextTheme(
-          alignment: AnsiTextAlignment.center,
-          backgroundColor: AnsiColor.deepSkyBlue7,
-          style: const AnsiTextStyle(bold: true),
-          padding: AnsiPadding.symmetric(vertical: 1, horizontal: 2),
-        ),
-        overrideTheme: true,
-        keepSameWidth: false,
-        wrapText: true,
-        wrapOptions: const WrapOptions(
-          lineLength: 35,
-        ),
-        border: const AnsiBorder(
-          style: AnsiBorderStyle.square,
-          type: AnsiBorderType.all,
-          color: AnsiColor.white,
-        ),
-        cellTextTheme: AnsiTextTheme(
-          alignment: AnsiTextAlignment.center,
-          padding: AnsiPadding.horizontal(2),
-        ),
-      ),
+      theme: BabelTheme.defaultAnsiGridTheme,
     );
 
-    Trace.info(grid);
+    return grid.toString();
+  }
+
+  String getTranslationJson({required final List<String> keys}) {
+    final String title = AnsiOutlinedText(
+      name,
+      foregroundColor: BabelColors.light,
+      border: AnsiBorder.$default,
+      padding: AnsiPadding.horizontal(2),
+    ).formattedText;
+
+    final String json = const JsonEncoder.withIndent('  ')
+        .convert(getTranslationJsonData(keys: keys, formatted: false))
+        .colored(foreground: BabelColors.light);
+
+    return '$title\n$json';
+  }
+
+  Map<Object, Object> getTranslationJsonData({
+    required final List<String> keys,
+    final bool formatted = true,
+  }) {
+    final String missing = formatted //
+        ? missingTranslationText.formattedText
+        : missingTranslationText.text;
+
+    return <Object, Object>{
+      for (final String key in keys)
+        key: <String, String>{
+          for (final String locale in project.locales) //
+            locale: project.translations
+                    .where((TranslationFile f) => f.locale == locale)
+                    .firstOrNull
+                    ?.keys
+                    .where((TranslationKey tr) => tr.key == key)
+                    .firstOrNull
+                    ?.value ??
+                missing
+        },
+    };
+  }
+
+  void printToFile(final String content) {
+    try {
+      if (exportDirectory == null) {
+        return;
+      }
+
+      Trace.info('');
+
+      if (!exportDirectory!.existsSync()) {
+        exportDirectory!.createSync(recursive: true);
+      }
+
+      Trace.printListItem('Writing ${name.bold()} report to ${exportDirectory!.path}');
+
+      File(
+        join(exportDirectory!.path, exportFilename),
+      ).writeAsString(content);
+
+      Trace.printListItem(
+        'Successfully exported ${exportFilename.bold()}',
+        level: 0,
+        map: <int, ListItemTheme>{
+          0: BabelTheme.successListItemTheme,
+        },
+      );
+    } catch (e, st) {
+      Trace.error('Failed printing $exportFilename to ${exportDirectory!.path}', e, st);
+    }
   }
 }

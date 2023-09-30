@@ -11,13 +11,14 @@ abstract class TranslationKey {
   const factory TranslationKey({
     required String key,
     required String value,
-    required TranslationKeyAttributes attributes,
+    TranslationKeyAttributes attributes,
   }) = _$TranslationKeyImpl;
 
   String get key;
 
   String get value;
 
+  @DefaultValue(TranslationKeyAttributes.empty)
   TranslationKeyAttributes get attributes;
 
   bool get hasAttributes => attributes.description != null || attributes.placeholders.isNotEmpty;

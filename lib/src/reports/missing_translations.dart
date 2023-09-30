@@ -3,7 +3,11 @@ import 'package:babel/src/reports/report.dart';
 import 'package:trace/trace.dart';
 
 class MissingTranslationsReport extends Report {
-  MissingTranslationsReport(super.project);
+  MissingTranslationsReport(
+    super.project, {
+    super.mode,
+    super.exportDirectory,
+  }) : super(name: 'Missing Translations');
 
   @override
   Future<void> generate() async {
@@ -11,8 +15,6 @@ class MissingTranslationsReport extends Report {
       Trace.warning('Single arb file found.');
       return;
     }
-
-    Trace.printListItem('Generating missing translations list...');
 
     final List<String> missingKeys = <String>[
       for (final String key in project.distinctKeys)
@@ -31,11 +33,5 @@ class MissingTranslationsReport extends Report {
     keys
       ..clear()
       ..addAll(missingKeys);
-  }
-
-  @override
-  Future<void> generateAndPrint({ReportDisplayMode mode = ReportDisplayMode.grid}) async {
-    await generate();
-    super.print(mode: mode);
   }
 }

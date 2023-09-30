@@ -5,15 +5,19 @@ import 'package:analyzer/dart/element/element.dart' show ClassElement, PropertyA
 /// Custom [AstVisitor] that parses a [CompilationUnit]
 /// and searches for references of the generated localization classes.
 ///
-/// Thanks to [Pantelis Tsakoulis](https://github.com/spideythewebhead).
+/// Kudos to [Pantelis Tsakoulis](https://github.com/spideythewebhead) for his contribution 🙏🏻
 class L10NReferencesVisitor extends GeneralizingAstVisitor<void> {
-  static const List<String> kSearchClasses = <String>['S', 'AppLocalizations'];
+  L10NReferencesVisitor(
+    final String? searchClass,
+  ) : searchClass = searchClass ?? 'AppLocalizations';
+
+  final String searchClass;
 
   final Set<String> l10nUsedKeys = <String>{};
 
   @override
   void visitPrefixedIdentifier(PrefixedIdentifier node) {
-    if (node.prefix.staticType?.element case final ClassElement $class when kSearchClasses.contains($class.name)) {
+    if (node.prefix.staticType?.element case final ClassElement $class when $class.name == searchClass) {
       _tryToMarkName($class, node.identifier.name);
     }
     return super.visitPrefixedIdentifier(node);
@@ -21,7 +25,7 @@ class L10NReferencesVisitor extends GeneralizingAstVisitor<void> {
 
   @override
   void visitPropertyAccess(PropertyAccess node) {
-    if (node.realTarget.staticType?.element case final ClassElement $class when kSearchClasses.contains($class.name)) {
+    if (node.realTarget.staticType?.element case final ClassElement $class when $class.name == searchClass) {
       _tryToMarkName($class, node.propertyName.name);
     }
     return super.visitPropertyAccess(node);

@@ -24,8 +24,6 @@ dependencies:
   trace: ^0.0.2-prerelease
   collection: ^1.18.0
   data_class_plugin: ^1.0.5
-  file: ">=6.0.0 <8.0.0"
-  glob: ^2.1.2
   path: ^1.8.3
   yaml: ^3.1.2
 
@@ -34,4 +32,6 @@ dependency_overrides:
 
 dev_dependencies:
   lints: ^2.1.1
+  mocktail: ^1.0.0
   tachyon: ^0.0.9
+  test: ^1.24.6

@@ -13,31 +13,29 @@ class Loader {
 
   static Project loadProjectFromPath(final String? path) {
     final Directory root = Finder.findDirectoryFromPath(path);
-    final String yamlPath = join(root.path, Finder.l10nYaml);
-
-    final File localizationOptionsFile = File(yamlPath);
-    if (!localizationOptionsFile.existsSync()) {
-      throw LocalizationOptionsNotFound(yamlPath);
-    }
-
-    final LocalizationOptions options = LocalizationOptions.fromFile(localizationOptionsFile);
-    if (options.arbDir.isNullOrEmpty) {
-      throw const ProjectParsingFailed("'arbDir' is not defined in ${Finder.l10nYaml}");
-    }
+    final LocalizationOptions options = loadLocalizationOptions(root.path);
 
     final String arbDirPath = normalize(join(root.path, options.arbDir!));
-    final Directory arbDir = Directory(arbDirPath);
-    if (!arbDir.existsSync()) {
-      throw ProjectParsingFailed(
-        "Invalid 'arbDir' directory set in ${Finder.l10nYaml}: [${options.arbDir!}]",
-      );
+    if (!Directory(arbDirPath).existsSync()) {
+      throw InvalidArbDir(options.arbDir!);
     }
 
     return Project(
       root: root,
       options: options,
-      translations: loadTranslationsFromPath(arbDir.path),
+      translations: loadTranslationsFromPath(arbDirPath),
     );
+  }
+
+  static LocalizationOptions loadLocalizationOptions(final String projectPath) {
+    final String yamlPath = join(projectPath, Finder.l10nYaml);
+
+    final LocalizationOptions options = LocalizationOptions.fromFilePath(yamlPath);
+    if (options.arbDir.isNullOrEmpty) {
+      throw ArbDirNotFound(yamlPath);
+    }
+
+    return options;
   }
 
   static List<TranslationFile> loadTranslationsFromPath(

@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:babel/cli/commands/clean/generated.dart';
 import 'package:babel/cli/commands/clean/unused.dart';
 import 'package:dart_cmder/dart_cmder.dart';

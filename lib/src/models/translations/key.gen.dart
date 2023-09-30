@@ -8,7 +8,7 @@ class _$TranslationKeyImpl extends TranslationKey {
   const _$TranslationKeyImpl({
     required this.key,
     required this.value,
-    required this.attributes,
+    this.attributes = TranslationKeyAttributes.empty,
   }) : super.ctor();
 
   @override
@@ -24,7 +24,9 @@ class _$TranslationKeyImpl extends TranslationKey {
     return _$TranslationKeyImpl(
       key: json['key'] as String,
       value: json['value'] as String,
-      attributes: TranslationKeyAttributes.fromJson(json['attributes']),
+      attributes: json['attributes'] == null
+          ? TranslationKeyAttributes.empty
+          : TranslationKeyAttributes.fromJson(json['attributes']),
     );
   }
 

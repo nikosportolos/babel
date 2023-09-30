@@ -1,3 +1,5 @@
+// coverage:ignore-file
+
 import 'package:babel/cli/commands/list/all.dart';
 import 'package:babel/cli/commands/list/missing.dart';
 import 'package:babel/cli/commands/list/unused.dart';
