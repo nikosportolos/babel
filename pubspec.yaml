@@ -35,3 +35,20 @@ dev_dependencies:
   mocktail: ^1.0.0
   tachyon: ^0.0.9
   test: ^1.24.6
+
+screenshots:
+  - description: 'Babel: Translations management for Flutter apps'
+    path: assets/images/banner.png
+  - description: 'This is an example usage of "babel list all -m grid"'
+    path: assets/images/examples/list-all-grid.png
+  - description: 'This is an example usage of "babel list all -m tree"'
+    path: assets/images/examples/list-all-tree.png
+  - description: 'This is an example usage of "babel list all -m json"'
+    path: assets/images/examples/list-all-json.png
+
+topics:
+  - translations
+  - localization
+  - internationalization
+  - management
+  - cli

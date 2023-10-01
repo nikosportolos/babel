@@ -1,6 +1,6 @@
 # Babel
 
-#### Effortless localization management for Flutter apps
+#### Translations management for Flutter apps
 
 
 [![Pub Version](https://img.shields.io/pub/v/babel?color=blue&logo=dart)](https://pub.dev/packages/babel)
@@ -50,14 +50,14 @@ This intuitive toolset allows you to effortlessly:
 
 - **Sort Translations**
 
-  Keep your localization files organized for enhanced readability and maintainability.
-  Babel offers robust sorting capabilities to help you maintain a well-structured localization file.
+  Keep your translation files organized for enhanced readability and maintainability,
+  making it easier for you and your team to work with translations effectively.
 
 
 - **Clean Generated Files**
 
   Optimize your project's footprint by removing redundant or 
-  unused translation files, ensuring a lean and efficient application build.
+  unused translation keys, ensuring a lean and efficient application build.
 
 
 **Babel** is a valuable asset for Flutter developers looking to streamline their localization workflow. 
@@ -75,9 +75,10 @@ internationalization process is seamless and efficient.
 > To ensure seamless functionality and optimal performance, we recommend utilizing Babel exclusively with Flutter's official localization capabilities.
 
 
-<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="750" alt="list-all-grid">
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/examples/list-all-grid.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/examples/list-all-grid.png" width="750" alt="list-all-grid">
 </a>
+
 
 ## How to use
 
@@ -121,6 +122,29 @@ babel [command] [arguments]
 |----------------------------|--------------------------------------------------------------------|------------------------|-------------|
 | `--mode`, `-m`             | Defines how the report will be displayed.                          | `grid`, `tree`, `json` | `grid`      |
 | `--export-directory`, `-e` | If this field is not empty, it will be used to export the results. |                        |             |
+
+
+- Grid
+
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="750" alt="list-all-grid">
+</a>
+
+
+- Tree
+
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" width="750" alt="list-all-tree">
+</a>
+
+
+
+- JSON
+
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" width="750" alt="list-all-json">
+</a>
+
 
 
 #### All
