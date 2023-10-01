@@ -127,14 +127,14 @@ babel [command] [arguments]
 - Grid
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="750" alt="list-all-grid">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="70%" alt="list-all-grid">
 </a>
 
 
 - Tree
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" width="750" alt="list-all-tree">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" width="50%" alt="list-all-tree">
 </a>
 
 
@@ -142,7 +142,7 @@ babel [command] [arguments]
 - JSON
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" width="750" alt="list-all-json">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" width="40%" alt="list-all-json">
 </a>
 
 
@@ -175,7 +175,7 @@ babel list unused
 
 ### Sort
 
-Sorts the translation keys in arb files.
+Sorts the translation keys in the arb files of the project.
 
 ```shell
 babel list sort
