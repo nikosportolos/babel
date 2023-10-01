@@ -32,23 +32,38 @@ void main() {
       expect(files.length, 5);
       expect(
         filenames,
-        <String>['button.dart', 'extensions.dart', 'home.dart', 'locale.dart', 'main.dart'],
+        <String>[
+          'button.dart',
+          'extensions.dart',
+          'home.dart',
+          'locale.dart',
+          'main.dart'
+        ],
       );
     });
 
     test('AllTranslationsReport', () async {
-      final AllTranslationsReport report = AllTranslationsReport(exampleProject);
+      final AllTranslationsReport report =
+          AllTranslationsReport(exampleProject);
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 6);
       expect(
         report.keys,
-        <String>['app_name', 'btnCancel', 'btnOk', 'btnSave', 'demoMessage', 'thisIsAnExampleApp'],
+        <String>[
+          'app_name',
+          'btnCancel',
+          'btnOk',
+          'btnSave',
+          'demoMessage',
+          'thisIsAnExampleApp'
+        ],
       );
     });
 
     test('MissingTranslationsReport', () async {
-      final MissingTranslationsReport report = MissingTranslationsReport(exampleProject);
+      final MissingTranslationsReport report =
+          MissingTranslationsReport(exampleProject);
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 2);
@@ -59,7 +74,8 @@ void main() {
     });
 
     test('UnusedTranslationsReport', () async {
-      final UnusedTranslationsReport report = UnusedTranslationsReport(exampleProject);
+      final UnusedTranslationsReport report =
+          UnusedTranslationsReport(exampleProject);
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 3);

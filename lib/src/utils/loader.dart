@@ -30,7 +30,8 @@ class Loader {
   static LocalizationOptions loadLocalizationOptions(final String projectPath) {
     final String yamlPath = join(projectPath, Finder.l10nYaml);
 
-    final LocalizationOptions options = LocalizationOptions.fromFilePath(yamlPath);
+    final LocalizationOptions options =
+        LocalizationOptions.fromFilePath(yamlPath);
     if (options.arbDir.isNullOrEmpty) {
       throw ArbDirNotFound(yamlPath);
     }
@@ -66,7 +67,8 @@ class Loader {
       }
 
       if (key.startsWith(attributeTag)) {
-        final TranslationKeyAttributes attributes = TranslationKeyAttributes.fromJson(entry.value);
+        final TranslationKeyAttributes attributes =
+            TranslationKeyAttributes.fromJson(entry.value);
         key = key.substring(1);
 
         if (keys[key] == null) {

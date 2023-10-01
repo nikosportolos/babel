@@ -46,9 +46,11 @@ void main() {
     });
 
     group('loadTranslationsFromPath', () {
-      final List<TranslationFile> translations = Loader.loadTranslationsFromPath(
+      final List<TranslationFile> translations =
+          Loader.loadTranslationsFromPath(
         exampleTranslationsPath,
-      )..sort((TranslationFile a, TranslationFile b) => a.locale.compareTo(b.locale));
+      )..sort((TranslationFile a, TranslationFile b) =>
+              a.locale.compareTo(b.locale));
 
       test('2 arb files', () {
         expect(translations.length, 2);
@@ -56,9 +58,11 @@ void main() {
 
       test('el', () {
         expect(translations.first.locale, 'el');
-        expect(translations.first.path, join(exampleTranslationsPath, 'intl_el.arb'));
+        expect(translations.first.path,
+            join(exampleTranslationsPath, 'intl_el.arb'));
 
-        final List<TranslationKey> elKeys = translations.first.keys.toList(growable: false);
+        final List<TranslationKey> elKeys =
+            translations.first.keys.toList(growable: false);
         expect(
           elKeys,
           <TranslationKey>[
@@ -72,15 +76,18 @@ void main() {
             const TranslationKey(key: 'btnCancel', value: 'Cancel'),
             const TranslationKey(key: 'btnOk', value: 'Ok'),
             const TranslationKey(key: 'btnSave', value: 'Save'),
-            const TranslationKey(key: 'demoMessage', value: 'This is a demo message'),
+            const TranslationKey(
+                key: 'demoMessage', value: 'This is a demo message'),
           ],
         );
       });
 
       test('en', () {
-        final List<TranslationKey> enKeys = translations.last.keys.toList(growable: false);
+        final List<TranslationKey> enKeys =
+            translations.last.keys.toList(growable: false);
         expect(translations.last.locale, 'en');
-        expect(translations.last.path, join(exampleTranslationsPath, 'intl_en.arb'));
+        expect(translations.last.path,
+            join(exampleTranslationsPath, 'intl_en.arb'));
         expect(enKeys.length, 5);
 
         expect(
@@ -95,8 +102,10 @@ void main() {
             ),
             const TranslationKey(key: 'btnOk', value: 'Ok'),
             const TranslationKey(key: 'btnSave', value: 'Save'),
-            const TranslationKey(key: 'demoMessage', value: 'This is a demo message'),
-            const TranslationKey(key: 'thisIsAnExampleApp', value: 'This is an example app'),
+            const TranslationKey(
+                key: 'demoMessage', value: 'This is a demo message'),
+            const TranslationKey(
+                key: 'thisIsAnExampleApp', value: 'This is an example app'),
           ],
         );
       });

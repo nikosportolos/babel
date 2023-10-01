@@ -43,12 +43,12 @@ class Babel {
     printInfo();
 
     final Report report = switch (reportMode) {
-      ReportMode.all =>
-        AllTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.missing =>
-        MissingTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.unused =>
-        UnusedTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.all => AllTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.missing => MissingTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.unused => UnusedTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
     };
 
     await report.generateAndPrint();
@@ -112,7 +112,8 @@ class Babel {
     for (final TranslationFile translationFile in project.translations) {
       final File file = File(translationFile.path);
       final Map<String, dynamic> json = jsonDecode(file.readAsStringSync());
-      json.removeWhere((String key, dynamic value) => report.keys.contains(key));
+      json.removeWhere(
+          (String key, dynamic value) => report.keys.contains(key));
       file.writeAsStringSync(const JsonEncoder.withIndent(' ').convert(json));
     }
 
@@ -122,7 +123,8 @@ class Babel {
   Future<void> cleanGeneratedFiles() async {
     Trace.info('\nClearing generated localization files');
 
-    final String flutterGenPath = join(project.root.path, '.dart_tool', 'flutter_gen');
+    final String flutterGenPath =
+        join(project.root.path, '.dart_tool', 'flutter_gen');
     final Directory flutterGenDirectory = Directory(flutterGenPath);
     if (flutterGenDirectory.existsSync()) {
       flutterGenDirectory.deleteSync(recursive: true);

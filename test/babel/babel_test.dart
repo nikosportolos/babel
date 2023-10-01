@@ -36,7 +36,8 @@ void main() {
 
       for (final ReportMode reportMode in ReportMode.values) {
         group(reportMode.name, () {
-          for (final ReportDisplayMode displayMode in ReportDisplayMode.values) {
+          for (final ReportDisplayMode displayMode
+              in ReportDisplayMode.values) {
             test(displayMode.name, () async {
               await babel.printReport(
                 displayMode: displayMode,
@@ -47,12 +48,13 @@ void main() {
               await Future<void>.delayed(const Duration(milliseconds: 100));
               expect(buffer.toString(), mocks[reportMode]![displayMode]);
 
-              final String exportFilePath =
-                  normalize(join(exportPath, filenames[reportMode]![displayMode]!));
+              final String exportFilePath = normalize(
+                  join(exportPath, filenames[reportMode]![displayMode]!));
               final File file = File(exportFilePath);
               final String content = file.readAsStringSync();
 
-              expect(content.removeGeneratedOn(), exports[reportMode]![displayMode]);
+              expect(content.removeGeneratedOn(),
+                  exports[reportMode]![displayMode]);
 
               file.deleteSync();
               exportDirectory.deleteSync();
@@ -66,7 +68,8 @@ void main() {
 
 extension on String {
   String removeGeneratedOn() {
-    final RegExp regex = RegExp(r'> Generated on: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\n');
+    final RegExp regex =
+        RegExp(r'> Generated on: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\n');
     return replaceAll(regex, '');
   }
 }

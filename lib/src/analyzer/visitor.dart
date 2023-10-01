@@ -1,6 +1,8 @@
-import 'package:analyzer/dart/ast/ast.dart' show PrefixedIdentifier, PropertyAccess;
+import 'package:analyzer/dart/ast/ast.dart'
+    show PrefixedIdentifier, PropertyAccess;
 import 'package:analyzer/dart/ast/visitor.dart' show GeneralizingAstVisitor;
-import 'package:analyzer/dart/element/element.dart' show ClassElement, PropertyAccessorElement;
+import 'package:analyzer/dart/element/element.dart'
+    show ClassElement, PropertyAccessorElement;
 
 /// Custom [AstVisitor] that parses a [CompilationUnit]
 /// and searches for references of the generated localization classes.
@@ -35,7 +37,8 @@ class L10NReferencesVisitor extends GeneralizingAstVisitor<void> {
 
   void _tryToMarkName(ClassElement $class, String fieldName) {
     // Check if class has such a getter
-    final int hasGetter = $class.accessors.indexWhere((PropertyAccessorElement accessor) {
+    final int hasGetter =
+        $class.accessors.indexWhere((PropertyAccessorElement accessor) {
       return accessor.isGetter && accessor.name == fieldName;
     });
 

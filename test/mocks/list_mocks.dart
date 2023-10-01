@@ -1,4 +1,5 @@
-import 'package:babel/src/reports/report.dart' show ReportMode, ReportDisplayMode;
+import 'package:babel/src/reports/report.dart'
+    show ReportMode, ReportDisplayMode;
 
 const Map<ReportMode, Map<ReportDisplayMode, String>> mocks =
     <ReportMode, Map<ReportDisplayMode, String>>{

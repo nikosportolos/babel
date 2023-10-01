@@ -16,7 +16,8 @@ class _$ReportImpl extends Report {
     return _$ReportImpl(
       records: <Record>[
         for (final dynamic i0 in (json['records'] as List<dynamic>))
-          jsonConverterRegistrant.find(Record).fromJson(i0, json, 'records') as Record,
+          jsonConverterRegistrant.find(Record).fromJson(i0, json, 'records')
+              as Record,
       ],
     );
   }
@@ -25,7 +26,8 @@ class _$ReportImpl extends Report {
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'records': <dynamic>[
-        for (final Record i0 in records) jsonConverterRegistrant.find(Record).toJson(i0),
+        for (final Record i0 in records)
+          jsonConverterRegistrant.find(Record).toJson(i0),
       ],
     };
   }
@@ -33,7 +35,9 @@ class _$ReportImpl extends Report {
   @override
   bool operator ==(Object? other) {
     return identical(this, other) ||
-        other is Report && runtimeType == other.runtimeType && deepEquality(records, other.records);
+        other is Report &&
+            runtimeType == other.runtimeType &&
+            deepEquality(records, other.records);
   }
 
   @override
@@ -98,7 +102,8 @@ sealed class $ReportCopyWithProxyChain<$Result> {
   });
 }
 
-class _ReportCopyWithProxyChainImpl<$Result> implements $ReportCopyWithProxyChain<$Result> {
+class _ReportCopyWithProxyChainImpl<$Result>
+    implements $ReportCopyWithProxyChain<$Result> {
   _ReportCopyWithProxyChainImpl(this._value, this._chain);
 
   final Report _value;
