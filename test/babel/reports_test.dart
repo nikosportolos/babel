@@ -1,10 +1,41 @@
+import 'dart:io';
+
 import 'package:babel/src/reports/reports.dart';
+import 'package:collection/collection.dart';
+import 'package:path/path.dart';
 import 'package:test/test.dart';
 
 import '../mocks/mocks.dart';
 
+class MockReport extends Report {
+  MockReport(
+    super.project, {
+    required super.name,
+  });
+
+  @override
+  Future<void> generate() {
+    throw UnimplementedError();
+  }
+}
+
 void main() {
   group('Reports', () {
+    test('getProjectFiles', () {
+      final MockReport report = MockReport(exampleProject, name: 'Mock');
+      final List<FileSystemEntity> files = report.getProjectFiles();
+
+      final List<String> filenames = files
+          .map((FileSystemEntity e) => basename(e.path))
+          .sorted((String a, String b) => a.compareTo(b));
+
+      expect(files.length, 5);
+      expect(
+        filenames,
+        <String>['button.dart', 'extensions.dart', 'home.dart', 'locale.dart', 'main.dart'],
+      );
+    });
+
     test('AllTranslationsReport', () async {
       final AllTranslationsReport report = AllTranslationsReport(exampleProject);
       await report.generate();

@@ -12,3 +12,6 @@ final String exampleTranslationsPath = join(exampleProjectPath, 'lib', 'l10n');
 final String testPath = join(Directory.current.path, 'test');
 final String mocksPath = join(testPath, 'mocks');
 final String localizationOptionsMocksPath = join(mocksPath, 'localization_options');
+
+final String exportPath = join(testPath, 'export');
+final Directory exportDirectory = Directory(exportPath);
