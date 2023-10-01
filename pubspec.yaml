@@ -1,7 +1,6 @@
 name: babel
-description: Translations management for Flutter apps
+description: Babel is a CLI tool for translations management for Flutter apps
 version: 0.0.1-prerelease
-publish_to: 'none'
 
 homepage: https://github.com/nikosportolos/babel
 repository: https://github.com/nikosportolos/babel
@@ -16,25 +15,20 @@ executables:
 
 dependencies:
   analyzer: ^6.2.0
-  ansix: ^0.2.2
-  dart_cmder:
-    git:
-      url: https://github.com/nikosportolos/dart_cmder
+  ansix: ^0.2.3
+  dart_cmder: ^0.0.2-prerelease
   args: ^2.4.2
-  trace: ^0.0.2-prerelease
+  trace: ^0.0.4-prerelease
   collection: ^1.18.0
-  data_class_plugin: ^1.0.5
+  data_class_plugin: ^1.1.0
   path: ^1.8.3
   yaml: ^3.1.2
 
-dependency_overrides:
-  analyzer: ^5.13.0
-
 dev_dependencies:
   lints: ^2.1.1
-  mocktail: ^1.0.0
-  tachyon: ^0.0.9
-  test: ^1.24.6
+  mocktail: ^1.0.1
+  tachyon: ^0.1.0
+  test: ^1.24.7
 
 screenshots:
   - description: 'Babel: Translations management for Flutter apps'

@@ -27,9 +27,11 @@ class UnusedTranslationsReport extends Report {
 
     final List<String> filesPaths = <String>[];
 
-    final List<FileSystemEntity> dartFiles = Finder.findDartFiles(path: project.lib.path)
-        .where((FileSystemEntity f) => !excludedPaths.contains(dirname(f.absolute.path)))
-        .toList(growable: false);
+    final List<FileSystemEntity> dartFiles =
+        Finder.findDartFiles(path: project.lib.path)
+            .where((FileSystemEntity f) =>
+                !excludedPaths.contains(dirname(f.absolute.path)))
+            .toList(growable: false);
 
     Trace.printListItem('Searching in ${dartFiles.length.toString().styled(
           const AnsiTextStyle(bold: true),

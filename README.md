@@ -33,6 +33,11 @@
 
 ## Getting started
 
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.png" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.png" width="600" alt="babel-banner">
+</a>
+
+
 Babel is a command-line interface (CLI) tool crafted to simplify the management 
 of translations in Flutter applications. 
 

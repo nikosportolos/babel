@@ -18,7 +18,8 @@ abstract class Report {
     required this.name,
     this.mode = ReportDisplayMode.grid,
     this.exportDirectory,
-  }) : exportFilename = 'babel-${name.split(' ').first.toLowerCase()}-${mode.name}.txt';
+  }) : exportFilename =
+            'babel-${name.split(' ').first.toLowerCase()}-${mode.name}.txt';
 
   final String name;
   final Project project;
@@ -82,14 +83,16 @@ abstract class Report {
     ];
 
     return Finder.findDartFiles(path: project.lib.path)
-        .where((FileSystemEntity f) => !excludedPaths.contains(dirname(f.absolute.path)))
+        .where((FileSystemEntity f) =>
+            !excludedPaths.contains(dirname(f.absolute.path)))
         .toList(growable: false);
   }
 
   String getTranslationTree({required final List<String> keys}) {
     return AnsiTreeView(
       getTranslationJsonData(keys: keys),
-      theme: BabelTheme.defaultTreeViewTheme.copyWith.headerTheme.customHeader(name),
+      theme: BabelTheme.defaultTreeViewTheme.copyWith.headerTheme
+          .customHeader(name),
     ).toString();
   }
 
@@ -169,7 +172,8 @@ abstract class Report {
         exportDirectory!.createSync(recursive: true);
       }
 
-      Trace.printListItem('Writing ${name.bold()} report to ${exportDirectory!.path}');
+      Trace.printListItem(
+          'Writing ${name.bold()} report to ${exportDirectory!.path}');
 
       File(
         join(exportDirectory!.path, exportFilename),
@@ -183,7 +187,8 @@ abstract class Report {
         },
       );
     } catch (e, st) {
-      Trace.error('Failed printing $exportFilename to ${exportDirectory!.path}', e, st);
+      Trace.error(
+          'Failed printing $exportFilename to ${exportDirectory!.path}', e, st);
     }
   }
 }

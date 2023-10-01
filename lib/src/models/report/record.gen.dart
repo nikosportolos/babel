@@ -145,16 +145,20 @@ class _ReportRecordCopyWithProxyImpl implements _ReportRecordCopyWithProxy {
     return _$ReportRecordImpl(
       locale: locale ?? _value.locale,
       key: key ?? _value.key,
-      value: identical(value, const Object()) ? _value.value : (value as String?),
-      isUsed: identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
-      isMissing: identical(isMissing, const Object()) ? _value.isMissing : (isMissing as bool?),
+      value:
+          identical(value, const Object()) ? _value.value : (value as String?),
+      isUsed:
+          identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
+      isMissing: identical(isMissing, const Object())
+          ? _value.isMissing
+          : (isMissing as bool?),
     );
   }
 }
 
 sealed class $ReportRecordCopyWithProxyChain<$Result> {
-  factory $ReportRecordCopyWithProxyChain(
-          final ReportRecord value, final $Result Function(ReportRecord update) chain) =
+  factory $ReportRecordCopyWithProxyChain(final ReportRecord value,
+          final $Result Function(ReportRecord update) chain) =
       _ReportRecordCopyWithProxyChainImpl<$Result>;
 
   $Result locale(String newValue);
@@ -215,13 +219,18 @@ class _ReportRecordCopyWithProxyChainImpl<$Result>
     return _chain(_$ReportRecordImpl(
       locale: locale ?? _value.locale,
       key: key ?? _value.key,
-      value: identical(value, const Object()) ? _value.value : (value as String?),
-      isUsed: identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
-      isMissing: identical(isMissing, const Object()) ? _value.isMissing : (isMissing as bool?),
+      value:
+          identical(value, const Object()) ? _value.value : (value as String?),
+      isUsed:
+          identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
+      isMissing: identical(isMissing, const Object())
+          ? _value.isMissing
+          : (isMissing as bool?),
     ));
   }
 }
 
 extension $ReportRecordExtension on ReportRecord {
-  _ReportRecordCopyWithProxy get copyWith => _ReportRecordCopyWithProxyImpl(this);
+  _ReportRecordCopyWithProxy get copyWith =>
+      _ReportRecordCopyWithProxyImpl(this);
 }

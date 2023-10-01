@@ -26,10 +26,17 @@ class Babel {
   }
 
   void printInfo() {
+    final String l10nYaml =
+        normalize(join(basename(project.root.path), Finder.l10nYaml));
     Trace.printListItem(
-        'Localization options file found in ${join(project.root.path, Finder.l10nYaml)}');
+        'Localization options file found in ${l10nYaml.bold()}');
+
+    final String arbDir =
+        normalize(join(basename(project.root.path), project.options.arbDir!));
     Trace.printListItem(
-        'Found ${project.translations.length.toString().bold()} arb files in ${project.options.arbDir!}:');
+        'Found ${project.translations.length.toString().bold()} '
+        'arb files in ${arbDir.bold()}:');
+
     for (final TranslationFile f in project.translations) {
       Trace.printListItem(basename(f.path), level: 1);
     }
@@ -43,12 +50,12 @@ class Babel {
     printInfo();
 
     final Report report = switch (reportMode) {
-      ReportMode.all =>
-        AllTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.missing =>
-        MissingTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.unused =>
-        UnusedTranslationsReport(project, mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.all => AllTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.missing => MissingTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.unused => UnusedTranslationsReport(project,
+          mode: displayMode, exportDirectory: exportDirectory),
     };
 
     await report.generateAndPrint();
@@ -112,7 +119,8 @@ class Babel {
     for (final TranslationFile translationFile in project.translations) {
       final File file = File(translationFile.path);
       final Map<String, dynamic> json = jsonDecode(file.readAsStringSync());
-      json.removeWhere((String key, dynamic value) => report.keys.contains(key));
+      json.removeWhere(
+          (String key, dynamic value) => report.keys.contains(key));
       file.writeAsStringSync(const JsonEncoder.withIndent(' ').convert(json));
     }
 
@@ -122,7 +130,8 @@ class Babel {
   Future<void> cleanGeneratedFiles() async {
     Trace.info('\nClearing generated localization files');
 
-    final String flutterGenPath = join(project.root.path, '.dart_tool', 'flutter_gen');
+    final String flutterGenPath =
+        join(project.root.path, '.dart_tool', 'flutter_gen');
     final Directory flutterGenDirectory = Directory(flutterGenPath);
     if (flutterGenDirectory.existsSync()) {
       flutterGenDirectory.deleteSync(recursive: true);

@@ -26,7 +26,8 @@ abstract class ReportRecord {
   bool? get isMissing;
 
   /// Creates an instance of [ReportRecord] from [json]
-  factory ReportRecord.fromJson(Map<dynamic, dynamic> json) = _$ReportRecordImpl.fromJson;
+  factory ReportRecord.fromJson(Map<dynamic, dynamic> json) =
+      _$ReportRecordImpl.fromJson;
 
   /// Converts [ReportRecord] to a [Map] json
   Map<String, dynamic> toJson();

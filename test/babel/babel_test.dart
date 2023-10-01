@@ -36,7 +36,8 @@ void main() {
 
       for (final ReportMode reportMode in ReportMode.values) {
         group(reportMode.name, () {
-          for (final ReportDisplayMode displayMode in ReportDisplayMode.values) {
+          for (final ReportDisplayMode displayMode
+              in ReportDisplayMode.values) {
             test(displayMode.name, () async {
               await babel.printReport(
                 displayMode: displayMode,
@@ -45,17 +46,24 @@ void main() {
               );
 
               await Future<void>.delayed(const Duration(milliseconds: 100));
-              expect(buffer.toString(), mocks[reportMode]![displayMode]);
+              final String mock = Platform.isWindows
+                  ? mocks[reportMode]![displayMode]!
+                  : mocks[reportMode]![displayMode]!.replaceAll(r'\', '/');
 
-              final String exportFilePath =
-                  normalize(join(exportPath, filenames[reportMode]![displayMode]!));
+              expect(buffer.toString().removeExportPath(reportMode), mock);
+
+              final String exportFilePath = normalize(
+                  join(exportPath, filenames[reportMode]![displayMode]!));
               final File file = File(exportFilePath);
               final String content = file.readAsStringSync();
 
-              expect(content.removeGeneratedOn(), exports[reportMode]![displayMode]);
+              expect(
+                content.removeGeneratedOn(),
+                exports[reportMode]![displayMode],
+              );
 
-              file.deleteSync();
-              exportDirectory.deleteSync();
+              file.deleteSync(recursive: true);
+              exportDirectory.deleteSync(recursive: true);
             });
           }
         });
@@ -66,7 +74,51 @@ void main() {
 
 extension on String {
   String removeGeneratedOn() {
-    final RegExp regex = RegExp(r'> Generated on: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\n');
-    return replaceAll(regex, '');
+    return replaceAll(
+      RegExp(r'> Generated on: \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\n'),
+      '> Generated on:',
+    );
+  }
+
+  String removeExportPath(final ReportMode reportMode) {
+    if (Platform.isWindows) {
+      return this;
+    }
+    switch (reportMode) {
+      case ReportMode.all:
+        final RegExp allRegex = RegExp(
+            '(> Writing [1mAll Translations[22m report to [/a-zA-Z]*)');
+        if (allRegex.hasMatch(this)) {
+          return replaceAll(
+            allRegex,
+            r'> Writing [1mAll Translations[22m report to D:\workspace\Flutter\Packages\babel\test\export',
+          ).replaceAll(r'\', '/');
+        }
+        break;
+
+      case ReportMode.missing:
+        final RegExp missingRegex = RegExp(
+            '(> Writing [1mMissing Translations[22m report to [/a-zA-Z]*)');
+        if (missingRegex.hasMatch(this)) {
+          return replaceAll(
+            missingRegex,
+            r'> Writing [1mMissing Translations[22m report to D:\workspace\Flutter\Packages\babel\test\export',
+          ).replaceAll(r'\', '/');
+        }
+        break;
+
+      case ReportMode.unused:
+        final RegExp unusedRegex = RegExp(
+            '(> Writing [1mUnused Translations[22m report to [/a-zA-Z]*)');
+        if (unusedRegex.hasMatch(this)) {
+          return replaceAll(
+            unusedRegex,
+            r'> Writing [1mUnused Translations[22m report to D:\workspace\Flutter\Packages\babel\test\export',
+          ).replaceAll(r'\', '/');
+        }
+        break;
+    }
+
+    return this;
   }
 }

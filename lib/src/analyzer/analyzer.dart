@@ -11,7 +11,8 @@ class BabelAnalyzer {
     final List<String> filesPaths, {
     final String? searchClass,
   }) async {
-    final AnalysisContextCollection contextCollection = AnalysisContextCollection(
+    final AnalysisContextCollection contextCollection =
+        AnalysisContextCollection(
       includedPaths: filesPaths,
     );
 
@@ -40,9 +41,11 @@ class BabelAnalyzer {
       final AnalysisContext ctx = contextCollection.contextFor(filePath);
       final CompilationUnit unit = await ctx.currentSession
           .getResolvedUnit(filePath)
-          .then((SomeResolvedUnitResult result) => (result as ResolvedUnitResult).unit);
+          .then((SomeResolvedUnitResult result) =>
+              (result as ResolvedUnitResult).unit);
 
-      final L10NReferencesVisitor l10nReferencesVisitor = L10NReferencesVisitor(searchClass);
+      final L10NReferencesVisitor l10nReferencesVisitor =
+          L10NReferencesVisitor(searchClass);
       unit.accept(l10nReferencesVisitor);
 
       return l10nReferencesVisitor.l10nUsedKeys;

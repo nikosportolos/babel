@@ -105,7 +105,8 @@ class _TranslationKeyCopyWithProxyImpl implements _TranslationKeyCopyWithProxy {
   @override
   $TranslationKeyAttributesCopyWithProxyChain<TranslationKey> get attributes =>
       $TranslationKeyAttributesCopyWithProxyChain<TranslationKey>(
-          _value.attributes, (TranslationKeyAttributes update) => this(attributes: update));
+          _value.attributes,
+          (TranslationKeyAttributes update) => this(attributes: update));
 
   @pragma('vm:prefer-inline')
   @override
@@ -123,8 +124,8 @@ class _TranslationKeyCopyWithProxyImpl implements _TranslationKeyCopyWithProxy {
 }
 
 sealed class $TranslationKeyCopyWithProxyChain<$Result> {
-  factory $TranslationKeyCopyWithProxyChain(
-          final TranslationKey value, final $Result Function(TranslationKey update) chain) =
+  factory $TranslationKeyCopyWithProxyChain(final TranslationKey value,
+          final $Result Function(TranslationKey update) chain) =
       _TranslationKeyCopyWithProxyChainImpl<$Result>;
 
   $Result key(String newValue);
@@ -157,7 +158,8 @@ class _TranslationKeyCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result attributes(TranslationKeyAttributes newValue) => this(attributes: newValue);
+  $Result attributes(TranslationKeyAttributes newValue) =>
+      this(attributes: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -175,5 +177,6 @@ class _TranslationKeyCopyWithProxyChainImpl<$Result>
 }
 
 extension $TranslationKeyExtension on TranslationKey {
-  _TranslationKeyCopyWithProxy get copyWith => _TranslationKeyCopyWithProxyImpl(this);
+  _TranslationKeyCopyWithProxy get copyWith =>
+      _TranslationKeyCopyWithProxyImpl(this);
 }

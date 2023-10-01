@@ -24,8 +24,9 @@ class _$TranslationFileImpl extends TranslationFile {
     return _$TranslationFileImpl(
       path: json['path'] as String,
       locale: json['locale'] as String,
-      keys: jsonConverterRegistrant.find(Set<TranslationKey>).fromJson(json['keys'], json, 'keys')
-          as Set<TranslationKey>,
+      keys: jsonConverterRegistrant
+          .find(Set<TranslationKey>)
+          .fromJson(json['keys'], json, 'keys') as Set<TranslationKey>,
     );
   }
 
@@ -62,7 +63,8 @@ class _$TranslationFileImpl extends TranslationFile {
   String toString() {
     String toStringOutput = 'TranslationFile{<optimized out>}';
     assert(() {
-      toStringOutput = 'TranslationFile@<$hexIdentity>{path: $path, locale: $locale, keys: $keys}';
+      toStringOutput =
+          'TranslationFile@<$hexIdentity>{path: $path, locale: $locale, keys: $keys}';
       return true;
     }());
     return toStringOutput;
@@ -86,7 +88,8 @@ abstract interface class _TranslationFileCopyWithProxy {
   });
 }
 
-class _TranslationFileCopyWithProxyImpl implements _TranslationFileCopyWithProxy {
+class _TranslationFileCopyWithProxyImpl
+    implements _TranslationFileCopyWithProxy {
   _TranslationFileCopyWithProxyImpl(this._value);
 
   final TranslationFile _value;
@@ -119,8 +122,8 @@ class _TranslationFileCopyWithProxyImpl implements _TranslationFileCopyWithProxy
 }
 
 sealed class $TranslationFileCopyWithProxyChain<$Result> {
-  factory $TranslationFileCopyWithProxyChain(
-          final TranslationFile value, final $Result Function(TranslationFile update) chain) =
+  factory $TranslationFileCopyWithProxyChain(final TranslationFile value,
+          final $Result Function(TranslationFile update) chain) =
       _TranslationFileCopyWithProxyChainImpl<$Result>;
 
   $Result path(String newValue);
@@ -171,5 +174,6 @@ class _TranslationFileCopyWithProxyChainImpl<$Result>
 }
 
 extension $TranslationFileExtension on TranslationFile {
-  _TranslationFileCopyWithProxy get copyWith => _TranslationFileCopyWithProxyImpl(this);
+  _TranslationFileCopyWithProxy get copyWith =>
+      _TranslationFileCopyWithProxyImpl(this);
 }

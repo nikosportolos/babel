@@ -105,12 +105,13 @@ class _ProjectCopyWithProxyImpl implements _ProjectCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $LocalizationOptionsCopyWithProxyChain<Project> get options =>
-      $LocalizationOptionsCopyWithProxyChain<Project>(
-          _value.options, (LocalizationOptions update) => this(options: update));
+      $LocalizationOptionsCopyWithProxyChain<Project>(_value.options,
+          (LocalizationOptions update) => this(options: update));
 
   @pragma('vm:prefer-inline')
   @override
-  Project translations(List<TranslationFile> newValue) => this(translations: newValue);
+  Project translations(List<TranslationFile> newValue) =>
+      this(translations: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -145,7 +146,8 @@ sealed class $ProjectCopyWithProxyChain<$Result> {
   });
 }
 
-class _ProjectCopyWithProxyChainImpl<$Result> implements $ProjectCopyWithProxyChain<$Result> {
+class _ProjectCopyWithProxyChainImpl<$Result>
+    implements $ProjectCopyWithProxyChain<$Result> {
   _ProjectCopyWithProxyChainImpl(this._value, this._chain);
 
   final Project _value;
@@ -161,7 +163,8 @@ class _ProjectCopyWithProxyChainImpl<$Result> implements $ProjectCopyWithProxyCh
 
   @pragma('vm:prefer-inline')
   @override
-  $Result translations(List<TranslationFile> newValue) => this(translations: newValue);
+  $Result translations(List<TranslationFile> newValue) =>
+      this(translations: newValue);
 
   @pragma('vm:prefer-inline')
   @override
