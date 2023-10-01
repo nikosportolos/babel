@@ -21,7 +21,8 @@ abstract class TranslationFile {
   Set<TranslationKey> get keys;
 
   /// Creates an instance of [TranslationFile] from [json]
-  factory TranslationFile.fromJson(Map<dynamic, dynamic> json) = _$TranslationFileImpl.fromJson;
+  factory TranslationFile.fromJson(Map<dynamic, dynamic> json) =
+      _$TranslationFileImpl.fromJson;
 
   /// Converts [TranslationFile] to a [Map] json
   Map<String, dynamic> toJson();

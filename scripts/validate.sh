@@ -24,7 +24,7 @@ action="${BLUE}Check Formatting${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                      │"
 echo "└───────────────────────────────────────┘"
-dart format . -l 100 --fix || { echo 'dart format failed' ; exit 1; }
+dart format . -l 80 --fix || { echo 'dart format failed' ; exit 1; }
 echo ""
 
 
@@ -44,9 +44,9 @@ dart test --color -r expanded || { echo 'tests failed' ; exit 1; }
 echo ""
 
 
-#action="${BLUE}Pub.dev Analysis${NC}"
-#echo "┌───────────────────────────────────────┐"
-#echo -e "│ ${action}                      │"
-#echo "└───────────────────────────────────────┘"
-#dart pub global run pana -l 100 --exit-code-threshold 30
-#echo ""
+action="${BLUE}Pub.dev Analysis${NC}"
+echo "┌───────────────────────────────────────┐"
+echo -e "│ ${action}                      │"
+echo "└───────────────────────────────────────┘"
+dart pub global run pana -l 80 --exit-code-threshold 30
+echo ""

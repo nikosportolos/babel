@@ -95,7 +95,8 @@ class _$LocalizationOptionsImpl extends LocalizationOptions {
       preferredSupportedLocales: json['preferred-supported-locales'] == null
           ? null
           : <String>[
-              for (final dynamic i0 in (json['preferred-supported-locales'] as List<dynamic>))
+              for (final dynamic i0
+                  in (json['preferred-supported-locales'] as List<dynamic>))
                 i0 as String,
             ],
       header: json['header'] as String?,
@@ -149,7 +150,8 @@ class _$LocalizationOptionsImpl extends LocalizationOptions {
             outputLocalizationFile == other.outputLocalizationFile &&
             untranslatedMessagesFile == other.untranslatedMessagesFile &&
             outputClass == other.outputClass &&
-            deepEquality(preferredSupportedLocales, other.preferredSupportedLocales) &&
+            deepEquality(
+                preferredSupportedLocales, other.preferredSupportedLocales) &&
             header == other.header &&
             headerFile == other.headerFile &&
             useDeferredLoading == other.useDeferredLoading &&
@@ -267,7 +269,8 @@ abstract interface class _LocalizationOptionsCopyWithProxy {
   });
 }
 
-class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyWithProxy {
+class _LocalizationOptionsCopyWithProxyImpl
+    implements _LocalizationOptionsCopyWithProxy {
   _LocalizationOptionsCopyWithProxyImpl(this._value);
 
   final LocalizationOptions _value;
@@ -282,7 +285,8 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions templateArbFile(String? newValue) => this(templateArbFile: newValue);
+  LocalizationOptions templateArbFile(String? newValue) =>
+      this(templateArbFile: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -296,7 +300,8 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions outputClass(String? newValue) => this(outputClass: newValue);
+  LocalizationOptions outputClass(String? newValue) =>
+      this(outputClass: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -309,11 +314,13 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions headerFile(String? newValue) => this(headerFile: newValue);
+  LocalizationOptions headerFile(String? newValue) =>
+      this(headerFile: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions useDeferredLoading(bool? newValue) => this(useDeferredLoading: newValue);
+  LocalizationOptions useDeferredLoading(bool? newValue) =>
+      this(useDeferredLoading: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -322,11 +329,13 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions syntheticPackage(bool? newValue) => this(syntheticPackage: newValue);
+  LocalizationOptions syntheticPackage(bool? newValue) =>
+      this(syntheticPackage: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions projectDir(String? newValue) => this(projectDir: newValue);
+  LocalizationOptions projectDir(String? newValue) =>
+      this(projectDir: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -335,7 +344,8 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions nullableGetter(bool? newValue) => this(nullableGetter: newValue);
+  LocalizationOptions nullableGetter(bool? newValue) =>
+      this(nullableGetter: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -343,15 +353,18 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions useEscaping(bool? newValue) => this(useEscaping: newValue);
+  LocalizationOptions useEscaping(bool? newValue) =>
+      this(useEscaping: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions suppressWarnings(bool? newValue) => this(suppressWarnings: newValue);
+  LocalizationOptions suppressWarnings(bool? newValue) =>
+      this(suppressWarnings: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  LocalizationOptions relaxSyntax(bool? newValue) => this(relaxSyntax: newValue);
+  LocalizationOptions relaxSyntax(bool? newValue) =>
+      this(relaxSyntax: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -377,56 +390,73 @@ class _LocalizationOptionsCopyWithProxyImpl implements _LocalizationOptionsCopyW
     final Object? relaxSyntax = const Object(),
   }) {
     return _$LocalizationOptionsImpl(
-      arbDir: identical(arbDir, const Object()) ? _value.arbDir : (arbDir as String?),
-      outputDir: identical(outputDir, const Object()) ? _value.outputDir : (outputDir as String?),
+      arbDir: identical(arbDir, const Object())
+          ? _value.arbDir
+          : (arbDir as String?),
+      outputDir: identical(outputDir, const Object())
+          ? _value.outputDir
+          : (outputDir as String?),
       templateArbFile: identical(templateArbFile, const Object())
           ? _value.templateArbFile
           : (templateArbFile as String?),
       outputLocalizationFile: identical(outputLocalizationFile, const Object())
           ? _value.outputLocalizationFile
           : (outputLocalizationFile as String?),
-      untranslatedMessagesFile: identical(untranslatedMessagesFile, const Object())
-          ? _value.untranslatedMessagesFile
-          : (untranslatedMessagesFile as String?),
-      outputClass:
-          identical(outputClass, const Object()) ? _value.outputClass : (outputClass as String?),
-      preferredSupportedLocales: identical(preferredSupportedLocales, const Object())
-          ? _value.preferredSupportedLocales
-          : (preferredSupportedLocales as List<String>?),
-      header: identical(header, const Object()) ? _value.header : (header as String?),
-      headerFile:
-          identical(headerFile, const Object()) ? _value.headerFile : (headerFile as String?),
+      untranslatedMessagesFile:
+          identical(untranslatedMessagesFile, const Object())
+              ? _value.untranslatedMessagesFile
+              : (untranslatedMessagesFile as String?),
+      outputClass: identical(outputClass, const Object())
+          ? _value.outputClass
+          : (outputClass as String?),
+      preferredSupportedLocales:
+          identical(preferredSupportedLocales, const Object())
+              ? _value.preferredSupportedLocales
+              : (preferredSupportedLocales as List<String>?),
+      header: identical(header, const Object())
+          ? _value.header
+          : (header as String?),
+      headerFile: identical(headerFile, const Object())
+          ? _value.headerFile
+          : (headerFile as String?),
       useDeferredLoading: identical(useDeferredLoading, const Object())
           ? _value.useDeferredLoading
           : (useDeferredLoading as bool?),
-      genInputsAndOutputsList: identical(genInputsAndOutputsList, const Object())
-          ? _value.genInputsAndOutputsList
-          : (genInputsAndOutputsList as String?),
+      genInputsAndOutputsList:
+          identical(genInputsAndOutputsList, const Object())
+              ? _value.genInputsAndOutputsList
+              : (genInputsAndOutputsList as String?),
       syntheticPackage: identical(syntheticPackage, const Object())
           ? _value.syntheticPackage
           : (syntheticPackage as bool?),
-      projectDir:
-          identical(projectDir, const Object()) ? _value.projectDir : (projectDir as String?),
-      requiredResourceAttributes: identical(requiredResourceAttributes, const Object())
-          ? _value.requiredResourceAttributes
-          : (requiredResourceAttributes as bool?),
+      projectDir: identical(projectDir, const Object())
+          ? _value.projectDir
+          : (projectDir as String?),
+      requiredResourceAttributes:
+          identical(requiredResourceAttributes, const Object())
+              ? _value.requiredResourceAttributes
+              : (requiredResourceAttributes as bool?),
       nullableGetter: identical(nullableGetter, const Object())
           ? _value.nullableGetter
           : (nullableGetter as bool?),
-      format: identical(format, const Object()) ? _value.format : (format as bool?),
-      useEscaping:
-          identical(useEscaping, const Object()) ? _value.useEscaping : (useEscaping as bool?),
+      format:
+          identical(format, const Object()) ? _value.format : (format as bool?),
+      useEscaping: identical(useEscaping, const Object())
+          ? _value.useEscaping
+          : (useEscaping as bool?),
       suppressWarnings: identical(suppressWarnings, const Object())
           ? _value.suppressWarnings
           : (suppressWarnings as bool?),
-      relaxSyntax:
-          identical(relaxSyntax, const Object()) ? _value.relaxSyntax : (relaxSyntax as bool?),
+      relaxSyntax: identical(relaxSyntax, const Object())
+          ? _value.relaxSyntax
+          : (relaxSyntax as bool?),
     );
   }
 }
 
 sealed class $LocalizationOptionsCopyWithProxyChain<$Result> {
-  factory $LocalizationOptionsCopyWithProxyChain(final LocalizationOptions value,
+  factory $LocalizationOptionsCopyWithProxyChain(
+          final LocalizationOptions value,
           final $Result Function(LocalizationOptions update) chain) =
       _LocalizationOptionsCopyWithProxyChainImpl<$Result>;
 
@@ -512,11 +542,13 @@ class _LocalizationOptionsCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result outputLocalizationFile(String? newValue) => this(outputLocalizationFile: newValue);
+  $Result outputLocalizationFile(String? newValue) =>
+      this(outputLocalizationFile: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result untranslatedMessagesFile(String? newValue) => this(untranslatedMessagesFile: newValue);
+  $Result untranslatedMessagesFile(String? newValue) =>
+      this(untranslatedMessagesFile: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -537,11 +569,13 @@ class _LocalizationOptionsCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result useDeferredLoading(bool? newValue) => this(useDeferredLoading: newValue);
+  $Result useDeferredLoading(bool? newValue) =>
+      this(useDeferredLoading: newValue);
 
   @pragma('vm:prefer-inline')
   @override
-  $Result genInputsAndOutputsList(String? newValue) => this(genInputsAndOutputsList: newValue);
+  $Result genInputsAndOutputsList(String? newValue) =>
+      this(genInputsAndOutputsList: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -553,7 +587,8 @@ class _LocalizationOptionsCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result requiredResourceAttributes(bool? newValue) => this(requiredResourceAttributes: newValue);
+  $Result requiredResourceAttributes(bool? newValue) =>
+      this(requiredResourceAttributes: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -599,54 +634,71 @@ class _LocalizationOptionsCopyWithProxyChainImpl<$Result>
     final Object? relaxSyntax = const Object(),
   }) {
     return _chain(_$LocalizationOptionsImpl(
-      arbDir: identical(arbDir, const Object()) ? _value.arbDir : (arbDir as String?),
-      outputDir: identical(outputDir, const Object()) ? _value.outputDir : (outputDir as String?),
+      arbDir: identical(arbDir, const Object())
+          ? _value.arbDir
+          : (arbDir as String?),
+      outputDir: identical(outputDir, const Object())
+          ? _value.outputDir
+          : (outputDir as String?),
       templateArbFile: identical(templateArbFile, const Object())
           ? _value.templateArbFile
           : (templateArbFile as String?),
       outputLocalizationFile: identical(outputLocalizationFile, const Object())
           ? _value.outputLocalizationFile
           : (outputLocalizationFile as String?),
-      untranslatedMessagesFile: identical(untranslatedMessagesFile, const Object())
-          ? _value.untranslatedMessagesFile
-          : (untranslatedMessagesFile as String?),
-      outputClass:
-          identical(outputClass, const Object()) ? _value.outputClass : (outputClass as String?),
-      preferredSupportedLocales: identical(preferredSupportedLocales, const Object())
-          ? _value.preferredSupportedLocales
-          : (preferredSupportedLocales as List<String>?),
-      header: identical(header, const Object()) ? _value.header : (header as String?),
-      headerFile:
-          identical(headerFile, const Object()) ? _value.headerFile : (headerFile as String?),
+      untranslatedMessagesFile:
+          identical(untranslatedMessagesFile, const Object())
+              ? _value.untranslatedMessagesFile
+              : (untranslatedMessagesFile as String?),
+      outputClass: identical(outputClass, const Object())
+          ? _value.outputClass
+          : (outputClass as String?),
+      preferredSupportedLocales:
+          identical(preferredSupportedLocales, const Object())
+              ? _value.preferredSupportedLocales
+              : (preferredSupportedLocales as List<String>?),
+      header: identical(header, const Object())
+          ? _value.header
+          : (header as String?),
+      headerFile: identical(headerFile, const Object())
+          ? _value.headerFile
+          : (headerFile as String?),
       useDeferredLoading: identical(useDeferredLoading, const Object())
           ? _value.useDeferredLoading
           : (useDeferredLoading as bool?),
-      genInputsAndOutputsList: identical(genInputsAndOutputsList, const Object())
-          ? _value.genInputsAndOutputsList
-          : (genInputsAndOutputsList as String?),
+      genInputsAndOutputsList:
+          identical(genInputsAndOutputsList, const Object())
+              ? _value.genInputsAndOutputsList
+              : (genInputsAndOutputsList as String?),
       syntheticPackage: identical(syntheticPackage, const Object())
           ? _value.syntheticPackage
           : (syntheticPackage as bool?),
-      projectDir:
-          identical(projectDir, const Object()) ? _value.projectDir : (projectDir as String?),
-      requiredResourceAttributes: identical(requiredResourceAttributes, const Object())
-          ? _value.requiredResourceAttributes
-          : (requiredResourceAttributes as bool?),
+      projectDir: identical(projectDir, const Object())
+          ? _value.projectDir
+          : (projectDir as String?),
+      requiredResourceAttributes:
+          identical(requiredResourceAttributes, const Object())
+              ? _value.requiredResourceAttributes
+              : (requiredResourceAttributes as bool?),
       nullableGetter: identical(nullableGetter, const Object())
           ? _value.nullableGetter
           : (nullableGetter as bool?),
-      format: identical(format, const Object()) ? _value.format : (format as bool?),
-      useEscaping:
-          identical(useEscaping, const Object()) ? _value.useEscaping : (useEscaping as bool?),
+      format:
+          identical(format, const Object()) ? _value.format : (format as bool?),
+      useEscaping: identical(useEscaping, const Object())
+          ? _value.useEscaping
+          : (useEscaping as bool?),
       suppressWarnings: identical(suppressWarnings, const Object())
           ? _value.suppressWarnings
           : (suppressWarnings as bool?),
-      relaxSyntax:
-          identical(relaxSyntax, const Object()) ? _value.relaxSyntax : (relaxSyntax as bool?),
+      relaxSyntax: identical(relaxSyntax, const Object())
+          ? _value.relaxSyntax
+          : (relaxSyntax as bool?),
     ));
   }
 }
 
 extension $LocalizationOptionsExtension on LocalizationOptions {
-  _LocalizationOptionsCopyWithProxy get copyWith => _LocalizationOptionsCopyWithProxyImpl(this);
+  _LocalizationOptionsCopyWithProxy get copyWith =>
+      _LocalizationOptionsCopyWithProxyImpl(this);
 }

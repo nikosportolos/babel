@@ -81,14 +81,16 @@ abstract interface class _TranslationKeyAttributesCopyWithProxy {
   });
 }
 
-class _TranslationKeyAttributesCopyWithProxyImpl implements _TranslationKeyAttributesCopyWithProxy {
+class _TranslationKeyAttributesCopyWithProxyImpl
+    implements _TranslationKeyAttributesCopyWithProxy {
   _TranslationKeyAttributesCopyWithProxyImpl(this._value);
 
   final TranslationKeyAttributes _value;
 
   @pragma('vm:prefer-inline')
   @override
-  TranslationKeyAttributes description(String? newValue) => this(description: newValue);
+  TranslationKeyAttributes description(String? newValue) =>
+      this(description: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -102,15 +104,17 @@ class _TranslationKeyAttributesCopyWithProxyImpl implements _TranslationKeyAttri
     final Map<String, String>? placeholders,
   }) {
     return _$TranslationKeyAttributesImpl(
-      description:
-          identical(description, const Object()) ? _value.description : (description as String?),
+      description: identical(description, const Object())
+          ? _value.description
+          : (description as String?),
       placeholders: placeholders ?? _value.placeholders,
     );
   }
 }
 
 sealed class $TranslationKeyAttributesCopyWithProxyChain<$Result> {
-  factory $TranslationKeyAttributesCopyWithProxyChain(final TranslationKeyAttributes value,
+  factory $TranslationKeyAttributesCopyWithProxyChain(
+          final TranslationKeyAttributes value,
           final $Result Function(TranslationKeyAttributes update) chain) =
       _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>;
 
@@ -137,7 +141,8 @@ class _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result placeholders(Map<String, String> newValue) => this(placeholders: newValue);
+  $Result placeholders(Map<String, String> newValue) =>
+      this(placeholders: newValue);
 
   @pragma('vm:prefer-inline')
   @override
@@ -146,8 +151,9 @@ class _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>
     final Map<String, String>? placeholders,
   }) {
     return _chain(_$TranslationKeyAttributesImpl(
-      description:
-          identical(description, const Object()) ? _value.description : (description as String?),
+      description: identical(description, const Object())
+          ? _value.description
+          : (description as String?),
       placeholders: placeholders ?? _value.placeholders,
     ));
   }

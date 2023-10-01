@@ -1,4 +1,5 @@
-import 'package:babel/src/reports/report.dart' show ReportMode, ReportDisplayMode;
+import 'package:babel/src/reports/report.dart'
+    show ReportMode, ReportDisplayMode;
 
 const Map<ReportMode, Map<ReportDisplayMode, String>> mocks =
     <ReportMode, Map<ReportDisplayMode, String>>{
@@ -58,8 +59,8 @@ const Map<ReportMode, Map<ReportDisplayMode, String>> exports =
 };
 
 const String allJsonMock =
-    r'''> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+    r'''> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -101,8 +102,8 @@ const String allJsonMock =
 ''';
 
 const String allTreeMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -155,8 +156,8 @@ const String allTreeMock = r'''
 ''';
 
 const String allGridMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -186,8 +187,8 @@ const String allGridMock = r'''
 ''';
 
 const String missingJsonMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -213,8 +214,8 @@ const String missingJsonMock = r'''
 ''';
 
 const String missingTreeMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -243,8 +244,8 @@ const String missingTreeMock = r'''
 ''';
 
 const String missingGridMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -266,8 +267,8 @@ const String missingGridMock = r'''
 ''';
 
 const String unusedJsonMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -302,8 +303,8 @@ const String unusedJsonMock = r'''
 ''';
 
 const String unusedTreeMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -343,8 +344,8 @@ const String unusedTreeMock = r'''
 ''';
 
 const String unusedGridMock = r'''
-> Localization options file found in D:\workspace\Flutter\Packages\babel\example\l10n.yaml
-> Found [1m2[22m arb files in lib/l10n:
+> Localization options file found in [1mexample\l10n.yaml[22m
+> Found [1m2[22m arb files in [1mexample\lib\l10n[22m:
   ─ intl_el.arb
   ─ intl_en.arb
 > Generating report:
@@ -382,7 +383,7 @@ const String allGridExport = r'''
 
 > Report: All Translations
 > Display mode: Data Grid
-
+> Generated on:
 
 ╭─────┬──────────────────────┬──────────────────────────┬──────────────────────────╮
 │     │                      │                          │                          │
@@ -413,7 +414,7 @@ const String allTreeExport = r'''
 
 > Report: All Translations
 > Display mode: Tree View
-
+> Generated on:
 
 ┌────────────────────┐
 │  All Translations  │
@@ -467,7 +468,7 @@ const String allJsonExport = r'''
 
 > Report: All Translations
 > Display mode: JSON
-
+> Generated on:
 
 ┌────────────────────┐
 │  All Translations  │
@@ -510,7 +511,7 @@ const String missingGridExport = r'''
 
 > Report: Missing Translations
 > Display mode: Data Grid
-
+> Generated on:
 
 ╭─────┬──────────────────────┬─────────────────────┬──────────────────────────╮
 │     │                      │                     │                          │
@@ -533,7 +534,7 @@ const String missingJsonExport = r'''
 
 > Report: Missing Translations
 > Display mode: JSON
-
+> Generated on:
 
 ┌────────────────────────┐
 │  Missing Translations  │
@@ -560,7 +561,7 @@ const String missingTreeExport = r'''
 
 > Report: Missing Translations
 > Display mode: Tree View
-
+> Generated on:
 
 ┌────────────────────────┐
 │  Missing Translations  │
@@ -590,7 +591,7 @@ const String unusedGridExport = r'''
 
 > Report: Unused Translations
 > Display mode: Data Grid
-
+> Generated on:
 
 ╭─────┬───────────────────┬──────────────────────────┬──────────────────────────╮
 │     │                   │                          │                          │
@@ -615,7 +616,7 @@ const String unusedTreeExport = r'''
 
 > Report: Unused Translations
 > Display mode: Tree View
-
+> Generated on:
 
 ┌───────────────────────┐
 │  Unused Translations  │
@@ -651,7 +652,7 @@ const String unusedJsonExport = r'''
 
 > Report: Unused Translations
 > Display mode: JSON
-
+> Generated on:
 
 ┌───────────────────────┐
 │  Unused Translations  │

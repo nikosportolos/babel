@@ -17,10 +17,10 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4.1.0
-      - uses: nikosportolos/dart_package@v0.1.2
+      - uses: nikosportolos/dart_package@v0.2.0
         with:
           sdk: flutter
-          line_length: 100
+          line_length: 80
           coverage: true
           codecov: true
           codecov_token: ${{ secrets.CODECOV_TOKEN }}

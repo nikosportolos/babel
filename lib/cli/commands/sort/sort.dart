@@ -8,7 +8,8 @@ class SortCommand extends BaseCommand {
   String get name => 'sort';
 
   @override
-  String get description => 'Sorts the translation keys in the arb files of the project.';
+  String get description =>
+      'Sorts the translation keys in the arb files of the project.';
 
   @override
   Future<void> execute() async {

@@ -21,10 +21,12 @@ abstract class TranslationKey {
   @DefaultValue(TranslationKeyAttributes.empty)
   TranslationKeyAttributes get attributes;
 
-  bool get hasAttributes => attributes.description != null || attributes.placeholders.isNotEmpty;
+  bool get hasAttributes =>
+      attributes.description != null || attributes.placeholders.isNotEmpty;
 
   /// Creates an instance of [TranslationKey] from [json]
-  factory TranslationKey.fromJson(Map<dynamic, dynamic> json) = _$TranslationKeyImpl.fromJson;
+  factory TranslationKey.fromJson(Map<dynamic, dynamic> json) =
+      _$TranslationKeyImpl.fromJson;
 
   /// Converts [TranslationKey] to a [Map] json
   Map<String, dynamic> toJson();
