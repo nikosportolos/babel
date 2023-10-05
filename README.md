@@ -13,6 +13,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 
+## Table of Contents
+
 * [Getting started](#getting-started)
 * [How to use](#how-to-use)
   * [Add as dependency](#add-as-dependency)
