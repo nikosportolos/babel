@@ -15,13 +15,10 @@ mixin ListCommandMixin on BaseCommand {
     reportDisplayModeArg
   ];
 
-  static final DirectoryArgument exportDirectoryArg = DirectoryArgument(
+  static const DirectoryArgument exportDirectoryArg = DirectoryArgument(
     name: 'export-directory',
     abbr: 'e',
     help: 'If this field is not empty, it will be used to export the results.',
-    valueBuilder: (Object? value) {
-      return Finder.findDirectoryFromPath(value.toString());
-    },
   );
 
   static const EnumArgument<ReportDisplayMode> reportDisplayModeArg =
