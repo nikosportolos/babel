@@ -49,17 +49,12 @@ class BabelTheme {
       padding: AnsiPadding.horizontal(4),
       foregroundColor: BabelColors.text,
     ),
-    theme: const AnsiGridTheme(
-      overrideTheme: true,
-      border: AnsiBorder(
-        style: AnsiBorderStyle.rounded,
-        type: AnsiBorderType.outside,
-        color: BabelColors.dark,
-      ),
-      cellTextTheme: AnsiTextTheme(
-        alignment: AnsiTextAlignment.center,
-      ),
+    border: const AnsiBorder(
+      style: AnsiBorderStyle.rounded,
+      type: AnsiBorderType.outside,
+      color: BabelColors.dark,
     ),
+    wrapOptions: const WrapOptions(lineLength: 120),
   );
 
   static final Map<LogLevel, AnsiColor> logColorMap = <LogLevel, AnsiColor>{

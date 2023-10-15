@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:ansix/ansix.dart';
 import 'package:babel/src/babel.dart';
 import 'package:babel/src/exceptions/exceptions.dart';
 import 'package:babel/src/reports/mode.dart';
@@ -33,6 +34,7 @@ void main() {
 
     group('ReportDisplayMode', () {
       final Babel babel = Babel.fromPath(exampleProjectPath);
+      AnsiX.colorFormat = ColorFormat.ansi;
 
       for (final ReportMode reportMode in ReportMode.values) {
         group(reportMode.name, () {

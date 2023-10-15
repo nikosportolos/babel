@@ -63,7 +63,7 @@ abstract class Report {
     if (exportDirectory != null) {
       final StringBuffer buffer = StringBuffer();
       buffer
-        ..writeln(BabelTheme.logo.formatted.unformatted)
+        ..writeln(BabelTheme.logo.formattedText.unformatted)
         ..writeLines(1)
         ..writeln('> Report: $name')
         ..writeln('> Display mode: ${mode.title}')
