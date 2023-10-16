@@ -32,7 +32,7 @@ dev_dependencies:
 
 screenshots:
   - description: 'Babel: Translations management for Flutter apps'
-    path: assets/images/banner.png
+    path: assets/images/banner.webp
   - description: 'This is an example usage of "babel list all -m grid"'
     path: assets/images/examples/list-all-grid.png
   - description: 'This is an example usage of "babel list all -m tree"'

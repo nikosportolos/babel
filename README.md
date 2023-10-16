@@ -35,17 +35,17 @@
 
 ## Getting started
 
-<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.png" target="_blank">
-  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.png" width="600" alt="babel-banner">
+<a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.webp" target="_blank">
+  <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/banner.webp" width="600" alt="babel-banner">
 </a>
 
 
 Babel is a command-line interface (CLI) tool crafted to simplify the management 
 of translations in Flutter applications. 
 
-This intuitive toolset allows you to effortlessly:
+This intuitive toolset allows you to:
 
-- **List Project's Translations**
+- **List project's translations**
   
   Easily examine your project's language resources, identifying existing, 
   missing, or unused translations.
@@ -55,13 +55,13 @@ This intuitive toolset allows you to effortlessly:
   Additionally, you can export them to files for convenient reference.
 
 
-- **Sort Translations**
+- **Sort translations**
 
   Keep your translation files organized for enhanced readability and maintainability,
   making it easier for you and your team to work with translations effectively.
 
 
-- **Clean Generated Files**
+- **Clean generated files and unused translations**
 
   Optimize your project's footprint by removing redundant or 
   unused translation keys, ensuring a lean and efficient application build.
@@ -74,7 +74,7 @@ internationalization process is seamless and efficient.
 
 > **Disclaimer**
 >
-> Please note that **Babel** is specifically designed to work in conjunction with 
+> Please note that **Babel** is specifically designed to work with 
 > [Flutter's official localization tools](https://docs.flutter.dev/ui/accessibility-and-localization/internationalization). 
 > 
 > It is not compatible with or intended for use alongside other third-party packages for localization. 
@@ -91,6 +91,8 @@ internationalization process is seamless and efficient.
 
 ### Add as dependency
 
+Use **babel** in a specific project by adding it as a dev dependency.
+
 ```shell
 # Add Babel as a dev dependency in your pubspec.yaml
 dart pub add -d babel
@@ -100,6 +102,9 @@ dart run babel [command] [arguments]
 ```
 
 ### Activate globally
+
+Activate **babel** globally in your device, so you can use it from any project 
+and make sure you always use the latest version. 
 
 ```shell
 # Activate Babel from pub.dev
@@ -113,32 +118,35 @@ babel [command] [arguments]
 
 **Babel** uses [dart_cmder](https://pub.dev/packages/dart_cmder) for the CLI interface.
 
+> Read the [documentation](https://github.com/nikosportolos/dart_cmder#dart_cmder) for more information.
+
 
 ### Base arguments
 
-| Argument         | Help                                                                    | Allowed values                                                             | Defaults to |
-|------------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------|-------------|
-| `--path`, `-p`   | The root path of the project where the pubspec.yaml is.                 |                                                                            | `.`         |
-| `--level`, `-l`  | Define the level that will be used to filter log messages.              | `none`, `verbose`, `debug`, `info`, `success`, `warning`, `error`, `fatal` | `info`      |
-| `--logdir`, `-d` | If not null, then messages will be logged into the specified directory. |                                                                            | `null`      |
+| Argument               | Abbreviation | Help                                                                    | Allowed values                                                             | Defaults to |
+|------------------------|--------------|-------------------------------------------------------------------------|----------------------------------------------------------------------------|-------------|
+| `--path`               | `-p`         | The root path of the project where the pubspec.yaml is.                 |                                                                            | `.`         |
+| `--level`              | `-l`         | Define the level that will be used to filter log messages.              | `none`, `verbose`, `debug`, `info`, `success`, `warning`, `error`, `fatal` | `info`      |
+| `--logdir`             | `-d`         | If not null, then messages will be logged into the specified directory. |                                                                            | `null`      |
+| `--color`,`--no-color` | `-c`         | If set to false, no colors will be printed in the console.              |                                                                            | `true`      |
 
 
 ### List
 
-| Argument                   | Help                                                               | Allowed values         | Defaults to |
-|----------------------------|--------------------------------------------------------------------|------------------------|-------------|
-| `--mode`, `-m`             | Defines how the report will be displayed.                          | `grid`, `tree`, `json` | `grid`      |
-| `--export-directory`, `-e` | If this field is not empty, it will be used to export the results. |                        |             |
+| Argument             | Abbreviation | Help                                                               | Allowed values         | Defaults to |
+|----------------------|--------------|--------------------------------------------------------------------|------------------------|-------------|
+| `--mode`             | `-m`         | Defines how the report will be displayed.                          | `grid`, `tree`, `json` | `grid`      |
+| `--export-directory` | `-e`         | If this field is not empty, it will be used to export the results. |                        |             |
 
 
-- Grid
+- **Grid**
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-grid.png" width="70%" alt="list-all-grid">
 </a>
 
 
-- Tree
+- **Tree**
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-tree.png" width="50%" alt="list-all-tree">
@@ -146,7 +154,7 @@ babel [command] [arguments]
 
 
 
-- JSON
+- **JSON**
 
 <a href="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" target="_blank">
   <img src="https://raw.githubusercontent.com/nikosportolos/babel/main/assets/images/list-all-json.png" width="40%" alt="list-all-json">
@@ -211,10 +219,10 @@ babel list clean generated
 ## Contribution
 
 Check the [contribution guide](https://github.com/nikosportolos/babel/tree/main/CONTRIBUTING.md)
-if you want to help with **dart_cmder**.
+if you want to help with **babel**.
 
 
 ## Changelog
 
 Check the [changelog](https://github.com/nikosportolos/babel/tree/main/CHANGELOG.md)
-to learn what's new in **dart_cmder**.
+to learn what's new in **babel**.
