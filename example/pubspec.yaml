@@ -26,7 +26,8 @@ dependency_overrides:
 
 dev_dependencies:
   flutter_lints: ^2.0.3
-  babel: ^0.0.1-prerelease
+  babel:
+    path: ../
 
 flutter:
   uses-material-design: true
