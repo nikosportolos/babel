@@ -5,6 +5,8 @@ import 'package:ansix/ansix.dart';
 import 'package:babel/src/babel.dart';
 import 'package:babel/src/exceptions/exceptions.dart';
 import 'package:babel/src/reports/mode.dart';
+import 'package:babel/src/reports/unused_translations.dart';
+import 'package:babel/src/utils/loader.dart';
 import 'package:path/path.dart';
 import 'package:test/test.dart';
 import 'package:trace/trace.dart';
@@ -72,6 +74,44 @@ void main() {
       }
     });
   });
+
+  group('clean unused translations', () {
+    final MockBabel babel = MockBabel(exampleProject);
+
+    test('--no-dry-run', () async {
+      await babel.cleanUnusedTranslations(false);
+      expect(babel.deletedTranslations, isTrue);
+    });
+
+    test('dry-run', () async {
+      expect(
+        () async => await babel.cleanUnusedTranslations(true),
+        throwsA(isA<UnusedTranslationsFound>()),
+      );
+      expect(babel.deletedTranslations, isFalse);
+    });
+  });
+}
+
+class MockBabel extends Babel {
+  factory MockBabel.fromPath(final String? path) {
+    return MockBabel(Loader.loadProjectFromPath(path));
+  }
+
+  MockBabel(super.project);
+
+  bool deletedTranslations = false;
+
+  @override
+  Future<void> cleanUnusedTranslations(final bool dryRun) async {
+    deletedTranslations = false;
+    return await super.cleanUnusedTranslations(dryRun);
+  }
+
+  @override
+  void deleteUnusedTranslations(final UnusedTranslationsReport report) {
+    deletedTranslations = true;
+  }
 }
 
 extension on String {

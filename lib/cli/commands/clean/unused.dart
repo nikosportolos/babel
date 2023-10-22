@@ -10,8 +10,21 @@ class CleanUnusedTranslationsCommand extends BaseCommand {
   @override
   String get description => 'Deletes all unused translation keys.';
 
+  CleanUnusedTranslationsCommand() {
+    dryRunArg.add(argParser);
+  }
+
+  static const FlagArgument dryRunArg = FlagArgument(
+    name: 'dry-run',
+    help: 'If set to true, babel will return with error '
+        'when unused translations are found in a project.',
+    defaultsTo: false,
+    negatable: false,
+  );
+
   @override
   Future<void> execute() async {
-    await Babel.fromPath(path).cleanUnusedTranslations();
+    final bool dryRun = dryRunArg.parse(argResults);
+    await Babel.fromPath(path).cleanUnusedTranslations(dryRun);
   }
 }
