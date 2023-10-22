@@ -8,18 +8,19 @@ import 'package:trace/trace.dart';
 
 class BabelAnalyzer {
   Future<Set<String>> getReferences(
-    final List<String> filesPaths, {
+    final List<String> filepaths, {
     final String? searchClass,
   }) async {
+    final List<String> paths = filepaths.toSet().toList(growable: false);
     final AnalysisContextCollection contextCollection =
         AnalysisContextCollection(
-      includedPaths: filesPaths,
+      includedPaths: paths,
     );
 
     final Set<String> references = <String>{};
 
     // For each resolved file visit the ast and find references of L10N getters
-    for (final String filePath in filesPaths) {
+    for (final String filePath in paths) {
       references.addAll(
         await getReferencesForPath(
           filePath,
