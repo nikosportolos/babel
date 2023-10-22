@@ -6,6 +6,12 @@
   },
   "thisIsAnExampleApp":"This is an example app",
   "demoMessage": "This is a demo message",
+  "@btnOk": {
+    "description": "Ok button"
+  },
   "btnOk": "Ok",
+  "@btnSave": {
+    "description": "Save button"
+  },
   "btnSave": "Save"
 }

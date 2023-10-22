@@ -73,9 +73,27 @@ void main() {
                 description: 'Application name',
               ),
             ),
-            const TranslationKey(key: 'btnCancel', value: 'Cancel'),
-            const TranslationKey(key: 'btnOk', value: 'Ok'),
-            const TranslationKey(key: 'btnSave', value: 'Save'),
+            const TranslationKey(
+              key: 'btnCancel',
+              value: 'Cancel',
+              attributes: TranslationKeyAttributes(
+                description: 'Cancel button',
+              ),
+            ),
+            const TranslationKey(
+              key: 'btnOk',
+              value: 'Ok',
+              attributes: TranslationKeyAttributes(
+                description: 'Ok button',
+              ),
+            ),
+            const TranslationKey(
+              key: 'btnSave',
+              value: 'Save',
+              attributes: TranslationKeyAttributes(
+                description: 'Save button',
+              ),
+            ),
             const TranslationKey(
                 key: 'demoMessage', value: 'This is a demo message'),
           ],
@@ -100,8 +118,20 @@ void main() {
                 description: 'Application name',
               ),
             ),
-            const TranslationKey(key: 'btnOk', value: 'Ok'),
-            const TranslationKey(key: 'btnSave', value: 'Save'),
+            const TranslationKey(
+              key: 'btnOk',
+              value: 'Ok',
+              attributes: TranslationKeyAttributes(
+                description: 'Ok button',
+              ),
+            ),
+            const TranslationKey(
+              key: 'btnSave',
+              value: 'Save',
+              attributes: TranslationKeyAttributes(
+                description: 'Save button',
+              ),
+            ),
             const TranslationKey(
                 key: 'demoMessage', value: 'This is a demo message'),
             const TranslationKey(

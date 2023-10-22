@@ -13,8 +13,8 @@ void main() {
     });
 
     test('!hasAttributes', () {
-      final TranslationKey key = exampleProject.translations.first.keys
-          .where((TranslationKey k) => k.key == 'btnOk')
+      final TranslationKey key = exampleProject.translations.last.keys
+          .where((TranslationKey k) => k.key == 'thisIsAnExampleApp')
           .first;
       expect(key.hasAttributes, false);
     });
