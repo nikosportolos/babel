@@ -5,7 +5,16 @@
     "description": "Application name"
   },
   "demoMessage": "This is a demo message",
+  "@btnSave": {
+    "description": "Save button"
+  },
   "btnSave": "Save",
+  "@btnOk": {
+    "description": "Ok button"
+  },
   "btnOk": "Ok",
+  "@btnCancel": {
+    "description": "Cancel button"
+  },
   "btnCancel": "Cancel"
 }

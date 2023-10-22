@@ -85,7 +85,7 @@ class S {
     return Intl.message(
       'Ok',
       name: 'btnOk',
-      desc: '',
+      desc: 'Ok button',
       args: [],
     );
   }
@@ -95,7 +95,7 @@ class S {
     return Intl.message(
       'Save',
       name: 'btnSave',
-      desc: '',
+      desc: 'Save button',
       args: [],
     );
   }

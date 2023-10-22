@@ -134,6 +134,9 @@ class Babel {
       final File file = File(translationFile.path);
       final Map<String, dynamic> json = jsonDecode(file.readAsStringSync());
       json.removeWhere((String key, dynamic value) {
+        if (key.startsWith('@')) {
+          return report.keys.contains(key.substring(1));
+        }
         return report.keys.contains(key);
       });
       file.writeAsStringSync(const JsonEncoder.withIndent(' ').convert(json));
