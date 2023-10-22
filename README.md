@@ -27,8 +27,8 @@
     * [Unused](#unused)
   * [Sort](#sort)
   * [Clean](#clean)
-    * [Unused](#clean)
-    * [Generated](#generated)
+    * [Unused translations](#unused-translations)
+    * [Generated files](#generated-files)
 * [Contribution](#contribution)
 * [Changelog](#changelog)
 
@@ -199,20 +199,30 @@ babel list sort
 
 ### Clean
 
-#### Unused
+#### Unused translations
 
 Deletes all unused translation keys.
 
+
+| Argument    | Help                                                                                          | Defaults to |
+|-------------|-----------------------------------------------------------------------------------------------|-------------|
+| `--dry-run` | If set to true, babel will return with error when unused translations are found in a project. | `false`     |
+
+
 ```shell
-babel list clean unused
+babel list clean unused-translations
+
+# You can use the `dry-run` flag argument in your CI/CD workflows 
+# to ensure no unused translation keys exist in your Flutter project.
+babel list clean unused-translations --dry-run
 ```
 
-#### Generated
+#### Generated files
 
 Deletes all generated localization files.
 
 ```shell
-babel list clean generated
+babel list clean generated-files
 ```
 
 

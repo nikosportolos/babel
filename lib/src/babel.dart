@@ -3,16 +3,19 @@ import 'dart:io' show Directory, File;
 
 import 'package:ansix/ansix.dart';
 import 'package:babel/src/core/theme.dart';
+import 'package:babel/src/exceptions/exceptions.dart';
 import 'package:babel/src/models/models.dart';
 import 'package:babel/src/reports/reports.dart';
 import 'package:babel/src/utils/utils.dart';
 import 'package:collection/collection.dart';
 import 'package:dart_cmder/dart_cmder.dart';
+import 'package:meta/meta.dart' show visibleForTesting;
 import 'package:path/path.dart';
 import 'package:trace/trace.dart';
 
 class Babel {
-  Babel._({required this.project});
+  @visibleForTesting
+  Babel(this.project);
 
   final Project project;
 
@@ -20,8 +23,8 @@ class Babel {
   factory Babel.fromPath(
     final String? path,
   ) {
-    return Babel._(
-      project: Loader.loadProjectFromPath(path),
+    return Babel(
+      Loader.loadProjectFromPath(path),
     );
   }
 
@@ -101,7 +104,7 @@ class Babel {
     Trace.success('\nSuccessfully deleted all generated localization files!');
   }
 
-  Future<void> cleanUnusedTranslations() async {
+  Future<void> cleanUnusedTranslations(final bool dryRun) async {
     Trace.info('\nClearing unused translation keys');
 
     final UnusedTranslationsReport report = UnusedTranslationsReport(project);
@@ -116,15 +119,25 @@ class Babel {
       Trace.printListItem(key, level: 1);
     }
 
+    if (dryRun) {
+      throw UnusedTranslationsFound(report.keys.length);
+    }
+
+    deleteUnusedTranslations(report);
+
+    Trace.success('\nSuccessfully deleted all unused translation keys!');
+  }
+
+  @visibleForTesting
+  void deleteUnusedTranslations(final UnusedTranslationsReport report) {
     for (final TranslationFile translationFile in project.translations) {
       final File file = File(translationFile.path);
       final Map<String, dynamic> json = jsonDecode(file.readAsStringSync());
-      json.removeWhere(
-          (String key, dynamic value) => report.keys.contains(key));
+      json.removeWhere((String key, dynamic value) {
+        return report.keys.contains(key);
+      });
       file.writeAsStringSync(const JsonEncoder.withIndent(' ').convert(json));
     }
-
-    Trace.success('\nSuccessfully deleted all unused translation keys!');
   }
 
   Future<void> cleanGeneratedFiles() async {
