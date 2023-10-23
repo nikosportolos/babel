@@ -31,8 +31,8 @@ class UnusedTranslationsReport extends Report {
             .toList(growable: false);
 
     final String filesCount = '${dartFiles.length}'
-        .styled(const AnsiTextStyle(bold: true), BabelColors.dark);
-    Trace.printListItem('Searching in $filesCount dart files');
+        .styled(const AnsiTextStyle(bold: true), BabelColors.primary);
+    Trace.printListItem('Project contains $filesCount dart files');
 
     final List<String> distinctKeys = project.distinctKeys;
     final Set<String> unusedKeys = Set<String>.from(distinctKeys);
@@ -53,24 +53,19 @@ class UnusedTranslationsReport extends Report {
         .toList(growable: false)
         .length
         .toString()
-        .styled(const AnsiTextStyle(bold: true), BabelColors.dark);
+        .styled(const AnsiTextStyle(bold: true), BabelColors.primary);
     Trace.printListItem('Found references in $referenceFilesCount dart files');
 
     if (filesPaths.isNotEmpty) {
-      Trace.printListItem('Analyzing dart files to find usage');
+      Trace.printListItem(
+          'Analyzing dart files to discover translation keys usage');
       final Set<String> references = await BabelAnalyzer().getReferences(
         filesPaths,
         searchClass: project.options.outputClass,
+        rootDir: project.root.path,
       );
 
       if (references.isNotEmpty) {
-        Trace.printListItem(
-            'Found ${references.length.toString().styled(
-                  const AnsiTextStyle(bold: true),
-                  BabelColors.dark,
-                )} references',
-            level: 1);
-
         unusedKeys.removeAll(<String>[
           for (final String key in unusedKeys)
             if (references.contains(key)) key
@@ -85,7 +80,7 @@ class UnusedTranslationsReport extends Report {
 
     if (unusedKeys.isNotEmpty) {
       final String unusedKeysCount = '${unusedKeys.length}'
-          .styled(const AnsiTextStyle(bold: true), BabelColors.dark);
+          .styled(const AnsiTextStyle(bold: true), BabelColors.primary);
       Trace.printListItem(
         'Found $unusedKeysCount unused translation keys',
         logLevel: LogLevel.warning,
