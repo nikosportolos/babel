@@ -101,7 +101,8 @@ class Babel {
       );
     }
 
-    Trace.success('\nSuccessfully deleted all generated localization files!');
+    Trace.success(
+        '\nSuccessfully sorted all translation keys in ${project.translations.length.toString().bold()} localization files');
   }
 
   Future<void> cleanUnusedTranslations(final bool dryRun) async {
