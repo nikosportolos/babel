@@ -275,11 +275,12 @@ const String unusedJsonMock = r'''
   ─ Name: [1mUnused Translations[22m
   ─ Mode: [1mJSON[22m
 
-> Searching in [38;5;24m[1m5[22m[0m dart files
-> Found references in [38;5;24m[1m2[22m[0m dart files
-> Analyzing dart files to find usage
-  ─ Found [38;5;24m[1m3[22m[0m references
-> Found [38;5;24m[1m3[22m[0m unused translation keys
+> Project contains [38;5;32m[1m5[22m[0m dart files
+> Found references in [38;5;32m[1m2[22m[0m dart files
+> Analyzing dart files to discover translation keys usage
+  ─ [38;5;248m[3m/lib/button.dart[23m[0m
+  ─ [38;5;248m[3m/lib/home.dart[23m[0m
+> Found [38;5;32m[1m3[22m[0m unused translation keys
 [38;5;15m┌───────────────────────┐[0m
 [38;5;15m│[0m  [38;5;110mUnused Translations  [0m[38;5;15m│[0m
 [38;5;15m└───────────────────────┘[0m
@@ -311,11 +312,12 @@ const String unusedTreeMock = r'''
   ─ Name: [1mUnused Translations[22m
   ─ Mode: [1mTree View[22m
 
-> Searching in [38;5;24m[1m5[22m[0m dart files
-> Found references in [38;5;24m[1m2[22m[0m dart files
-> Analyzing dart files to find usage
-  ─ Found [38;5;24m[1m3[22m[0m references
-> Found [38;5;24m[1m3[22m[0m unused translation keys
+> Project contains [38;5;32m[1m5[22m[0m dart files
+> Found references in [38;5;32m[1m2[22m[0m dart files
+> Analyzing dart files to discover translation keys usage
+  ─ [38;5;248m[3m/lib/button.dart[23m[0m
+  ─ [38;5;248m[3m/lib/home.dart[23m[0m
+> Found [38;5;32m[1m3[22m[0m unused translation keys
 [38;5;31m┌───────────────────────┐[0m
 [38;5;31m│[0m  [1m[38;5;188mUnused Translations[22m  [0m[38;5;31m│[0m
 [38;5;31m└──────────┬────────────┘[0m
@@ -352,11 +354,12 @@ const String unusedGridMock = r'''
   ─ Name: [1mUnused Translations[22m
   ─ Mode: [1mData Grid[22m
 
-> Searching in [38;5;24m[1m5[22m[0m dart files
-> Found references in [38;5;24m[1m2[22m[0m dart files
-> Analyzing dart files to find usage
-  ─ Found [38;5;24m[1m3[22m[0m references
-> Found [38;5;24m[1m3[22m[0m unused translation keys
+> Project contains [38;5;32m[1m5[22m[0m dart files
+> Found references in [38;5;32m[1m2[22m[0m dart files
+> Analyzing dart files to discover translation keys usage
+  ─ [38;5;248m[3m/lib/button.dart[23m[0m
+  ─ [38;5;248m[3m/lib/home.dart[23m[0m
+> Found [38;5;32m[1m3[22m[0m unused translation keys
 [0m[38;5;15m╭─────┬───────────────────┬──────────────────────────┬──────────────────────────╮[0m
 [0m[38;5;15m│[0m[48;5;24m  [1m[22m  [48;5;24m [0m[38;5;15m│[0m[48;5;24m       [0m[48;5;24m  [1m[22m  [48;5;24m        [0m[38;5;15m│[0m[48;5;24m           [0m[48;5;24m  [1m[22m  [48;5;24m           [0m[38;5;15m│[0m[48;5;24m           [0m[48;5;24m  [1m[22m  [48;5;24m           [0m[38;5;15m│[0m
 [0m[38;5;15m│[0m[48;5;24m  [1m#[22m  [0m[38;5;15m│[0m[48;5;24m  [1mTranslation key[22m  [0m[38;5;15m│[0m[48;5;24m          [0m[48;5;24m  [1mel[22m  [0m[48;5;24m          [0m[38;5;15m│[0m[48;5;24m          [0m[48;5;24m  [1men[22m  [0m[48;5;24m          [0m[38;5;15m│[0m

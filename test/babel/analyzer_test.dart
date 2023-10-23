@@ -17,6 +17,7 @@ void main() {
       final Set<String> references = await analyzer.getReferences(
         filePaths,
         searchClass: 'S',
+        rootDir: exampleProjectPath,
       );
       expect(references.length, 3);
     });
