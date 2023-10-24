@@ -1,3 +1,29 @@
+## v0.0.4-prerelease
+
+### Changes/Improvements
+
+- Add --dry-run flag argument on clean unused-translations command ([#27](https://github.com/nikosportolos/babel/issues/27))
+- Show progress while analyzing dart files ([#28](https://github.com/nikosportolos/babel/issues/28))
+
+### Bug fixes
+
+- Fix clean unused translations ([#32](https://github.com/nikosportolos/babel/issues/32))
+- BabelAnalyzer: Fix getReferences not having a distinct list of filepaths ([#34](https://github.com/nikosportolos/babel/issues/34))
+- Fix success message on sort command ([#39](https://github.com/nikosportolos/babel/issues/39))
+
+### Dependencies
+
+- Bump lints from 2.1.1 to 3.0.0 ([#29](https://github.com/nikosportolos/babel/pull/29))
+- Bump ansix from 0.3.0 to 0.3.1 ([#41](https://github.com/nikosportolos/babel/issues/41))
+- Bump trace from 0.0.5-prerelease to 0.0.6-prerelease ([#42](https://github.com/nikosportolos/babel/issues/42))
+- Bump dart_cmder from v0.0.4-prerelease to v0.0.5-prerelease ([#43](https://github.com/nikosportolos/babel/issues/43))
+
+### CI/CD
+
+- Bump actions/checkout from 4.1.0 to 4.1.1 ([#36](https://github.com/nikosportolos/babel/pull/36))
+- Bump nikosportolos/dart_package from 0.2.0 to 0.2.1 ([#37](https://github.com/nikosportolos/babel/pull/37))
+
+
 ## v0.0.3-prerelease
 
 ### Documentation
