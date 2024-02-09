@@ -21,8 +21,9 @@ dependencies:
   trace: ^0.0.2-prerelease
 
 dependency_overrides:
-  meta: 1.9.1
   collection: 1.17.2
+  meta: 1.9.1
+  path: 1.8.3
 
 dev_dependencies:
   flutter_lints: ^2.0.3
