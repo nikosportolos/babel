@@ -14,22 +14,22 @@ executables:
   babel:
 
 dependencies:
-  analyzer: ^6.3.0
-  ansix: ^0.3.1
+  analyzer: 6.3.0
+  ansix: 0.3.1
   dart_cmder: ^0.0.5-prerelease
   args: ^2.4.2
   trace: ^0.0.6-prerelease
   collection: ^1.18.0
   data_class_plugin: ^1.1.0
-  path: ^1.8.3
+  path: 1.8.3
   yaml: ^3.1.2
-  meta: ^1.11.0
+  meta: 1.11.0
 
 dev_dependencies:
   lints: ^3.0.0
-  mocktail: ^1.0.1
+  mocktail: 1.0.1
   tachyon: ^0.3.0
-  test: ^1.24.9
+  test: 1.24.9
 
 screenshots:
   - description: 'Babel: Translations management for Flutter apps'
