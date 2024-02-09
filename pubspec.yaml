@@ -14,7 +14,7 @@ executables:
   babel:
 
 dependencies:
-  analyzer: 6.3.0
+  analyzer: 6.4.1
   ansix: 0.3.1
   dart_cmder: ^0.0.5-prerelease
   args: ^2.4.2
