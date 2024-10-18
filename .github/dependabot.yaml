@@ -6,9 +6,22 @@ updates:
     directory: "."
     schedule:
       interval: "weekly"
+      time: "00:00"
+      day: "monday"
+      timezone: "Europe/Athens"
+    assignees:
+      - "nikosportolos"
+    reviewers:
+      - "nikosportolos"
 
   - package-ecosystem: "pub"
     directory: "."
     schedule:
       interval: "weekly"
-    versioning-strategy: increase
+      time: "00:00"
+      day: "monday"
+      timezone: "Europe/Athens"
+    assignees:
+      - "nikosportolos"
+    reviewers:
+      - "nikosportolos"
