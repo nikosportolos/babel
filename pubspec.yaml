@@ -1,6 +1,6 @@
 name: babel
 description: Babel is a CLI tool for translations management for Flutter apps.
-version: 0.0.4-prerelease
+version: 0.0.5-prerelease
 
 homepage: https://github.com/nikosportolos/babel
 repository: https://github.com/nikosportolos/babel

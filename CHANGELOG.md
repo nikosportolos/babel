@@ -1,3 +1,8 @@
+## v0.0.5-prerelease
+
+- Bump Dart SDK to `>=3.5.0`.
+- Update dependencies.
+
 ## v0.0.4-prerelease
 
 ### Changes/Improvements
