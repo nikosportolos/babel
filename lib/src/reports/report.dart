@@ -188,7 +188,10 @@ abstract class Report {
       );
     } catch (e, st) {
       Trace.error(
-          'Failed printing $exportFilename to ${exportDirectory!.path}', e, st);
+        'Failed printing $exportFilename to ${exportDirectory!.path}',
+        error: e,
+        stackTrace: st,
+      );
     }
   }
 }

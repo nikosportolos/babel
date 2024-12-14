@@ -62,7 +62,11 @@ class BabelAnalyzer {
 
       return l10nReferencesVisitor.l10nUsedKeys;
     } catch (e, st) {
-      Trace.error('Failed to analyze file "$filePath"', e, st);
+      Trace.error(
+        'Failed to analyze file "$filePath"',
+        error: e,
+        stackTrace: st,
+      );
       return <String>{};
     }
   }
