@@ -15,7 +15,7 @@ executables:
 
 dependencies:
   analyzer: ^6.8.0
-  ansix: 0.3.3
+  ansix: ^0.3.4
   dart_cmder: ^0.0.5-prerelease
   args: ^2.4.2
   trace: ^0.0.6-prerelease
