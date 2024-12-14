@@ -18,7 +18,7 @@ dependencies:
   ansix: ^0.3.4
   dart_cmder: ^0.0.5-prerelease
   args: ^2.4.2
-  trace: ^0.0.6-prerelease
+  trace: ^0.0.7-prerelease
   collection: ^1.18.0
   data_class_plugin: ^1.1.0
   path: ^1.9.1
