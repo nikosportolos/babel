@@ -16,8 +16,9 @@ import '../mocks/mocks.dart';
 
 void main() {
   final StringBuffer buffer = StringBuffer();
-  final StreamSubscription<LogEntry> subscription =
-      Trace.stream.listen((LogEntry entry) => buffer.writeln(entry.message));
+  final StreamSubscription<LogEntry> subscription = Trace.stream.listen(
+    (LogEntry entry) => buffer.writeln(entry.message),
+  );
 
   tearDown(() => buffer.clear());
 
@@ -57,7 +58,8 @@ void main() {
               expect(buffer.toString().removeExportPath(reportMode), mock);
 
               final String exportFilePath = normalize(
-                  join(exportPath, filenames[reportMode]![displayMode]!));
+                join(exportPath, filenames[reportMode]![displayMode]!),
+              );
               final File file = File(exportFilePath);
               final String content = file.readAsStringSync();
 
@@ -94,7 +96,7 @@ void main() {
 }
 
 class MockBabel extends Babel {
-  factory MockBabel.fromPath(final String? path) {
+  factory MockBabel.fromPath(String? path) {
     return MockBabel(Loader.loadProjectFromPath(path));
   }
 
@@ -103,13 +105,13 @@ class MockBabel extends Babel {
   bool deletedTranslations = false;
 
   @override
-  Future<void> cleanUnusedTranslations(final bool dryRun) async {
+  Future<void> cleanUnusedTranslations(bool dryRun) async {
     deletedTranslations = false;
     return await super.cleanUnusedTranslations(dryRun);
   }
 
   @override
-  void deleteUnusedTranslations(final UnusedTranslationsReport report) {
+  void deleteUnusedTranslations(UnusedTranslationsReport report) {
     deletedTranslations = true;
   }
 }
@@ -122,14 +124,15 @@ extension on String {
     );
   }
 
-  String removeExportPath(final ReportMode reportMode) {
+  String removeExportPath(ReportMode reportMode) {
     if (Platform.isWindows) {
       return this;
     }
     switch (reportMode) {
       case ReportMode.all:
         final RegExp allRegex = RegExp(
-            '(> Writing [1mAll Translations[22m report to [/a-zA-Z]*)');
+          '(> Writing [1mAll Translations[22m report to [/a-zA-Z]*)',
+        );
         if (allRegex.hasMatch(this)) {
           return replaceAll(
             allRegex,
@@ -140,7 +143,8 @@ extension on String {
 
       case ReportMode.missing:
         final RegExp missingRegex = RegExp(
-            '(> Writing [1mMissing Translations[22m report to [/a-zA-Z]*)');
+          '(> Writing [1mMissing Translations[22m report to [/a-zA-Z]*)',
+        );
         if (missingRegex.hasMatch(this)) {
           return replaceAll(
             missingRegex,
@@ -151,7 +155,8 @@ extension on String {
 
       case ReportMode.unused:
         final RegExp unusedRegex = RegExp(
-            '(> Writing [1mUnused Translations[22m report to [/a-zA-Z]*)');
+          '(> Writing [1mUnused Translations[22m report to [/a-zA-Z]*)',
+        );
         if (unusedRegex.hasMatch(this)) {
           return replaceAll(
             unusedRegex,

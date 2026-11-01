@@ -3,60 +3,60 @@ import 'package:babel/src/reports/report.dart'
 
 const Map<ReportMode, Map<ReportDisplayMode, String>> mocks =
     <ReportMode, Map<ReportDisplayMode, String>>{
-  ReportMode.all: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: allGridMock,
-    ReportDisplayMode.tree: allTreeMock,
-    ReportDisplayMode.json: allJsonMock,
-  },
-  ReportMode.missing: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: missingGridMock,
-    ReportDisplayMode.tree: missingTreeMock,
-    ReportDisplayMode.json: missingJsonMock,
-  },
-  ReportMode.unused: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: unusedGridMock,
-    ReportDisplayMode.tree: unusedTreeMock,
-    ReportDisplayMode.json: unusedJsonMock,
-  },
-};
+      ReportMode.all: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: allGridMock,
+        ReportDisplayMode.tree: allTreeMock,
+        ReportDisplayMode.json: allJsonMock,
+      },
+      ReportMode.missing: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: missingGridMock,
+        ReportDisplayMode.tree: missingTreeMock,
+        ReportDisplayMode.json: missingJsonMock,
+      },
+      ReportMode.unused: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: unusedGridMock,
+        ReportDisplayMode.tree: unusedTreeMock,
+        ReportDisplayMode.json: unusedJsonMock,
+      },
+    };
 
 const Map<ReportMode, Map<ReportDisplayMode, String>> filenames =
     <ReportMode, Map<ReportDisplayMode, String>>{
-  ReportMode.all: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: 'babel-all-grid.txt',
-    ReportDisplayMode.tree: 'babel-all-tree.txt',
-    ReportDisplayMode.json: 'babel-all-json.txt',
-  },
-  ReportMode.missing: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: 'babel-missing-grid.txt',
-    ReportDisplayMode.tree: 'babel-missing-tree.txt',
-    ReportDisplayMode.json: 'babel-missing-json.txt',
-  },
-  ReportMode.unused: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: 'babel-unused-grid.txt',
-    ReportDisplayMode.tree: 'babel-unused-tree.txt',
-    ReportDisplayMode.json: 'babel-unused-json.txt',
-  },
-};
+      ReportMode.all: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: 'babel-all-grid.txt',
+        ReportDisplayMode.tree: 'babel-all-tree.txt',
+        ReportDisplayMode.json: 'babel-all-json.txt',
+      },
+      ReportMode.missing: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: 'babel-missing-grid.txt',
+        ReportDisplayMode.tree: 'babel-missing-tree.txt',
+        ReportDisplayMode.json: 'babel-missing-json.txt',
+      },
+      ReportMode.unused: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: 'babel-unused-grid.txt',
+        ReportDisplayMode.tree: 'babel-unused-tree.txt',
+        ReportDisplayMode.json: 'babel-unused-json.txt',
+      },
+    };
 
 const Map<ReportMode, Map<ReportDisplayMode, String>> exports =
     <ReportMode, Map<ReportDisplayMode, String>>{
-  ReportMode.all: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: allGridExport,
-    ReportDisplayMode.tree: allTreeExport,
-    ReportDisplayMode.json: allJsonExport,
-  },
-  ReportMode.missing: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: missingGridExport,
-    ReportDisplayMode.tree: missingTreeExport,
-    ReportDisplayMode.json: missingJsonExport,
-  },
-  ReportMode.unused: <ReportDisplayMode, String>{
-    ReportDisplayMode.grid: unusedGridExport,
-    ReportDisplayMode.tree: unusedTreeExport,
-    ReportDisplayMode.json: unusedJsonExport,
-  },
-};
+      ReportMode.all: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: allGridExport,
+        ReportDisplayMode.tree: allTreeExport,
+        ReportDisplayMode.json: allJsonExport,
+      },
+      ReportMode.missing: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: missingGridExport,
+        ReportDisplayMode.tree: missingTreeExport,
+        ReportDisplayMode.json: missingJsonExport,
+      },
+      ReportMode.unused: <ReportDisplayMode, String>{
+        ReportDisplayMode.grid: unusedGridExport,
+        ReportDisplayMode.tree: unusedTreeExport,
+        ReportDisplayMode.json: unusedJsonExport,
+      },
+    };
 
 const String allJsonMock =
     r'''> Localization options file found in [1mexample\l10n.yaml[22m

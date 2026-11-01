@@ -20,25 +20,25 @@ class Babel {
   final Project project;
 
   /// Creates a new instance of [Project] from the given [path].
-  factory Babel.fromPath(
-    final String? path,
-  ) {
-    return Babel(
-      Loader.loadProjectFromPath(path),
-    );
+  factory Babel.fromPath(String? path) {
+    return Babel(Loader.loadProjectFromPath(path));
   }
 
   void printInfo() {
-    final String l10nYaml =
-        normalize(join(basename(project.root.path), Finder.l10nYaml));
+    final String l10nYaml = normalize(
+      join(basename(project.root.path), Finder.l10nYaml),
+    );
     Trace.printListItem(
-        'Localization options file found in ${l10nYaml.bold()}');
+      'Localization options file found in ${l10nYaml.bold()}',
+    );
 
-    final String arbDir =
-        normalize(join(basename(project.root.path), project.options.arbDir!));
+    final String arbDir = normalize(
+      join(basename(project.root.path), project.options.arbDir!),
+    );
     Trace.printListItem(
-        'Found ${project.translations.length.toString().bold()} '
-        'arb files in ${arbDir.bold()}:');
+      'Found ${project.translations.length.toString().bold()} '
+      'arb files in ${arbDir.bold()}:',
+    );
 
     for (final TranslationFile f in project.translations) {
       Trace.printListItem(basename(f.path), level: 1);
@@ -46,19 +46,28 @@ class Babel {
   }
 
   Future<void> printReport({
-    required final ReportDisplayMode displayMode,
-    required final ReportMode reportMode,
-    final Directory? exportDirectory,
+    required ReportDisplayMode displayMode,
+    required ReportMode reportMode,
+    Directory? exportDirectory,
   }) async {
     printInfo();
 
     final Report report = switch (reportMode) {
-      ReportMode.all => AllTranslationsReport(project,
-          mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.missing => MissingTranslationsReport(project,
-          mode: displayMode, exportDirectory: exportDirectory),
-      ReportMode.unused => UnusedTranslationsReport(project,
-          mode: displayMode, exportDirectory: exportDirectory),
+      ReportMode.all => AllTranslationsReport(
+        project,
+        mode: displayMode,
+        exportDirectory: exportDirectory,
+      ),
+      ReportMode.missing => MissingTranslationsReport(
+        project,
+        mode: displayMode,
+        exportDirectory: exportDirectory,
+      ),
+      ReportMode.unused => UnusedTranslationsReport(
+        project,
+        mode: displayMode,
+        exportDirectory: exportDirectory,
+      ),
     };
 
     await report.generateAndPrint();
@@ -88,24 +97,23 @@ class Babel {
         });
       }
 
-      File(translationFile.path).writeAsStringSync(
-        const JsonEncoder.withIndent('  ').convert(json),
-      );
+      File(
+        translationFile.path,
+      ).writeAsStringSync(const JsonEncoder.withIndent('  ').convert(json));
 
       Trace.printListItem(
         basename(translationFile.path).bold(),
         level: 1,
-        map: <int, ListItemTheme>{
-          1: BabelTheme.successListItemTheme,
-        },
+        map: <int, ListItemTheme>{1: BabelTheme.successListItemTheme},
       );
     }
 
     Trace.success(
-        '\nSuccessfully sorted all translation keys in ${project.translations.length.toString().bold()} localization files');
+      '\nSuccessfully sorted all translation keys in ${project.translations.length.toString().bold()} localization files',
+    );
   }
 
-  Future<void> cleanUnusedTranslations(final bool dryRun) async {
+  Future<void> cleanUnusedTranslations(bool dryRun) async {
     Trace.info('\nClearing unused translation keys');
 
     final UnusedTranslationsReport report = UnusedTranslationsReport(project);
@@ -130,7 +138,7 @@ class Babel {
   }
 
   @visibleForTesting
-  void deleteUnusedTranslations(final UnusedTranslationsReport report) {
+  void deleteUnusedTranslations(UnusedTranslationsReport report) {
     for (final TranslationFile translationFile in project.translations) {
       final File file = File(translationFile.path);
       final Map<String, dynamic> json = jsonDecode(file.readAsStringSync());
@@ -147,8 +155,11 @@ class Babel {
   Future<void> cleanGeneratedFiles() async {
     Trace.info('\nClearing generated localization files');
 
-    final String flutterGenPath =
-        join(project.root.path, '.dart_tool', 'flutter_gen');
+    final String flutterGenPath = join(
+      project.root.path,
+      '.dart_tool',
+      'flutter_gen',
+    );
     final Directory flutterGenDirectory = Directory(flutterGenPath);
     if (flutterGenDirectory.existsSync()) {
       flutterGenDirectory.deleteSync(recursive: true);

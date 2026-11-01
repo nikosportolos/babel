@@ -9,22 +9,17 @@ import 'package:trace/trace.dart';
 const String babelDescription = 'Translations management for Flutter apps';
 
 class CliRunner extends BaseRunner {
-  CliRunner({
-    super.sink,
-  }) : super(
-          executableName: 'babel',
-          description: babelDescription,
-          $commands: <BaseCommand>[
-            ListCommand(),
-            SortCommand(),
-            CleanCommand(),
-          ],
-          loggerTheme: LoggerTheme(
-            sections: <LogSection>[LogSection.message],
-            colorMap: BabelTheme.logColorMap,
-          ),
-          logo: BabelTheme.logo,
-        ) {
+  CliRunner({super.sink})
+    : super(
+        executableName: 'babel',
+        description: babelDescription,
+        $commands: <BaseCommand>[ListCommand(), SortCommand(), CleanCommand()],
+        loggerTheme: LoggerTheme(
+          sections: <LogSection>[LogSection.message],
+          colorMap: BabelTheme.logColorMap,
+        ),
+        logo: BabelTheme.logo,
+      ) {
     Trace.listItemThemeMap = BabelTheme.listItemThemeMap;
   }
 }

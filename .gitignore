@@ -46,3 +46,5 @@ export
 # https://dart.dev/guides/libraries/private-files#pubspeclock.
 /pubspec.lock
 
+# FVM Version Cache
+.fvm/

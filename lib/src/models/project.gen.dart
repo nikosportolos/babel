@@ -57,12 +57,7 @@ class _$ProjectImpl extends Project {
 
   @override
   int get hashCode {
-    return Object.hashAll(<Object?>[
-      runtimeType,
-      root,
-      options,
-      translations,
-    ]);
+    return Object.hashAll(<Object?>[runtimeType, root, options, translations]);
   }
 
   @override
@@ -88,9 +83,9 @@ abstract interface class _ProjectCopyWithProxy {
   Project translations(List<TranslationFile> newValue);
 
   Project call({
-    final Directory? root,
-    final LocalizationOptions? options,
-    final List<TranslationFile>? translations,
+    Directory? root,
+    LocalizationOptions? options,
+    List<TranslationFile>? translations,
   });
 }
 
@@ -106,8 +101,10 @@ class _ProjectCopyWithProxyImpl implements _ProjectCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   $LocalizationOptionsCopyWithProxyChain<Project> get options =>
-      $LocalizationOptionsCopyWithProxyChain<Project>(_value.options,
-          (LocalizationOptions update) => this(options: update));
+      $LocalizationOptionsCopyWithProxyChain<Project>(
+        _value.options,
+        (LocalizationOptions update) => this(options: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
@@ -117,9 +114,9 @@ class _ProjectCopyWithProxyImpl implements _ProjectCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   Project call({
-    final Directory? root,
-    final LocalizationOptions? options,
-    final List<TranslationFile>? translations,
+    Directory? root,
+    LocalizationOptions? options,
+    List<TranslationFile>? translations,
   }) {
     return _$ProjectImpl(
       root: root ?? _value.root,
@@ -131,8 +128,9 @@ class _ProjectCopyWithProxyImpl implements _ProjectCopyWithProxy {
 
 sealed class $ProjectCopyWithProxyChain<$Result> {
   factory $ProjectCopyWithProxyChain(
-          final Project value, final $Result Function(Project update) chain) =
-      _ProjectCopyWithProxyChainImpl<$Result>;
+    Project value,
+    $Result Function(Project update) chain,
+  ) = _ProjectCopyWithProxyChainImpl<$Result>;
 
   $Result root(Directory newValue);
 
@@ -141,9 +139,9 @@ sealed class $ProjectCopyWithProxyChain<$Result> {
   $Result translations(List<TranslationFile> newValue);
 
   $Result call({
-    final Directory? root,
-    final LocalizationOptions? options,
-    final List<TranslationFile>? translations,
+    Directory? root,
+    LocalizationOptions? options,
+    List<TranslationFile>? translations,
   });
 }
 
@@ -170,15 +168,17 @@ class _ProjectCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final Directory? root,
-    final LocalizationOptions? options,
-    final List<TranslationFile>? translations,
+    Directory? root,
+    LocalizationOptions? options,
+    List<TranslationFile>? translations,
   }) {
-    return _chain(_$ProjectImpl(
-      root: root ?? _value.root,
-      options: options ?? _value.options,
-      translations: translations ?? _value.translations,
-    ));
+    return _chain(
+      _$ProjectImpl(
+        root: root ?? _value.root,
+        options: options ?? _value.options,
+        translations: translations ?? _value.translations,
+      ),
+    );
   }
 }
 

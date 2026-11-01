@@ -15,12 +15,12 @@ class CleanCommand extends BaseCommand {
   String get description => 'Clean translations-related files';
 
   CleanCommand()
-      : super(
-          subCommands: <BaseCommand>[
-            CleanUnusedTranslationsCommand(),
-            CleanGeneratedFilesCommand(),
-          ],
-        );
+    : super(
+        subCommands: <BaseCommand>[
+          CleanUnusedTranslationsCommand(),
+          CleanGeneratedFilesCommand(),
+        ],
+      );
 
   @override
   Future<void> execute() async {}

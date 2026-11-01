@@ -11,7 +11,7 @@ class Loader {
   static const String localeTag = '@@locale';
   static const String attributeTag = '@';
 
-  static Project loadProjectFromPath(final String? path) {
+  static Project loadProjectFromPath(String? path) {
     final Directory root = Finder.findDirectoryFromPath(path);
     final LocalizationOptions options = loadLocalizationOptions(root.path);
 
@@ -27,11 +27,12 @@ class Loader {
     );
   }
 
-  static LocalizationOptions loadLocalizationOptions(final String projectPath) {
+  static LocalizationOptions loadLocalizationOptions(String projectPath) {
     final String yamlPath = join(projectPath, Finder.l10nYaml);
 
-    final LocalizationOptions options =
-        LocalizationOptions.fromFilePath(yamlPath);
+    final LocalizationOptions options = LocalizationOptions.fromFilePath(
+      yamlPath,
+    );
     if (options.arbDir.isNullOrEmpty) {
       throw ArbDirNotFound(yamlPath);
     }
@@ -39,22 +40,20 @@ class Loader {
     return options;
   }
 
-  static List<TranslationFile> loadTranslationsFromPath(
-    final String path,
-  ) {
-    final List<FileSystemEntity> arbFiles = Finder.findArbFiles(
-      path: path,
-      recursive: false,
-    )..sort((FileSystemEntity a, FileSystemEntity b) =>
-        basename(a.path).compareTo(basename(b.path)));
+  static List<TranslationFile> loadTranslationsFromPath(String path) {
+    final List<FileSystemEntity> arbFiles =
+        Finder.findArbFiles(path: path, recursive: false)..sort(
+          (FileSystemEntity a, FileSystemEntity b) =>
+              basename(a.path).compareTo(basename(b.path)),
+        );
 
     return <TranslationFile>[
       for (final FileSystemEntity file in arbFiles) //
-        _parseTranslationFile(file)
+        _parseTranslationFile(file),
     ];
   }
 
-  static TranslationFile _parseTranslationFile(final FileSystemEntity file) {
+  static TranslationFile _parseTranslationFile(FileSystemEntity file) {
     final String content = File(file.path).readAsStringSync();
     final Map<String, dynamic> json = jsonDecode(content);
     final String? locale = json[localeTag];
@@ -94,10 +93,7 @@ class Loader {
         continue;
       }
 
-      keys[key] = keys[key]!.copyWith(
-        key: key,
-        value: entry.value,
-      );
+      keys[key] = keys[key]!.copyWith(key: key, value: entry.value);
     }
 
     return TranslationFile(
@@ -105,11 +101,9 @@ class Loader {
       locale: locale ?? '',
       keys: Set<TranslationKey>.from(
         keys.values.toList(growable: false)
-          ..sort(
-            (TranslationKey a, TranslationKey b) {
-              return a.key.compareTo(b.key);
-            },
-          ),
+          ..sort((TranslationKey a, TranslationKey b) {
+            return a.key.compareTo(b.key);
+          }),
       ),
     );
   }

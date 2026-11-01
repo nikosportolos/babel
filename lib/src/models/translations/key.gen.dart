@@ -52,12 +52,7 @@ class _$TranslationKeyImpl extends TranslationKey {
 
   @override
   int get hashCode {
-    return Object.hashAll(<Object?>[
-      runtimeType,
-      key,
-      value,
-      attributes,
-    ]);
+    return Object.hashAll(<Object?>[runtimeType, key, value, attributes]);
   }
 
   @override
@@ -83,9 +78,9 @@ abstract interface class _TranslationKeyCopyWithProxy {
   $TranslationKeyAttributesCopyWithProxyChain<TranslationKey> get attributes;
 
   TranslationKey call({
-    final String? key,
-    final String? value,
-    final TranslationKeyAttributes? attributes,
+    String? key,
+    String? value,
+    TranslationKeyAttributes? attributes,
   });
 }
 
@@ -106,15 +101,16 @@ class _TranslationKeyCopyWithProxyImpl implements _TranslationKeyCopyWithProxy {
   @override
   $TranslationKeyAttributesCopyWithProxyChain<TranslationKey> get attributes =>
       $TranslationKeyAttributesCopyWithProxyChain<TranslationKey>(
-          _value.attributes,
-          (TranslationKeyAttributes update) => this(attributes: update));
+        _value.attributes,
+        (TranslationKeyAttributes update) => this(attributes: update),
+      );
 
   @pragma('vm:prefer-inline')
   @override
   TranslationKey call({
-    final String? key,
-    final String? value,
-    final TranslationKeyAttributes? attributes,
+    String? key,
+    String? value,
+    TranslationKeyAttributes? attributes,
   }) {
     return _$TranslationKeyImpl(
       key: key ?? _value.key,
@@ -125,9 +121,10 @@ class _TranslationKeyCopyWithProxyImpl implements _TranslationKeyCopyWithProxy {
 }
 
 sealed class $TranslationKeyCopyWithProxyChain<$Result> {
-  factory $TranslationKeyCopyWithProxyChain(final TranslationKey value,
-          final $Result Function(TranslationKey update) chain) =
-      _TranslationKeyCopyWithProxyChainImpl<$Result>;
+  factory $TranslationKeyCopyWithProxyChain(
+    TranslationKey value,
+    $Result Function(TranslationKey update) chain,
+  ) = _TranslationKeyCopyWithProxyChainImpl<$Result>;
 
   $Result key(String newValue);
 
@@ -136,9 +133,9 @@ sealed class $TranslationKeyCopyWithProxyChain<$Result> {
   $Result attributes(TranslationKeyAttributes newValue);
 
   $Result call({
-    final String? key,
-    final String? value,
-    final TranslationKeyAttributes? attributes,
+    String? key,
+    String? value,
+    TranslationKeyAttributes? attributes,
   });
 }
 
@@ -165,15 +162,17 @@ class _TranslationKeyCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final String? key,
-    final String? value,
-    final TranslationKeyAttributes? attributes,
+    String? key,
+    String? value,
+    TranslationKeyAttributes? attributes,
   }) {
-    return _chain(_$TranslationKeyImpl(
-      key: key ?? _value.key,
-      value: value ?? _value.value,
-      attributes: attributes ?? _value.attributes,
-    ));
+    return _chain(
+      _$TranslationKeyImpl(
+        key: key ?? _value.key,
+        value: value ?? _value.value,
+        attributes: attributes ?? _value.attributes,
+      ),
+    );
   }
 }
 

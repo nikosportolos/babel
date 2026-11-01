@@ -11,20 +11,18 @@ void main() {
     group('LocalizationOptions', () {
       test('empty arb dir', () {
         expect(
-          () => Loader.loadLocalizationOptions(join(
-            localizationOptionsMocksPath,
-            'empty_arb_dir',
-          )),
+          () => Loader.loadLocalizationOptions(
+            join(localizationOptionsMocksPath, 'empty_arb_dir'),
+          ),
           throwsA(isA<ArbDirNotFound>()),
         );
       });
 
       test('no l10n.yaml', () {
         expect(
-          () => Loader.loadLocalizationOptions(join(
-            localizationOptionsMocksPath,
-            'no_l10n',
-          )),
+          () => Loader.loadLocalizationOptions(
+            join(localizationOptionsMocksPath, 'no_l10n'),
+          ),
           throwsA(isA<LocalizationOptionsNotFound>()),
         );
       });
@@ -47,10 +45,10 @@ void main() {
 
     group('loadTranslationsFromPath', () {
       final List<TranslationFile> translations =
-          Loader.loadTranslationsFromPath(
-        exampleTranslationsPath,
-      )..sort((TranslationFile a, TranslationFile b) =>
-              a.locale.compareTo(b.locale));
+          Loader.loadTranslationsFromPath(exampleTranslationsPath)..sort(
+            (TranslationFile a, TranslationFile b) =>
+                a.locale.compareTo(b.locale),
+          );
 
       test('2 arb files', () {
         expect(translations.length, 2);
@@ -58,86 +56,82 @@ void main() {
 
       test('el', () {
         expect(translations.first.locale, 'el');
-        expect(translations.first.path,
-            join(exampleTranslationsPath, 'intl_el.arb'));
-
-        final List<TranslationKey> elKeys =
-            translations.first.keys.toList(growable: false);
         expect(
-          elKeys,
-          <TranslationKey>[
-            const TranslationKey(
-              key: 'app_name',
-              value: 'Example App',
-              attributes: TranslationKeyAttributes(
-                description: 'Application name',
-              ),
-            ),
-            const TranslationKey(
-              key: 'btnCancel',
-              value: 'Cancel',
-              attributes: TranslationKeyAttributes(
-                description: 'Cancel button',
-              ),
-            ),
-            const TranslationKey(
-              key: 'btnOk',
-              value: 'Ok',
-              attributes: TranslationKeyAttributes(
-                description: 'Ok button',
-              ),
-            ),
-            const TranslationKey(
-              key: 'btnSave',
-              value: 'Save',
-              attributes: TranslationKeyAttributes(
-                description: 'Save button',
-              ),
-            ),
-            const TranslationKey(
-                key: 'demoMessage', value: 'This is a demo message'),
-          ],
+          translations.first.path,
+          join(exampleTranslationsPath, 'intl_el.arb'),
         );
+
+        final List<TranslationKey> elKeys = translations.first.keys.toList(
+          growable: false,
+        );
+        expect(elKeys, <TranslationKey>[
+          const TranslationKey(
+            key: 'app_name',
+            value: 'Example App',
+            attributes: TranslationKeyAttributes(
+              description: 'Application name',
+            ),
+          ),
+          const TranslationKey(
+            key: 'btnCancel',
+            value: 'Cancel',
+            attributes: TranslationKeyAttributes(description: 'Cancel button'),
+          ),
+          const TranslationKey(
+            key: 'btnOk',
+            value: 'Ok',
+            attributes: TranslationKeyAttributes(description: 'Ok button'),
+          ),
+          const TranslationKey(
+            key: 'btnSave',
+            value: 'Save',
+            attributes: TranslationKeyAttributes(description: 'Save button'),
+          ),
+          const TranslationKey(
+            key: 'demoMessage',
+            value: 'This is a demo message',
+          ),
+        ]);
       });
 
       test('en', () {
-        final List<TranslationKey> enKeys =
-            translations.last.keys.toList(growable: false);
+        final List<TranslationKey> enKeys = translations.last.keys.toList(
+          growable: false,
+        );
         expect(translations.last.locale, 'en');
-        expect(translations.last.path,
-            join(exampleTranslationsPath, 'intl_en.arb'));
+        expect(
+          translations.last.path,
+          join(exampleTranslationsPath, 'intl_en.arb'),
+        );
         expect(enKeys.length, 5);
 
-        expect(
-          enKeys,
-          <TranslationKey>[
-            const TranslationKey(
-              key: 'app_name',
-              value: 'Example App',
-              attributes: TranslationKeyAttributes(
-                description: 'Application name',
-              ),
+        expect(enKeys, <TranslationKey>[
+          const TranslationKey(
+            key: 'app_name',
+            value: 'Example App',
+            attributes: TranslationKeyAttributes(
+              description: 'Application name',
             ),
-            const TranslationKey(
-              key: 'btnOk',
-              value: 'Ok',
-              attributes: TranslationKeyAttributes(
-                description: 'Ok button',
-              ),
-            ),
-            const TranslationKey(
-              key: 'btnSave',
-              value: 'Save',
-              attributes: TranslationKeyAttributes(
-                description: 'Save button',
-              ),
-            ),
-            const TranslationKey(
-                key: 'demoMessage', value: 'This is a demo message'),
-            const TranslationKey(
-                key: 'thisIsAnExampleApp', value: 'This is an example app'),
-          ],
-        );
+          ),
+          const TranslationKey(
+            key: 'btnOk',
+            value: 'Ok',
+            attributes: TranslationKeyAttributes(description: 'Ok button'),
+          ),
+          const TranslationKey(
+            key: 'btnSave',
+            value: 'Save',
+            attributes: TranslationKeyAttributes(description: 'Save button'),
+          ),
+          const TranslationKey(
+            key: 'demoMessage',
+            value: 'This is a demo message',
+          ),
+          const TranslationKey(
+            key: 'thisIsAnExampleApp',
+            value: 'This is an example app',
+          ),
+        ]);
       });
     });
 
@@ -151,10 +145,9 @@ void main() {
 
       test('invalid arb dir', () {
         expect(
-          () => Loader.loadProjectFromPath(join(
-            localizationOptionsMocksPath,
-            'invalid_arb_dir',
-          )),
+          () => Loader.loadProjectFromPath(
+            join(localizationOptionsMocksPath, 'invalid_arb_dir'),
+          ),
           throwsA(isA<InvalidArbDir>()),
         );
       });

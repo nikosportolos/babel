@@ -12,10 +12,13 @@ void main() {
     ]) {
       test(command.runtimeType.toString(), () {
         expect(
-            command.arguments.contains(ListCommandMixin.reportDisplayModeArg),
-            true);
-        expect(command.arguments.contains(ListCommandMixin.exportDirectoryArg),
-            true);
+          command.arguments.contains(ListCommandMixin.reportDisplayModeArg),
+          true,
+        );
+        expect(
+          command.arguments.contains(ListCommandMixin.exportDirectoryArg),
+          true,
+        );
       });
     }
   });

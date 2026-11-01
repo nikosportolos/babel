@@ -8,28 +8,28 @@ documentation: https://github.com/nikosportolos/babel
 issue_tracker: https://github.com/nikosportolos/babel/issues
 
 environment:
-  sdk: '>=3.5.0 <4.0.0'
+  sdk: 3.13.7
 
 executables:
   babel:
 
 dependencies:
-  analyzer: ^6.8.0
-  ansix: ^0.3.4
+  analyzer: ^9.0.0
+  ansix: ^0.3.6
   dart_cmder: ^0.0.6-prerelease
   args: ^2.4.2
   trace: ^0.0.7-prerelease
   collection: ^1.18.0
-  data_class_plugin: ^1.1.0
+  data_class_plugin: ^1.6.1
   path: ^1.9.1
-  yaml: ^3.1.2
-  meta: ^1.16.0
+  yaml: ^3.1.4
+  meta: ^1.19.0
 
 dev_dependencies:
-  lints: ^5.0.0
-  mocktail: ^1.0.4
-  tachyon: ^0.3.0
-  test: ^1.25.12
+  lints: ^6.1.0
+  mocktail: ^1.0.5
+  tachyon: ^0.4.0
+  test: ^1.31.1
 
 screenshots:
   - description: 'Babel: Translations management for Flutter apps'

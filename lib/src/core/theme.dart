@@ -69,14 +69,8 @@ class BabelTheme {
   };
 
   static const Map<int, ListItemTheme> listItemThemeMap = <int, ListItemTheme>{
-    0: ListItemTheme(
-      '>',
-      foregroundColor: BabelColors.primary,
-    ),
-    1: ListItemTheme(
-      '─',
-      foregroundColor: BabelColors.accent,
-    ),
+    0: ListItemTheme('>', foregroundColor: BabelColors.primary),
+    1: ListItemTheme('─', foregroundColor: BabelColors.accent),
     3: ListItemTheme('○'),
   };
 
@@ -132,9 +126,7 @@ class BabelTheme {
     overrideTheme: true,
     keepSameWidth: false,
     wrapText: true,
-    wrapOptions: const WrapOptions(
-      lineLength: 35,
-    ),
+    wrapOptions: const WrapOptions(lineLength: 35),
     border: const AnsiBorder(
       style: AnsiBorderStyle.rounded,
       type: AnsiBorderType.all,

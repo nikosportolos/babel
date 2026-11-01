@@ -13,36 +13,30 @@ void main() {
     group('DirectoryJsonConverter', () {
       test('fromJson', () {
         expect(
-          const DirectoryJsonConverter()
-              .fromJson(path, <String, dynamic>{'directory': path}, 'directory')
-              .path,
+          const DirectoryJsonConverter().fromJson(path, <String, dynamic>{
+            'directory': path,
+          }, 'directory').path,
           path,
         );
       });
 
       test('toJson', () {
-        expect(
-          const DirectoryJsonConverter().toJson(Directory.current),
-          path,
-        );
+        expect(const DirectoryJsonConverter().toJson(Directory.current), path);
       });
     });
 
     group('FileJsonConverter', () {
       test('fromJson', () {
         expect(
-          const FileJsonConverter()
-              .fromJson(filepath, <String, dynamic>{'file': filepath}, 'file')
-              .path,
+          const FileJsonConverter().fromJson(filepath, <String, dynamic>{
+            'file': filepath,
+          }, 'file').path,
           file.path,
         );
       });
 
       test('toJson', () {
-        expect(
-          const FileJsonConverter().toJson(file),
-          filepath,
-        );
+        expect(const FileJsonConverter().toJson(file), filepath);
       });
     });
   });
