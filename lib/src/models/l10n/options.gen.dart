@@ -152,7 +152,9 @@ class _$LocalizationOptionsImpl extends LocalizationOptions {
             untranslatedMessagesFile == other.untranslatedMessagesFile &&
             outputClass == other.outputClass &&
             deepEquality(
-                preferredSupportedLocales, other.preferredSupportedLocales) &&
+              preferredSupportedLocales,
+              other.preferredSupportedLocales,
+            ) &&
             header == other.header &&
             headerFile == other.headerFile &&
             useDeferredLoading == other.useDeferredLoading &&
@@ -248,25 +250,25 @@ abstract interface class _LocalizationOptionsCopyWithProxy {
   LocalizationOptions relaxSyntax(bool? newValue);
 
   LocalizationOptions call({
-    final String? arbDir,
-    final String? outputDir,
-    final String? templateArbFile,
-    final String? outputLocalizationFile,
-    final String? untranslatedMessagesFile,
-    final String? outputClass,
-    final List<String>? preferredSupportedLocales,
-    final String? header,
-    final String? headerFile,
-    final bool? useDeferredLoading,
-    final String? genInputsAndOutputsList,
-    final bool? syntheticPackage,
-    final String? projectDir,
-    final bool? requiredResourceAttributes,
-    final bool? nullableGetter,
-    final bool? format,
-    final bool? useEscaping,
-    final bool? suppressWarnings,
-    final bool? relaxSyntax,
+    String? arbDir,
+    String? outputDir,
+    String? templateArbFile,
+    String? outputLocalizationFile,
+    String? untranslatedMessagesFile,
+    String? outputClass,
+    List<String>? preferredSupportedLocales,
+    String? header,
+    String? headerFile,
+    bool? useDeferredLoading,
+    String? genInputsAndOutputsList,
+    bool? syntheticPackage,
+    String? projectDir,
+    bool? requiredResourceAttributes,
+    bool? nullableGetter,
+    bool? format,
+    bool? useEscaping,
+    bool? suppressWarnings,
+    bool? relaxSyntax,
   });
 }
 
@@ -370,25 +372,25 @@ class _LocalizationOptionsCopyWithProxyImpl
   @pragma('vm:prefer-inline')
   @override
   LocalizationOptions call({
-    final Object? arbDir = const Object(),
-    final Object? outputDir = const Object(),
-    final Object? templateArbFile = const Object(),
-    final Object? outputLocalizationFile = const Object(),
-    final Object? untranslatedMessagesFile = const Object(),
-    final Object? outputClass = const Object(),
-    final Object? preferredSupportedLocales = const Object(),
-    final Object? header = const Object(),
-    final Object? headerFile = const Object(),
-    final Object? useDeferredLoading = const Object(),
-    final Object? genInputsAndOutputsList = const Object(),
-    final Object? syntheticPackage = const Object(),
-    final Object? projectDir = const Object(),
-    final Object? requiredResourceAttributes = const Object(),
-    final Object? nullableGetter = const Object(),
-    final Object? format = const Object(),
-    final Object? useEscaping = const Object(),
-    final Object? suppressWarnings = const Object(),
-    final Object? relaxSyntax = const Object(),
+    Object? arbDir = const Object(),
+    Object? outputDir = const Object(),
+    Object? templateArbFile = const Object(),
+    Object? outputLocalizationFile = const Object(),
+    Object? untranslatedMessagesFile = const Object(),
+    Object? outputClass = const Object(),
+    Object? preferredSupportedLocales = const Object(),
+    Object? header = const Object(),
+    Object? headerFile = const Object(),
+    Object? useDeferredLoading = const Object(),
+    Object? genInputsAndOutputsList = const Object(),
+    Object? syntheticPackage = const Object(),
+    Object? projectDir = const Object(),
+    Object? requiredResourceAttributes = const Object(),
+    Object? nullableGetter = const Object(),
+    Object? format = const Object(),
+    Object? useEscaping = const Object(),
+    Object? suppressWarnings = const Object(),
+    Object? relaxSyntax = const Object(),
   }) {
     return _$LocalizationOptionsImpl(
       arbDir: identical(arbDir, const Object())
@@ -405,15 +407,15 @@ class _LocalizationOptionsCopyWithProxyImpl
           : (outputLocalizationFile as String?),
       untranslatedMessagesFile:
           identical(untranslatedMessagesFile, const Object())
-              ? _value.untranslatedMessagesFile
-              : (untranslatedMessagesFile as String?),
+          ? _value.untranslatedMessagesFile
+          : (untranslatedMessagesFile as String?),
       outputClass: identical(outputClass, const Object())
           ? _value.outputClass
           : (outputClass as String?),
       preferredSupportedLocales:
           identical(preferredSupportedLocales, const Object())
-              ? _value.preferredSupportedLocales
-              : (preferredSupportedLocales as List<String>?),
+          ? _value.preferredSupportedLocales
+          : (preferredSupportedLocales as List<String>?),
       header: identical(header, const Object())
           ? _value.header
           : (header as String?),
@@ -425,8 +427,8 @@ class _LocalizationOptionsCopyWithProxyImpl
           : (useDeferredLoading as bool?),
       genInputsAndOutputsList:
           identical(genInputsAndOutputsList, const Object())
-              ? _value.genInputsAndOutputsList
-              : (genInputsAndOutputsList as String?),
+          ? _value.genInputsAndOutputsList
+          : (genInputsAndOutputsList as String?),
       syntheticPackage: identical(syntheticPackage, const Object())
           ? _value.syntheticPackage
           : (syntheticPackage as bool?),
@@ -435,13 +437,14 @@ class _LocalizationOptionsCopyWithProxyImpl
           : (projectDir as String?),
       requiredResourceAttributes:
           identical(requiredResourceAttributes, const Object())
-              ? _value.requiredResourceAttributes
-              : (requiredResourceAttributes as bool?),
+          ? _value.requiredResourceAttributes
+          : (requiredResourceAttributes as bool?),
       nullableGetter: identical(nullableGetter, const Object())
           ? _value.nullableGetter
           : (nullableGetter as bool?),
-      format:
-          identical(format, const Object()) ? _value.format : (format as bool?),
+      format: identical(format, const Object())
+          ? _value.format
+          : (format as bool?),
       useEscaping: identical(useEscaping, const Object())
           ? _value.useEscaping
           : (useEscaping as bool?),
@@ -457,9 +460,9 @@ class _LocalizationOptionsCopyWithProxyImpl
 
 sealed class $LocalizationOptionsCopyWithProxyChain<$Result> {
   factory $LocalizationOptionsCopyWithProxyChain(
-          final LocalizationOptions value,
-          final $Result Function(LocalizationOptions update) chain) =
-      _LocalizationOptionsCopyWithProxyChainImpl<$Result>;
+    LocalizationOptions value,
+    $Result Function(LocalizationOptions update) chain,
+  ) = _LocalizationOptionsCopyWithProxyChainImpl<$Result>;
 
   $Result arbDir(String? newValue);
 
@@ -500,25 +503,25 @@ sealed class $LocalizationOptionsCopyWithProxyChain<$Result> {
   $Result relaxSyntax(bool? newValue);
 
   $Result call({
-    final String? arbDir,
-    final String? outputDir,
-    final String? templateArbFile,
-    final String? outputLocalizationFile,
-    final String? untranslatedMessagesFile,
-    final String? outputClass,
-    final List<String>? preferredSupportedLocales,
-    final String? header,
-    final String? headerFile,
-    final bool? useDeferredLoading,
-    final String? genInputsAndOutputsList,
-    final bool? syntheticPackage,
-    final String? projectDir,
-    final bool? requiredResourceAttributes,
-    final bool? nullableGetter,
-    final bool? format,
-    final bool? useEscaping,
-    final bool? suppressWarnings,
-    final bool? relaxSyntax,
+    String? arbDir,
+    String? outputDir,
+    String? templateArbFile,
+    String? outputLocalizationFile,
+    String? untranslatedMessagesFile,
+    String? outputClass,
+    List<String>? preferredSupportedLocales,
+    String? header,
+    String? headerFile,
+    bool? useDeferredLoading,
+    String? genInputsAndOutputsList,
+    bool? syntheticPackage,
+    String? projectDir,
+    bool? requiredResourceAttributes,
+    bool? nullableGetter,
+    bool? format,
+    bool? useEscaping,
+    bool? suppressWarnings,
+    bool? relaxSyntax,
   });
 }
 
@@ -614,88 +617,92 @@ class _LocalizationOptionsCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final Object? arbDir = const Object(),
-    final Object? outputDir = const Object(),
-    final Object? templateArbFile = const Object(),
-    final Object? outputLocalizationFile = const Object(),
-    final Object? untranslatedMessagesFile = const Object(),
-    final Object? outputClass = const Object(),
-    final Object? preferredSupportedLocales = const Object(),
-    final Object? header = const Object(),
-    final Object? headerFile = const Object(),
-    final Object? useDeferredLoading = const Object(),
-    final Object? genInputsAndOutputsList = const Object(),
-    final Object? syntheticPackage = const Object(),
-    final Object? projectDir = const Object(),
-    final Object? requiredResourceAttributes = const Object(),
-    final Object? nullableGetter = const Object(),
-    final Object? format = const Object(),
-    final Object? useEscaping = const Object(),
-    final Object? suppressWarnings = const Object(),
-    final Object? relaxSyntax = const Object(),
+    Object? arbDir = const Object(),
+    Object? outputDir = const Object(),
+    Object? templateArbFile = const Object(),
+    Object? outputLocalizationFile = const Object(),
+    Object? untranslatedMessagesFile = const Object(),
+    Object? outputClass = const Object(),
+    Object? preferredSupportedLocales = const Object(),
+    Object? header = const Object(),
+    Object? headerFile = const Object(),
+    Object? useDeferredLoading = const Object(),
+    Object? genInputsAndOutputsList = const Object(),
+    Object? syntheticPackage = const Object(),
+    Object? projectDir = const Object(),
+    Object? requiredResourceAttributes = const Object(),
+    Object? nullableGetter = const Object(),
+    Object? format = const Object(),
+    Object? useEscaping = const Object(),
+    Object? suppressWarnings = const Object(),
+    Object? relaxSyntax = const Object(),
   }) {
-    return _chain(_$LocalizationOptionsImpl(
-      arbDir: identical(arbDir, const Object())
-          ? _value.arbDir
-          : (arbDir as String?),
-      outputDir: identical(outputDir, const Object())
-          ? _value.outputDir
-          : (outputDir as String?),
-      templateArbFile: identical(templateArbFile, const Object())
-          ? _value.templateArbFile
-          : (templateArbFile as String?),
-      outputLocalizationFile: identical(outputLocalizationFile, const Object())
-          ? _value.outputLocalizationFile
-          : (outputLocalizationFile as String?),
-      untranslatedMessagesFile:
-          identical(untranslatedMessagesFile, const Object())
-              ? _value.untranslatedMessagesFile
-              : (untranslatedMessagesFile as String?),
-      outputClass: identical(outputClass, const Object())
-          ? _value.outputClass
-          : (outputClass as String?),
-      preferredSupportedLocales:
-          identical(preferredSupportedLocales, const Object())
-              ? _value.preferredSupportedLocales
-              : (preferredSupportedLocales as List<String>?),
-      header: identical(header, const Object())
-          ? _value.header
-          : (header as String?),
-      headerFile: identical(headerFile, const Object())
-          ? _value.headerFile
-          : (headerFile as String?),
-      useDeferredLoading: identical(useDeferredLoading, const Object())
-          ? _value.useDeferredLoading
-          : (useDeferredLoading as bool?),
-      genInputsAndOutputsList:
-          identical(genInputsAndOutputsList, const Object())
-              ? _value.genInputsAndOutputsList
-              : (genInputsAndOutputsList as String?),
-      syntheticPackage: identical(syntheticPackage, const Object())
-          ? _value.syntheticPackage
-          : (syntheticPackage as bool?),
-      projectDir: identical(projectDir, const Object())
-          ? _value.projectDir
-          : (projectDir as String?),
-      requiredResourceAttributes:
-          identical(requiredResourceAttributes, const Object())
-              ? _value.requiredResourceAttributes
-              : (requiredResourceAttributes as bool?),
-      nullableGetter: identical(nullableGetter, const Object())
-          ? _value.nullableGetter
-          : (nullableGetter as bool?),
-      format:
-          identical(format, const Object()) ? _value.format : (format as bool?),
-      useEscaping: identical(useEscaping, const Object())
-          ? _value.useEscaping
-          : (useEscaping as bool?),
-      suppressWarnings: identical(suppressWarnings, const Object())
-          ? _value.suppressWarnings
-          : (suppressWarnings as bool?),
-      relaxSyntax: identical(relaxSyntax, const Object())
-          ? _value.relaxSyntax
-          : (relaxSyntax as bool?),
-    ));
+    return _chain(
+      _$LocalizationOptionsImpl(
+        arbDir: identical(arbDir, const Object())
+            ? _value.arbDir
+            : (arbDir as String?),
+        outputDir: identical(outputDir, const Object())
+            ? _value.outputDir
+            : (outputDir as String?),
+        templateArbFile: identical(templateArbFile, const Object())
+            ? _value.templateArbFile
+            : (templateArbFile as String?),
+        outputLocalizationFile:
+            identical(outputLocalizationFile, const Object())
+            ? _value.outputLocalizationFile
+            : (outputLocalizationFile as String?),
+        untranslatedMessagesFile:
+            identical(untranslatedMessagesFile, const Object())
+            ? _value.untranslatedMessagesFile
+            : (untranslatedMessagesFile as String?),
+        outputClass: identical(outputClass, const Object())
+            ? _value.outputClass
+            : (outputClass as String?),
+        preferredSupportedLocales:
+            identical(preferredSupportedLocales, const Object())
+            ? _value.preferredSupportedLocales
+            : (preferredSupportedLocales as List<String>?),
+        header: identical(header, const Object())
+            ? _value.header
+            : (header as String?),
+        headerFile: identical(headerFile, const Object())
+            ? _value.headerFile
+            : (headerFile as String?),
+        useDeferredLoading: identical(useDeferredLoading, const Object())
+            ? _value.useDeferredLoading
+            : (useDeferredLoading as bool?),
+        genInputsAndOutputsList:
+            identical(genInputsAndOutputsList, const Object())
+            ? _value.genInputsAndOutputsList
+            : (genInputsAndOutputsList as String?),
+        syntheticPackage: identical(syntheticPackage, const Object())
+            ? _value.syntheticPackage
+            : (syntheticPackage as bool?),
+        projectDir: identical(projectDir, const Object())
+            ? _value.projectDir
+            : (projectDir as String?),
+        requiredResourceAttributes:
+            identical(requiredResourceAttributes, const Object())
+            ? _value.requiredResourceAttributes
+            : (requiredResourceAttributes as bool?),
+        nullableGetter: identical(nullableGetter, const Object())
+            ? _value.nullableGetter
+            : (nullableGetter as bool?),
+        format: identical(format, const Object())
+            ? _value.format
+            : (format as bool?),
+        useEscaping: identical(useEscaping, const Object())
+            ? _value.useEscaping
+            : (useEscaping as bool?),
+        suppressWarnings: identical(suppressWarnings, const Object())
+            ? _value.suppressWarnings
+            : (suppressWarnings as bool?),
+        relaxSyntax: identical(relaxSyntax, const Object())
+            ? _value.relaxSyntax
+            : (relaxSyntax as bool?),
+      ),
+    );
   }
 }
 

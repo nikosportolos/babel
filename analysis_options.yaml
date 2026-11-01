@@ -1,10 +1,15 @@
 include: package:lints/recommended.yaml
 
 analyzer:
-  plugins:
-    - data_class_plugin
   exclude:
     - lib/**/*.gen.dart
+
+plugins:
+  data_class_plugin: ^1.6.1
+
+formatter:
+  page_width: 80
+  trailing_commas: preserve
 
 linter:
   rules:

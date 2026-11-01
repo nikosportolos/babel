@@ -12,7 +12,7 @@ mixin ListCommandMixin on BaseCommand {
 
   static final List<BaseArgument<void>> listArguments = <BaseArgument<void>>[
     exportDirectoryArg,
-    reportDisplayModeArg
+    reportDisplayModeArg,
   ];
 
   static const DirectoryArgument exportDirectoryArg = DirectoryArgument(
@@ -23,10 +23,10 @@ mixin ListCommandMixin on BaseCommand {
 
   static const EnumArgument<ReportDisplayMode> reportDisplayModeArg =
       EnumArgument<ReportDisplayMode>(
-    name: 'mode',
-    abbr: 'm',
-    help: 'Defines how the report will be displayed.',
-    allowedValues: ReportDisplayMode.values,
-    defaultsTo: ReportDisplayMode.grid,
-  );
+        name: 'mode',
+        abbr: 'm',
+        help: 'Defines how the report will be displayed.',
+        allowedValues: ReportDisplayMode.values,
+        defaultsTo: ReportDisplayMode.grid,
+      );
 }

@@ -15,7 +15,7 @@ for project in "${dart_projects[@]}"
 do
   dir=`dirname "$project"`
   echo "Running pub get in $dir"
-  (cd "$dir"; dart pub get)
+  (cd "$dir"; fvm dart pub get)
   echo ""
 done
 
@@ -24,7 +24,7 @@ action="${BLUE}Check Formatting${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                      │"
 echo "└───────────────────────────────────────┘"
-dart format . -l 80 --fix || { echo 'dart format failed' ; exit 1; }
+fvm dart format . || { echo 'dart format failed' ; exit 1; }
 echo ""
 
 
@@ -32,7 +32,7 @@ action="${BLUE}Analyze${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                               │"
 echo "└───────────────────────────────────────┘"
-dart analyze --fatal-infos --fatal-warnings || { echo 'dart analyze failed' ; exit 1; }
+fvm dart analyze --fatal-infos --fatal-warnings || { echo 'dart analyze failed' ; exit 1; }
 echo ""
 
 
@@ -40,7 +40,7 @@ action="${BLUE}Run Tests${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                             │"
 echo "└───────────────────────────────────────┘"
-dart test --color -r expanded || { echo 'tests failed' ; exit 1; }
+fvm dart test --color -r expanded || { echo 'tests failed' ; exit 1; }
 echo ""
 
 
@@ -48,5 +48,5 @@ action="${BLUE}Pub.dev Analysis${NC}"
 echo "┌───────────────────────────────────────┐"
 echo -e "│ ${action}                      │"
 echo "└───────────────────────────────────────┘"
-dart pub global run pana -l 80 --exit-code-threshold 30
+fvm dart pub global run pana -l 80 --exit-code-threshold 30
 echo ""

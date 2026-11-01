@@ -140,14 +140,14 @@ abstract class LocalizationOptions {
   bool? get relaxSyntax;
 
   /// Creates an instance of [LocalizationOptions] from [file]
-  factory LocalizationOptions.fromFile(final File file) {
+  factory LocalizationOptions.fromFile(File file) {
     final String content = file.readAsStringSync();
     final dynamic json = jsonEncode(loadYaml(content));
     return LocalizationOptions.fromJson(jsonDecode(json));
   }
 
   /// Creates an instance of [LocalizationOptions] from [filepath]
-  factory LocalizationOptions.fromFilePath(final String filepath) {
+  factory LocalizationOptions.fromFilePath(String filepath) {
     final File file = File(filepath);
     if (!file.existsSync()) {
       throw LocalizationOptionsNotFound(filepath);

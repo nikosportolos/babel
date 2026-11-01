@@ -17,13 +17,13 @@ class ListCommand extends BaseCommand {
   final String description = 'List project translations';
 
   ListCommand()
-      : super(
-          subCommands: <BaseCommand>[
-            ListAllCommand(),
-            ListMissingCommand(),
-            ListUnusedCommand(),
-          ],
-        );
+    : super(
+        subCommands: <BaseCommand>[
+          ListAllCommand(),
+          ListMissingCommand(),
+          ListUnusedCommand(),
+        ],
+      );
 
   @override
   Future<void> execute() async {}

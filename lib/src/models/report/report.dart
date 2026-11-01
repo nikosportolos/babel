@@ -9,9 +9,7 @@ abstract class Report {
   List<Record> get records;
 
   /// Default constructor
-  const factory Report({
-    required List<Record> records,
-  }) = _$ReportImpl;
+  const factory Report({required List<Record> records}) = _$ReportImpl;
 
   /// Creates an instance of [Report] from [json]
   factory Report.fromJson(Map<dynamic, dynamic> json) = _$ReportImpl.fromJson;

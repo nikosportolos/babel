@@ -101,11 +101,11 @@ abstract interface class _ReportRecordCopyWithProxy {
   ReportRecord isMissing(bool? newValue);
 
   ReportRecord call({
-    final String? locale,
-    final String? key,
-    final String? value,
-    final bool? isUsed,
-    final bool? isMissing,
+    String? locale,
+    String? key,
+    String? value,
+    bool? isUsed,
+    bool? isMissing,
   });
 }
 
@@ -137,19 +137,21 @@ class _ReportRecordCopyWithProxyImpl implements _ReportRecordCopyWithProxy {
   @pragma('vm:prefer-inline')
   @override
   ReportRecord call({
-    final String? locale,
-    final String? key,
-    final Object? value = const Object(),
-    final Object? isUsed = const Object(),
-    final Object? isMissing = const Object(),
+    String? locale,
+    String? key,
+    Object? value = const Object(),
+    Object? isUsed = const Object(),
+    Object? isMissing = const Object(),
   }) {
     return _$ReportRecordImpl(
       locale: locale ?? _value.locale,
       key: key ?? _value.key,
-      value:
-          identical(value, const Object()) ? _value.value : (value as String?),
-      isUsed:
-          identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
+      value: identical(value, const Object())
+          ? _value.value
+          : (value as String?),
+      isUsed: identical(isUsed, const Object())
+          ? _value.isUsed
+          : (isUsed as bool?),
       isMissing: identical(isMissing, const Object())
           ? _value.isMissing
           : (isMissing as bool?),
@@ -158,9 +160,10 @@ class _ReportRecordCopyWithProxyImpl implements _ReportRecordCopyWithProxy {
 }
 
 sealed class $ReportRecordCopyWithProxyChain<$Result> {
-  factory $ReportRecordCopyWithProxyChain(final ReportRecord value,
-          final $Result Function(ReportRecord update) chain) =
-      _ReportRecordCopyWithProxyChainImpl<$Result>;
+  factory $ReportRecordCopyWithProxyChain(
+    ReportRecord value,
+    $Result Function(ReportRecord update) chain,
+  ) = _ReportRecordCopyWithProxyChainImpl<$Result>;
 
   $Result locale(String newValue);
 
@@ -173,11 +176,11 @@ sealed class $ReportRecordCopyWithProxyChain<$Result> {
   $Result isMissing(bool? newValue);
 
   $Result call({
-    final String? locale,
-    final String? key,
-    final String? value,
-    final bool? isUsed,
-    final bool? isMissing,
+    String? locale,
+    String? key,
+    String? value,
+    bool? isUsed,
+    bool? isMissing,
   });
 }
 
@@ -211,23 +214,27 @@ class _ReportRecordCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final String? locale,
-    final String? key,
-    final Object? value = const Object(),
-    final Object? isUsed = const Object(),
-    final Object? isMissing = const Object(),
+    String? locale,
+    String? key,
+    Object? value = const Object(),
+    Object? isUsed = const Object(),
+    Object? isMissing = const Object(),
   }) {
-    return _chain(_$ReportRecordImpl(
-      locale: locale ?? _value.locale,
-      key: key ?? _value.key,
-      value:
-          identical(value, const Object()) ? _value.value : (value as String?),
-      isUsed:
-          identical(isUsed, const Object()) ? _value.isUsed : (isUsed as bool?),
-      isMissing: identical(isMissing, const Object())
-          ? _value.isMissing
-          : (isMissing as bool?),
-    ));
+    return _chain(
+      _$ReportRecordImpl(
+        locale: locale ?? _value.locale,
+        key: key ?? _value.key,
+        value: identical(value, const Object())
+            ? _value.value
+            : (value as String?),
+        isUsed: identical(isUsed, const Object())
+            ? _value.isUsed
+            : (isUsed as bool?),
+        isMissing: identical(isMissing, const Object())
+            ? _value.isMissing
+            : (isMissing as bool?),
+      ),
+    );
   }
 }
 

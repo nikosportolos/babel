@@ -10,9 +10,9 @@ import 'package:trace/trace.dart';
 
 class BabelAnalyzer {
   Future<Set<String>> getReferences(
-    final List<String> filepaths, {
-    final String? searchClass,
-    required final String rootDir,
+    List<String> filepaths, {
+    String? searchClass,
+    required String rootDir,
   }) async {
     final List<String> paths = filepaths.getDistinctPaths();
     final AnalysisContextCollection contextCollection =
@@ -45,19 +45,22 @@ class BabelAnalyzer {
   }
 
   Future<Set<String>> getReferencesForPath(
-    final String filePath, {
-    required final AnalysisContextCollection contextCollection,
-    final String? searchClass,
+    String filePath, {
+    required AnalysisContextCollection contextCollection,
+    String? searchClass,
   }) async {
     try {
       final AnalysisContext ctx = contextCollection.contextFor(filePath);
       final CompilationUnit unit = await ctx.currentSession
           .getResolvedUnit(filePath)
-          .then((SomeResolvedUnitResult result) =>
-              (result as ResolvedUnitResult).unit);
+          .then(
+            (SomeResolvedUnitResult result) =>
+                (result as ResolvedUnitResult).unit,
+          );
 
-      final L10NReferencesVisitor l10nReferencesVisitor =
-          L10NReferencesVisitor(searchClass);
+      final L10NReferencesVisitor l10nReferencesVisitor = L10NReferencesVisitor(
+        searchClass,
+      );
       unit.accept(l10nReferencesVisitor);
 
       return l10nReferencesVisitor.l10nUsedKeys;

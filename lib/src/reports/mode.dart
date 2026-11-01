@@ -7,8 +7,4 @@ enum ReportDisplayMode {
   final String title;
 }
 
-enum ReportMode {
-  all,
-  missing,
-  unused;
-}
+enum ReportMode { all, missing, unused }

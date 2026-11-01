@@ -6,9 +6,7 @@
 part of 'report.dart';
 
 class _$ReportImpl extends Report {
-  const _$ReportImpl({
-    required this.records,
-  }) : super.ctor();
+  const _$ReportImpl({required this.records}) : super.ctor();
 
   @override
   final List<Record> records;
@@ -43,10 +41,7 @@ class _$ReportImpl extends Report {
 
   @override
   int get hashCode {
-    return Object.hashAll(<Object?>[
-      runtimeType,
-      records,
-    ]);
+    return Object.hashAll(<Object?>[runtimeType, records]);
   }
 
   @override
@@ -66,9 +61,7 @@ class _$ReportImpl extends Report {
 abstract interface class _ReportCopyWithProxy {
   Report records(List<Record> newValue);
 
-  Report call({
-    final List<Record>? records,
-  });
+  Report call({List<Record>? records});
 }
 
 class _ReportCopyWithProxyImpl implements _ReportCopyWithProxy {
@@ -82,25 +75,20 @@ class _ReportCopyWithProxyImpl implements _ReportCopyWithProxy {
 
   @pragma('vm:prefer-inline')
   @override
-  Report call({
-    final List<Record>? records,
-  }) {
-    return _$ReportImpl(
-      records: records ?? _value.records,
-    );
+  Report call({List<Record>? records}) {
+    return _$ReportImpl(records: records ?? _value.records);
   }
 }
 
 sealed class $ReportCopyWithProxyChain<$Result> {
   factory $ReportCopyWithProxyChain(
-          final Report value, final $Result Function(Report update) chain) =
-      _ReportCopyWithProxyChainImpl<$Result>;
+    Report value,
+    $Result Function(Report update) chain,
+  ) = _ReportCopyWithProxyChainImpl<$Result>;
 
   $Result records(List<Record> newValue);
 
-  $Result call({
-    final List<Record>? records,
-  });
+  $Result call({List<Record>? records});
 }
 
 class _ReportCopyWithProxyChainImpl<$Result>
@@ -116,12 +104,8 @@ class _ReportCopyWithProxyChainImpl<$Result>
 
   @pragma('vm:prefer-inline')
   @override
-  $Result call({
-    final List<Record>? records,
-  }) {
-    return _chain(_$ReportImpl(
-      records: records ?? _value.records,
-    ));
+  $Result call({List<Record>? records}) {
+    return _chain(_$ReportImpl(records: records ?? _value.records));
   }
 }
 

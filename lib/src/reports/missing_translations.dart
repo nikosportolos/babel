@@ -3,11 +3,8 @@ import 'package:babel/src/reports/report.dart';
 import 'package:trace/trace.dart';
 
 class MissingTranslationsReport extends Report {
-  MissingTranslationsReport(
-    super.project, {
-    super.mode,
-    super.exportDirectory,
-  }) : super(name: 'Missing Translations');
+  MissingTranslationsReport(super.project, {super.mode, super.exportDirectory})
+    : super(name: 'Missing Translations');
 
   @override
   Future<void> generate() async {
@@ -27,7 +24,7 @@ class MissingTranslationsReport extends Report {
                   .firstOrNull
                   ?.value ==
               null)
-            key
+            key,
     ];
 
     keys

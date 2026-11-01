@@ -25,9 +25,11 @@ class _$TranslationFileImpl extends TranslationFile {
     return _$TranslationFileImpl(
       path: json['path'] as String,
       locale: json['locale'] as String,
-      keys: jsonConverterRegistrant
-          .find(Set<TranslationKey>)
-          .fromJson(json['keys'], json, 'keys') as Set<TranslationKey>,
+      keys:
+          jsonConverterRegistrant
+                  .find(Set<TranslationKey>)
+                  .fromJson(json['keys'], json, 'keys')
+              as Set<TranslationKey>,
     );
   }
 
@@ -52,12 +54,7 @@ class _$TranslationFileImpl extends TranslationFile {
 
   @override
   int get hashCode {
-    return Object.hashAll(<Object?>[
-      runtimeType,
-      path,
-      locale,
-      keys,
-    ]);
+    return Object.hashAll(<Object?>[runtimeType, path, locale, keys]);
   }
 
   @override
@@ -83,9 +80,9 @@ abstract interface class _TranslationFileCopyWithProxy {
   TranslationFile keys(Set<TranslationKey> newValue);
 
   TranslationFile call({
-    final String? path,
-    final String? locale,
-    final Set<TranslationKey>? keys,
+    String? path,
+    String? locale,
+    Set<TranslationKey>? keys,
   });
 }
 
@@ -110,9 +107,9 @@ class _TranslationFileCopyWithProxyImpl
   @pragma('vm:prefer-inline')
   @override
   TranslationFile call({
-    final String? path,
-    final String? locale,
-    final Set<TranslationKey>? keys,
+    String? path,
+    String? locale,
+    Set<TranslationKey>? keys,
   }) {
     return _$TranslationFileImpl(
       path: path ?? _value.path,
@@ -123,9 +120,10 @@ class _TranslationFileCopyWithProxyImpl
 }
 
 sealed class $TranslationFileCopyWithProxyChain<$Result> {
-  factory $TranslationFileCopyWithProxyChain(final TranslationFile value,
-          final $Result Function(TranslationFile update) chain) =
-      _TranslationFileCopyWithProxyChainImpl<$Result>;
+  factory $TranslationFileCopyWithProxyChain(
+    TranslationFile value,
+    $Result Function(TranslationFile update) chain,
+  ) = _TranslationFileCopyWithProxyChainImpl<$Result>;
 
   $Result path(String newValue);
 
@@ -134,9 +132,9 @@ sealed class $TranslationFileCopyWithProxyChain<$Result> {
   $Result keys(Set<TranslationKey> newValue);
 
   $Result call({
-    final String? path,
-    final String? locale,
-    final Set<TranslationKey>? keys,
+    String? path,
+    String? locale,
+    Set<TranslationKey>? keys,
   });
 }
 
@@ -162,15 +160,17 @@ class _TranslationFileCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final String? path,
-    final String? locale,
-    final Set<TranslationKey>? keys,
+    String? path,
+    String? locale,
+    Set<TranslationKey>? keys,
   }) {
-    return _chain(_$TranslationFileImpl(
-      path: path ?? _value.path,
-      locale: locale ?? _value.locale,
-      keys: keys ?? _value.keys,
-    ));
+    return _chain(
+      _$TranslationFileImpl(
+        path: path ?? _value.path,
+        locale: locale ?? _value.locale,
+        keys: keys ?? _value.keys,
+      ),
+    );
   }
 }
 

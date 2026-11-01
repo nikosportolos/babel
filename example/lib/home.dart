@@ -25,8 +25,8 @@ class _HomeState extends State<Home> with TranslationsMixin {
             translations.thisIsAnExampleApp,
             textAlign: TextAlign.center,
           ),
-          // Text(S.of(context).btnSave),
 
+          // Text(S.of(context).btnSave),
           const DemoButton(),
         ],
       ),

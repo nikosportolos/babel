@@ -49,11 +49,7 @@ class _$TranslationKeyAttributesImpl extends TranslationKeyAttributes {
 
   @override
   int get hashCode {
-    return Object.hashAll(<Object?>[
-      runtimeType,
-      description,
-      placeholders,
-    ]);
+    return Object.hashAll(<Object?>[runtimeType, description, placeholders]);
   }
 
   @override
@@ -77,8 +73,8 @@ abstract interface class _TranslationKeyAttributesCopyWithProxy {
   TranslationKeyAttributes placeholders(Map<String, String> newValue);
 
   TranslationKeyAttributes call({
-    final String? description,
-    final Map<String, String>? placeholders,
+    String? description,
+    Map<String, String>? placeholders,
   });
 }
 
@@ -101,8 +97,8 @@ class _TranslationKeyAttributesCopyWithProxyImpl
   @pragma('vm:prefer-inline')
   @override
   TranslationKeyAttributes call({
-    final Object? description = const Object(),
-    final Map<String, String>? placeholders,
+    Object? description = const Object(),
+    Map<String, String>? placeholders,
   }) {
     return _$TranslationKeyAttributesImpl(
       description: identical(description, const Object())
@@ -115,17 +111,17 @@ class _TranslationKeyAttributesCopyWithProxyImpl
 
 sealed class $TranslationKeyAttributesCopyWithProxyChain<$Result> {
   factory $TranslationKeyAttributesCopyWithProxyChain(
-          final TranslationKeyAttributes value,
-          final $Result Function(TranslationKeyAttributes update) chain) =
-      _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>;
+    TranslationKeyAttributes value,
+    $Result Function(TranslationKeyAttributes update) chain,
+  ) = _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>;
 
   $Result description(String? newValue);
 
   $Result placeholders(Map<String, String> newValue);
 
   $Result call({
-    final String? description,
-    final Map<String, String>? placeholders,
+    String? description,
+    Map<String, String>? placeholders,
   });
 }
 
@@ -148,15 +144,17 @@ class _TranslationKeyAttributesCopyWithProxyChainImpl<$Result>
   @pragma('vm:prefer-inline')
   @override
   $Result call({
-    final Object? description = const Object(),
-    final Map<String, String>? placeholders,
+    Object? description = const Object(),
+    Map<String, String>? placeholders,
   }) {
-    return _chain(_$TranslationKeyAttributesImpl(
-      description: identical(description, const Object())
-          ? _value.description
-          : (description as String?),
-      placeholders: placeholders ?? _value.placeholders,
-    ));
+    return _chain(
+      _$TranslationKeyAttributesImpl(
+        description: identical(description, const Object())
+            ? _value.description
+            : (description as String?),
+        placeholders: placeholders ?? _value.placeholders,
+      ),
+    );
   }
 }
 

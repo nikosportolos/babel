@@ -11,11 +11,12 @@ class CleanUnusedTranslationsCommand extends BaseCommand {
   String get description => 'Deletes all unused translation keys.';
 
   CleanUnusedTranslationsCommand()
-      : super(arguments: <BaseArgument<void>>[dryRunArg]);
+    : super(arguments: <BaseArgument<void>>[dryRunArg]);
 
   static const FlagArgument dryRunArg = FlagArgument(
     name: 'dry-run',
-    help: 'If set to true, babel will return with error '
+    help:
+        'If set to true, babel will return with error '
         'when unused translations are found in a project.',
     defaultsTo: false,
     negatable: false,

@@ -21,6 +21,7 @@ jobs:
       - uses: nikosportolos/dart_package@v0.2.3
         with:
           sdk: flutter
+          flutter_sdk: 3.47.9
           line_length: 80
           coverage: ${{ inputs.coverage }}
           codecov: true

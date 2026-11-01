@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:babel/src/models/models.dart';
 import 'package:babel/src/reports/reports.dart';
 import 'package:collection/collection.dart';
 import 'package:path/path.dart';
@@ -8,10 +9,7 @@ import 'package:test/test.dart';
 import '../mocks/mocks.dart';
 
 class MockReport extends Report {
-  MockReport(
-    super.project, {
-    required super.name,
-  });
+  MockReport(super.project, {required super.name});
 
   @override
   Future<void> generate() {
@@ -30,59 +28,71 @@ void main() {
           .sorted((String a, String b) => a.compareTo(b));
 
       expect(files.length, 5);
+      expect(filenames, <String>[
+        'button.dart',
+        'extensions.dart',
+        'home.dart',
+        'locale.dart',
+        'main.dart',
+      ]);
+    });
+
+    test('getProjectFiles only excludes generated files of the output-dir', () {
+      final MockReport report = MockReport(
+        exampleProject.copyWith(
+          options: exampleProject.options.copyWith(outputDir: 'lib/other'),
+        ),
+        name: 'Mock',
+      );
+      final List<String> filenames = report
+          .getProjectFiles()
+          .map((FileSystemEntity e) => basename(e.path))
+          .toList(growable: false);
       expect(
         filenames,
-        <String>[
-          'button.dart',
-          'extensions.dart',
-          'home.dart',
-          'locale.dart',
-          'main.dart'
-        ],
+        containsAll(<String>[
+          'app_localizations.dart',
+          'app_localizations_el.dart',
+          'app_localizations_en.dart',
+        ]),
       );
     });
 
     test('AllTranslationsReport', () async {
-      final AllTranslationsReport report =
-          AllTranslationsReport(exampleProject);
+      final AllTranslationsReport report = AllTranslationsReport(
+        exampleProject,
+      );
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 6);
-      expect(
-        report.keys,
-        <String>[
-          'app_name',
-          'btnCancel',
-          'btnOk',
-          'btnSave',
-          'demoMessage',
-          'thisIsAnExampleApp'
-        ],
-      );
+      expect(report.keys, <String>[
+        'app_name',
+        'btnCancel',
+        'btnOk',
+        'btnSave',
+        'demoMessage',
+        'thisIsAnExampleApp',
+      ]);
     });
 
     test('MissingTranslationsReport', () async {
-      final MissingTranslationsReport report =
-          MissingTranslationsReport(exampleProject);
+      final MissingTranslationsReport report = MissingTranslationsReport(
+        exampleProject,
+      );
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 2);
-      expect(
-        report.keys,
-        <String>['btnCancel', 'thisIsAnExampleApp'],
-      );
+      expect(report.keys, <String>['btnCancel', 'thisIsAnExampleApp']);
     });
 
     test('UnusedTranslationsReport', () async {
-      final UnusedTranslationsReport report =
-          UnusedTranslationsReport(exampleProject);
+      final UnusedTranslationsReport report = UnusedTranslationsReport(
+        exampleProject,
+      );
       await report.generate();
       report.keys.sort((String a, String b) => a.compareTo(b));
       expect(report.keys.length, 3);
-      expect(
-        report.keys,
-        <String>['btnCancel', 'btnSave', 'demoMessage'],
-      );
+      expect(report.keys, <String>['btnCancel', 'btnSave', 'demoMessage']);
     });
   });
 }
